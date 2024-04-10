@@ -218,7 +218,8 @@
                                     <div class="card-body">
                                         <p class="h5 mb-2 text-gray-600">DANH MỤC MÔN THI</p>
                                         <div class="table-responsive">
-                                            <table class="table table-bordered" id="" width="100%" cellspacing="0">
+                                            <table class="table table-bordered" id="list_monthi" width="100%"
+                                                cellspacing="0">
                                                 <thead>
                                                     <tr>
                                                         <th>Mã môn thi</th>
@@ -242,12 +243,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="thaotac" id="crud_monthi">
+                                <div class="card shadow mb-3 mt-3">
+                                    <div class="card-body" id="crud_monthi">
 
+                                    </div>
                                 </div>
-
                                 <hr>
-                                <div class="card shadow mb-0">
+                                <div class="card shadow mb-0" id='monthi_showw'>
                                     <div class="card-body">
                                         <p class="h5 mb-4  text-gray-600">CHỌN MÔN THI</p>
                                         <select class="form-control" name="monthi_ops" id="monthi_ops">
@@ -261,7 +263,8 @@
                                     <div class="card-body">
                                         <p class="h5 mb-2 text-gray-600">DANH MỤC NỘI DUNG THI</p>
                                         <div class="table-responsive">
-                                            <table class="table table-bordered" id="" width="100%" cellspacing="0">
+                                            <table class="table table-bordered" id="list_noidungthi" width="100%"
+                                                cellspacing="0">
                                                 <thead>
                                                     <tr>
                                                         <th>Mã nội dung</th>
@@ -286,9 +289,10 @@
                                     </div>
                                 </div>
 
+                                <div class="card shadow mb-3 mt-3">
+                                    <div class="card-body" id="crud_noidungthi">
 
-                                <div class="thaotac" id='crud_noidungthi'>
-
+                                    </div>
                                 </div>
                             </div>
 

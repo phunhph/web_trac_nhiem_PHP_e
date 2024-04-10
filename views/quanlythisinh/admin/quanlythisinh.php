@@ -420,9 +420,8 @@ span {
                                         style="margin-left:1em;margin-top:1em; cursor:pointer;">
                                     <img id="delete" src="assets/image/delete.png" width="43" height="40"
                                         title="Xóa học viên" style="margin-left:1em;margin-top:1em; cursor:pointer;">
-                                    <a href=""><img id="refresh" src="assets/image/refresh-icon.png" width="43"
-                                            height="40" title="Refresh"
-                                            style="margin-left:1em;margin-top:1em; cursor:pointer;"></a>
+                                    <img id="refresh" src="assets/image/refresh-icon.png" width="43" height="40"
+                                        title="Refresh" style="margin-left:1em;margin-top:1em; cursor:pointer;">
                                 </div>
                             </div>
                         </div>

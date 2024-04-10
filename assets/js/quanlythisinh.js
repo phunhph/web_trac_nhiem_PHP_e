@@ -326,7 +326,6 @@ function showSuccessMessage(mes) {
   successMessage.textContent = mes;
   successMessage.classList.add("success-message");
   document.body.appendChild(successMessage);
-
   // Ẩn thông báo sau 3 giây
   setTimeout(function () {
     document.body.removeChild(successMessage);
