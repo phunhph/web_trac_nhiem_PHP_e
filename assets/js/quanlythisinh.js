@@ -110,6 +110,10 @@ function addEvent() {
     $("input[id='madonvi']").val($(this).children("td:eq(5)").text());
     $("input[id='tendonvi']").val($(this).children("td:eq(6)").text());
     $("input[id='phongthi']").val($(this).children("td:eq(7)").text());
+    var element = document.getElementById("update");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
   });
   $("#refresh").click(function (e) {
     $("input[id='sbd']").val("");
@@ -322,7 +326,6 @@ function showSuccessMessage(mes) {
   successMessage.textContent = mes;
   successMessage.classList.add("success-message");
   document.body.appendChild(successMessage);
-
   // Ẩn thông báo sau 3 giây
   setTimeout(function () {
     document.body.removeChild(successMessage);

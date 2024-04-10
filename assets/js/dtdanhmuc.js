@@ -58,26 +58,46 @@ function rendermonthi(date) {
   </option>`;
     });
     document.getElementById("crud_monthi").innerHTML = `
-  <form method="post" id="suamodun">
-	  <span style="margin-left:1em; margin-bottom:1em;">Mã môn thi</span>
-	  <input style="margin-left:1em; margin-bottom:1em;width:30em;" type='text'
-		  name='mmt' id='mmt' value='' autofocus><br>
-	  <span style="margin-left:1em; margin-bottom:1em;">Tên môn thi</span>
-	  <input style="margin-left:0.8em; margin-bottom:1em;width:30em;" type='text'
-		  name='tenmt' id='tenmt' value=''><br>
-	  <span style="margin-left:1em; margin-bottom:1em;">Bắt đầu</span>
-	  <input style="margin-left:2.9em; margin-bottom:1em;width:30em;" type='datetime-local'
-		  name='tkt' id='tkt' value=''><br>
-	  <span style="margin-left:1em; margin-bottom:1em;">Kết thúc</span>
-	  <input style="margin-left:2.5em; margin-bottom:1em;width:30em;" type='datetime-local'
-		  name='tkt2' id='tkt2' value=''>
-  </form>
-  <img id="add1" src="assets/image/add.png" width="33" height="33" title="Thêm mới"
-	  style="margin-left:4em;margin-top:1em; cursor:pointer;">
-  <img id="edit1" src="assets/image/edit.ico" width="33" height="33" title="Sửa"
-	  style="margin-left:1em;margin-top:1em; cursor:pointer;">
-  <img id="delete1" src="assets/image/delete.png" width="33" height="33" title="Xóa"
-	  style="margin-left:1em;margin-top:1em; cursor:pointer;">
+    <form method="post" id="suamodun">
+    <div class="row">
+        <div class="mb-12 col-lg-12 col-md-12 col-sm-12 csbd">
+            <label class="form-label h5 fw-bolder">Mã môn thi</label>
+            <input type='text' name='mmt' id='mmt'
+                class="form-control text-dark border-dark-subtle" value="">
+        </div>
+    </div>
+    <div class="row">
+        <div class="mb-12 col-lg-12 col-md-12 col-sm-12 csbd">
+            <label class="form-label h5 fw-bolder">Tên môn thi</label>
+            <input type='text' name='tenmt' id='tenmt'
+                class="form-control text-dark border-dark-subtle" value="">
+        </div>
+    </div>
+    <div class="row">
+        <div class="mb-12 col-lg-12 col-md-12 col-sm-12 csbd">
+            <label class="form-label h5 fw-bolder">Bắt đầu</label>
+            <input type='datetime-local' name='tkt' id='tkt'
+                class="form-control text-dark border-dark-subtle" value="">
+        </div>
+    </div>
+    <div class="row">
+        <div class="mb-12 col-lg-12 col-md-12 col-sm-12 csbd">
+            <label class="form-label h5 fw-bolder">Kết thúc</label>
+            <input type='datetime-local' name='tkt2' id='tkt2'
+                class="form-control text-dark border-dark-subtle" value="">
+        </div>
+    </div>
+</form>
+<div class="row">
+    <div class="mb-3 col-lg-3 col-md-3 col-sm-3">
+        <img id="add1" src="assets/image/add.png" width="33" height="33"
+            title="Thêm mới" style="margin-top:1em; cursor:pointer;">
+        <img id="edit1" src="assets/image/edit.ico" width="33" height="33"
+            title="Sửa" style="margin-left:1em;margin-top:1em; cursor:pointer;">
+        <img id="delete1" src="assets/image/delete.png" width="33" height="33"
+            title="Xóa" style="margin-left:1em;margin-top:1em; cursor:pointer;">
+    </div>
+</div>
 `;
   } else {
     var html = ``;
@@ -107,10 +127,13 @@ function getnoidungthi(id) {
     if (xhr.readyState === XMLHttpRequest.DONE) {
       if (xhr.status === 200) {
         var response = xhr.responseText;
-        console.log(response);
         var date = JSON.parse(response);
         rendernoidungthi(date);
         addAllEvents();
+        var element = document.getElementById("monthi_showw");
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
       } else {
         console.error("Lỗi:", xhr.status);
       }
@@ -144,25 +167,48 @@ function rendernoidungthi(date) {
   document.getElementById(
     "crud_noidungthi"
   ).innerHTML = `<form method="post" id="suamodun">
-  <span style="margin-left:1em; margin-bottom:1em;">Mã nội dung thi</span>
-  <input style="margin-left:1em; margin-bottom:1em;width:30em;" type='text'
-	  name='mmt1' id='mmt1' value='' autofocus><br>
-  <span style="margin-left:1em; margin-bottom:1em;">Tên nội dung thi</span>
-  <input style="margin-left:0.75em; margin-bottom:1em;width:30em;" type='text'
-	  name='tenmt1' id='tenmt1' value=''><br>
-  <span style="margin-left:1em; margin-bottom:1em;">Tên môn thi</span>
-  <input style="margin-left:2.83em; margin-bottom:1em;width:30em;" type='text'
-	  name='tkt1' id='tkt1' value=''>
+
+  <div class="row">
+      <div class="mb-12 col-lg-12 col-md-12 col-sm-12 csbd">
+          <label class="form-label h5 fw-bolder">Mã nội dung thi</label>
+          <input type='text' name='mmt1' id='mmt1' class="form-control text-dark border-dark-subtle" value="">
+      </div>
+  </div>
+
+  <div class="row">
+      <div class="mb-12 col-lg-12 col-md-12 col-sm-12 csbd">
+          <label class="form-label h5 fw-bolder">Tên nội dung thi</label>
+          <input type='text' name='tenmt1' id='tenmt1' class="form-control text-dark border-dark-subtle" value="">
+      </div>
+  </div>
+  <div class="row">
+      <div class="mb-12 col-lg-12 col-md-12 col-sm-12 csbd">
+          <label class="form-label h5 fw-bolder">Tên môn thi</label>
+          <input type='text' name='tkt1' id='tkt1' class="form-control text-dark border-dark-subtle" value="">
+      </div>
+  </div>
 </form>
-<img id="add2" src="assets/image/add.png" width="33" height="33" title="Thêm mới"
-  style="margin-left:4em;margin-top:1em; cursor:pointer;">
-<img id="edit2" src="assets/image/edit.ico" width="33" height="33" title="Sửa"
-  style="margin-left:1em;margin-top:1em; cursor:pointer;">
-<img id="delete2" src="assets/image/delete.png" width="33" height="33" title="Xóa"
-  style="margin-left:1em;margin-top:1em; cursor:pointer;">`;
+<div class="row">
+  <div class="mb-3 col-lg-3 col-md-3 col-sm-3">
+      <img id="add2" src="assets/image/add.png" width="33" height="33" title="Thêm mới" style="margin-top:1em; cursor:pointer;">
+      <img id="edit2" src="assets/image/edit.ico" width="33" height="33" title="Sửa" style="margin-left:1em;margin-top:1em; cursor:pointer;">
+      <img id="delete2" src="assets/image/delete.png" width="33" height="33" title="Xóa" style="margin-left:1em;margin-top:1em; cursor:pointer;">
+  </div>
+</div>`;
   document.getElementById("noidungthi").innerHTML = html;
 }
 addAllEvents();
+function showSuccessMessage(mes) {
+  var successMessage = document.createElement("div");
+  successMessage.textContent = mes;
+  successMessage.classList.add("success-message");
+  document.body.appendChild(successMessage);
+
+  // Ẩn thông báo sau 3 giây
+  setTimeout(function () {
+    document.body.removeChild(successMessage);
+  }, 3000);
+}
 function envenmon() {
   //kỳ thi
   $("#add1").click(function (e) {
@@ -189,6 +235,8 @@ function envenmon() {
         if (xhr.readyState === XMLHttpRequest.DONE) {
           if (xhr.status === 200) {
             getmonthi(data.id_kt);
+            var mes = "Thêm mới môn thi thành công";
+            showSuccessMessage(mes);
           } else {
             console.error("Lỗi:", xhr.status);
           }
@@ -222,6 +270,8 @@ function envenmon() {
         if (xhr.readyState === XMLHttpRequest.DONE) {
           if (xhr.status === 200) {
             getmonthi(data.id_kt);
+            var mes = "Cập nhật môn thi thành công";
+            showSuccessMessage(mes);
           } else {
             console.error("Lỗi:", xhr.status);
           }
@@ -247,8 +297,9 @@ function envenmon() {
       xhr.onreadystatechange = function () {
         if (xhr.readyState === XMLHttpRequest.DONE) {
           if (xhr.status === 200) {
-            console.log(xhr.responseText);
             getmonthi(data.id_kt);
+            var mes = "Xoá môn thi thành công";
+            showSuccessMessage(mes);
           } else {
             console.error("Lỗi:", xhr.status);
           }
@@ -273,12 +324,20 @@ function addAllEvents() {
       $("input[id='tenmt']").val($(this).children("td:eq(1)").text());
       $("input[id='tkt']").val($(this).children("td:eq(2)").text());
       $("input[id='tkt2']").val($(this).children("td:eq(3)").text());
+      var element = document.getElementById("list_monthi");
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
     });
     $(".table12 tr").click(function (e) {
       $("input[id='mmt1']").val($(this).children("td:eq(0)").text());
       $("input[id='tenmt1']").val($(this).children("td:eq(1)").text());
       $("input[id='tkt1']").val($(this).children("td:eq(2)").text());
       $("input[id='tkt11']").val($(this).children("td:eq(3)").text());
+      var element = document.getElementById("list_noidungthi");
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
     });
 
     //Môn thi
@@ -308,6 +367,8 @@ function addAllEvents() {
           if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
               getnoidungthi(data.mamon);
+              var mes = "Thêm mới nội dung thi thành công";
+              showSuccessMessage(mes);
             } else {
               console.error("Lỗi:", xhr.status);
             }
@@ -318,34 +379,46 @@ function addAllEvents() {
       }
     });
     $("#edit2").click(function (e) {
-      var data = {
-        id: $("#mmt1").val(),
-        name: $("#tenmt1").val(),
-        monthi: $("#tkt1").val(),
-        mamon: $("#monthi_ops").val(),
-      };
-      var xhr = new XMLHttpRequest();
-      xhr.open("POST", "index.php?controller=fixnoidungthi", true);
-      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+      var a, b, c;
+      a = $("input[id='mmt1']").val();
+      b = $("input[id='tenmt1']").val();
+      c = $("input[id='tkt1']").val();
+      if (a === "" || b === "" || c === "")
+        alert("Không được để trống dữ liệu!");
+      else if (confirm("Cập nhật nội dung này?")) {
+        var data = {
+          id: $("#mmt1").val(),
+          name: $("#tenmt1").val(),
+          monthi: $("#tkt1").val(),
+          mamon: $("#monthi_ops").val(),
+        };
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "index.php?controller=fixnoidungthi", true);
+        xhr.setRequestHeader(
+          "Content-Type",
+          "application/x-www-form-urlencoded"
+        );
 
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-          if (xhr.status === 200) {
-            console.log(xhr.responseText);
-            getnoidungthi(data.mamon);
-          } else {
-            console.error("Lỗi:", xhr.status);
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+              getnoidungthi(data.mamon);
+              var mes = "Cập nhật nội dung thi thành công";
+              showSuccessMessage(mes);
+            } else {
+              console.error("Lỗi:", xhr.status);
+            }
           }
-        }
-      };
+        };
 
-      xhr.send(JSON.stringify(data));
+        xhr.send(JSON.stringify(data));
+      }
     });
     $("#delete2").click(function (e) {
       var a;
       a = $("input[id='mmt1']").val();
       if (a === "") alert("Không được để trống dữ liệu!");
-      else if (confirm("Bạn chắc chắn xóa kỳ thi này?")) {
+      else if (confirm("Bạn chắc chắn xóa nội dung thi này?")) {
         var data = {
           id: $("#mmt1").val(),
           name: $("#tenmt1").val(),
@@ -362,8 +435,9 @@ function addAllEvents() {
         xhr.onreadystatechange = function () {
           if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
-              console.log(xhr.responseText);
               getnoidungthi(data.mamon);
+              var mes = "Xoá nội dung thi thành công";
+              showSuccessMessage(mes);
             } else {
               console.error("Lỗi:", xhr.status);
             }
@@ -373,6 +447,5 @@ function addAllEvents() {
         xhr.send(JSON.stringify(data));
       }
     });
-    //Bộ nội dung thi
   });
 }
