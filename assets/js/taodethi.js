@@ -208,15 +208,7 @@ function getcauhoi(id) {
 // }
 
 function rendercauhoi(data) {
-  var html = `<tr style="color:rgba(255,153,0,1); margin-bottom:2em;">
-  <th style='width:7%;'>Mã câu hỏi</th>
-  <th style='width:20%;'>Tên câu hỏi</th>
-  <th style='width:15%;'>Phương án đúng</th>
-  <th style='width:15%;'>Phương án sai 1</th>
-  <th style='width:15%;'>Phương án sai 2</th>
-  <th style='width:15%;'>Phương án sai 3</th>
-  <th style='width:5%;'>Mức độ</th>
-</tr>`;
+  var html = ``;
   if (data.length > 0) {
     data.forEach((element) => {
       let macauhoi = element.macauhoi.replace("<", "&lt;");
@@ -237,6 +229,10 @@ function rendercauhoi(data) {
       <td>${mucdo}</td>
   </tr>`;
     });
+  } else {
+    html += `<td valign="top" style="text-align: center;" colspan="8"
+    class="dataTables_empty">
+    No data available in table</td>`;
   }
   document.getElementById("cauhoilist").innerHTML = html;
   addevent();

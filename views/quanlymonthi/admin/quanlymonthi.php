@@ -24,7 +24,7 @@
     <link href="assets/style/sb-admin-2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="assets/style/dtdanhmuc.css" type="text/css">
     <script src="assets/js/jquery-3.1.1.js"></script>
-
+    <!-- <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css"> -->
     <style>
 
     </style>
@@ -216,7 +216,87 @@
                                 <hr>
                                 <div class="card shadow mb-0">
                                     <div class="card-body">
-                                        <p class="h5 mb-2 text-gray-600">DANH MỤC MÔN THI</p>
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <p class="h5 text-gray-600">DANH MỤC MÔN THI</p>
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal">
+                                                THÊM MỚI
+                                            </button>
+                                        </div>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal" tabindex="-1"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Môn thi</h5>
+                                                        <button type="button" onclick="reloadmonthi()" class="btn-close"
+                                                            data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form method="post" id="suamodun">
+                                                            <div class="row">
+                                                                <div class="mb-12 col-lg-12 col-md-12 col-sm-12 csbd">
+                                                                    <label class="form-label h5 fw-bolder">Mã môn
+                                                                        thi</label>
+                                                                    <input type='text' name='mmt' id='mmt'
+                                                                        class="form-control text-dark border-dark-subtle"
+                                                                        value="">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="mb-12 col-lg-12 col-md-12 col-sm-12 csbd">
+                                                                    <label class="form-label h5 fw-bolder">Tên môn
+                                                                        thi</label>
+                                                                    <input type='text' name='tenmt' id='tenmt'
+                                                                        class="form-control text-dark border-dark-subtle"
+                                                                        value="">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="mb-12 col-lg-12 col-md-12 col-sm-12 csbd">
+                                                                    <label class="form-label h5 fw-bolder">Bắt
+                                                                        đầu</label>
+                                                                    <input type='datetime-local' name='tkt' id='tkt'
+                                                                        class="form-control text-dark border-dark-subtle"
+                                                                        value="">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="mb-12 col-lg-12 col-md-12 col-sm-12 csbd">
+                                                                    <label class="form-label h5 fw-bolder">Kết
+                                                                        thúc</label>
+                                                                    <input type='datetime-local' name='tkt2' id='tkt2'
+                                                                        class="form-control text-dark border-dark-subtle"
+                                                                        value="">
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                        <!-- <div class="row">
+                                                            <div class="mb-3 col-lg-3 col-md-3 col-sm-3">
+                                                                <img id="add1" src="assets/image/add.png" width="33"
+                                                                    height="33" title="Thêm mới"
+                                                                    style="margin-top:1em; cursor:pointer;">
+                                                                <img id="edit1" src="assets/image/edit.ico" width="33"
+                                                                    height="33" title="Sửa"
+                                                                    style="margin-left:1em;margin-top:1em; cursor:pointer;">
+                                                                <img id="delete1" src="assets/image/delete.png"
+                                                                    width="33" height="33" title="Xóa"
+                                                                    style="margin-left:1em;margin-top:1em; cursor:pointer;">
+                                                            </div>
+                                                        </div> -->
+                                                    </div>
+                                                    <div class="modal-footer" id='control_monthi'>
+                                                        <button type="button" onclick="reloadmonthi()"
+                                                            class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Close</button>
+                                                        <button type="button" id="add1" class="btn btn-success"
+                                                            data-bs-dismiss="modal">Add</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                         <div class="table-responsive">
                                             <table class="table table-bordered" id="list_monthi" width="100%"
                                                 cellspacing="0">
@@ -243,11 +323,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card shadow mb-3 mt-3">
-                                    <div class="card-body" id="crud_monthi">
-
-                                    </div>
-                                </div>
                                 <hr>
                                 <div class="card shadow mb-0" id='monthi_showw'>
                                     <div class="card-body">
@@ -261,7 +336,82 @@
 
                                 <div class="card shadow mb-4">
                                     <div class="card-body">
-                                        <p class="h5 mb-2 text-gray-600">DANH MỤC NỘI DUNG THI</p>
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <p class="h5 mb-2 text-gray-600">DANH MỤC NỘI DUNG THI</p>
+                                            <!-- Button trigger modal -->
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal01">
+                                                THÊM MỚI
+                                            </button>
+                                        </div>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal01" tabindex="-1"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Nội dung thi</h5>
+                                                        <button onclick="reloadnoidungthi()" type="button"
+                                                            class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form method="post" id="suamodun">
+
+                                                            <div class="row">
+                                                                <div class="mb-12 col-lg-12 col-md-12 col-sm-12 csbd">
+                                                                    <label class="form-label h5 fw-bolder">Mã nội dung
+                                                                        thi</label>
+                                                                    <input type='text' name='mmt1' id='mmt1'
+                                                                        class="form-control text-dark border-dark-subtle"
+                                                                        value="">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="mb-12 col-lg-12 col-md-12 col-sm-12 csbd">
+                                                                    <label class="form-label h5 fw-bolder">Tên nội dung
+                                                                        thi</label>
+                                                                    <input type='text' name='tenmt1' id='tenmt1'
+                                                                        class="form-control text-dark border-dark-subtle"
+                                                                        value="">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="mb-12 col-lg-12 col-md-12 col-sm-12 csbd">
+                                                                    <label class="form-label h5 fw-bolder">Tên môn
+                                                                        thi</label>
+                                                                    <input type='text' name='tkt1' id='tkt1'
+                                                                        class="form-control text-dark border-dark-subtle"
+                                                                        value="">
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                        <!-- <div class="row">
+                                                            <div class="mb-3 col-lg-3 col-md-3 col-sm-3">
+                                                                <img src="assets/image/add.png" width="33" height="33"
+                                                                    title="Thêm mới"
+                                                                    style="margin-top:1em; cursor:pointer;">
+                                                                <img src="assets/image/edit.ico" width="33" height="33"
+                                                                    title="Sửa"
+                                                                    style="margin-left:1em;margin-top:1em; cursor:pointer;">
+                                                                <img src="assets/image/delete.png" width="33"
+                                                                    height="33" title="Xóa"
+                                                                    style="margin-left:1em;margin-top:1em; cursor:pointer;">
+                                                            </div>
+                                                        </div> -->
+                                                    </div>
+                                                    <div class="modal-footer" id="control_noidungthi">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal"
+                                                            onclick="reloadnoidungthi()">Close</button>
+                                                        <button type="button" id="add2" class="btn btn-success"
+                                                            data-bs-dismiss="modal">Add</button>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="table-responsive">
                                             <table class="table table-bordered" id="list_noidungthi" width="100%"
                                                 cellspacing="0">
@@ -286,12 +436,6 @@
                                                 </tbody>
                                             </table>
                                         </div>
-                                    </div>
-                                </div>
-
-                                <div class="card shadow mb-3 mt-3">
-                                    <div class="card-body" id="crud_noidungthi">
-
                                     </div>
                                 </div>
                             </div>
@@ -365,6 +509,7 @@
     <script src="assets/js/dtdanhmuc.js"></script>
     <!-- Page level custom scripts -->
     <script src="assets/js/demo/datatables-demo.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
