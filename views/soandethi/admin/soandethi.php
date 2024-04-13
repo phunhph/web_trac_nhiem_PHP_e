@@ -13,9 +13,7 @@
 
     <!-- Custom fonts for this template-->
     <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
     <link rel="stylesheet" href="assets/style/taodethi.css">
     <!-- Custom styles for this template-->
     <link href="assets/style/sb-admin-2.min.css" rel="stylesheet" />
@@ -27,8 +25,7 @@
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center"
-                href="index.php?controller=homeAdmin">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php?controller=homeAdmin">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-user-cog"></i>
                 </div>
@@ -151,14 +148,12 @@
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
                                 <img class="img-profile rounded-circle" src="img/undraw_profile.svg" />
                             </a>
                             <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
@@ -188,212 +183,249 @@
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Soạn đề thi</h1>
                     </div>
-
-                    <div>
-                        <div class="tttk">
-                            <div class="pp1">
-                                <p style="margin-left:3em;margin-top:0.5em;font-size:17px;color:blue;font-weight:bold;">
-                                    Thông tin tìm kiếm</p>
-                            </div>
-                            <div class="pp2">
-
-
-                                <span style="margin-left:2em;">Danh mục kỳ thi</span>
-                                <select name="kythi" id="kythi"
-                                    style="margin-top:0em; width:30%;height:2em; margin-left:2em;">
-                                    <option>--Chọn kỳ thi--</option>
-                                    <?php foreach ($kythi as $key => $value) : ?>
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <p class="h5 ml-0 text-primary fw-bolder">Thông tin tìm kiếm</p>
+                            <label class="form-label h6 fw-bolder">Danh mục kỳ thi</label>
+                            <select name="kythi" id="kythi" class="form-control">
+                                <option>--Chọn kỳ thi--</option>
+                                <?php foreach ($kythi as $key => $value) : ?>
                                     <option value="<?= $value->getMaKyThi() ?>">
                                         <?= $value->getTenKyThi() ?>
                                     </option>
-                                    <?php endforeach; ?>
+                                <?php endforeach; ?>
+                            </select>
+
+                            <div class=" mt-2">
+                                <label class="form-label h6 fw-bolder">Danh mục môn thi</label>
+                                <select id="monthi" class="form-control" name="monthi">
+                                    <option value="all">--Chọn môn thi--</option>
                                 </select>
+                            </div>
+                            <div class="mt-2">
+                                <label class="form-label h6 fw-bolder">Bộ đề</label>
 
-                                <div class="loada">
-                                    <span style="margin-left:2em;">Danh mục môn thi</span>
-                                    <select id="monthi" name="monthi"
-                                        style="margin-top:1em;margin-left:1em;width:30%;height:2em;">
-                                        <option value="all">--Chọn môn thi--</option>
-                                    </select>
-                                </div>
-                                <div class="loada">
-                                    <span style="margin-left:2em;">Bộ đề</span>
-                                    <select id="pthi" name="pthi"
-                                        style="margin-top:1em;margin-left:6.6em;width:30%;height:2em;">
-                                        <option value="all">--Chọn phần thi--</option>
-                                    </select>
-                                </div>
-
+                                <select id="pthi" class="form-control" name="pthi">
+                                    <option value="all">--Chọn phần thi--</option>
+                                </select>
                             </div>
                         </div>
-                        <div class="kqtk">
-                            <div class="pp1" style="padding:0;">
+                    </div>
+                    <div class="card shadow mt-3">
+                        <div class="card-body">
 
-                                <p style="margin-left:3em;margin-top:0.5em;font-size:17px;color:blue;font-weight:bold;">
-                                    Kết quả tìm kiếm</p>
+                            <div class="d-flex justify-content-between mb-2">
+                                <p class="h5 ml-0 text-primary fw-bolder">Kết quả tìm kiếm</p>
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    THÊM MỚI
+                                </button>
                             </div>
-                            <div class="pp2" id="loadndch">
-                                <form method="post" action="" name='f'>
-                                    <table class="tabley" id="cauhoilist">
-                                        <tr style="color:rgba(255,153,0,1); margin-bottom:2em;">
-                                            <th style='width:7%;'>Mã câu hỏi</th>
-                                            <th style='width:20%;'>Tên câu hỏi</th>
-                                            <th style='width:15%;'>Phương án đúng</th>
-                                            <th style='width:15%;'>Phương án sai 1</th>
-                                            <th style='width:15%;'>Phương án sai 2</th>
-                                            <th style='width:15%;'>Phương án sai 3</th>
-                                            <th style='width:5%;'>Mức độ</th>
-                                        </tr>
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Câu hỏi</h5>
+                                            <button type="button" onclick="reload()" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form name="update" id="update" class="w-100 text-black g-3" method="POST" enctype="multipart/form-data">
+                                                <div class="row ">
+                                                    <div class="mb-12 col-lg-3 col-md-3 col-sm-3 col-xs-12 ">
+                                                        <label class="form-label h5 fw-bolder">Mã câu hỏi</label>
+                                                        <input type="text" name="macauhoi" id="macauhoi" class="form-control text-dark border-dark-subtle" value="">
+                                                    </div>
+                                                    <div class="mb-12 col-lg-7 col-md-7 col-sm-7 col-xs-12 ">
+                                                        <label class="form-label h5 fw-bolder">Tên câu hỏi</label>
+                                                        <input type="text" name="tencauhoi" id="tencauhoi" class="form-control text-dark border-dark-subtle" value="">
+                                                    </div>
+                                                    <div class="mb-12 col-lg-2 col-md-2 col-sm-2 col-xs-12 ">
+                                                        <label class="form-label h7 fw-bolder">Mức độ</label>
+                                                        <select type="text" class="form-control" name="tl" id="tl">
+                                                            <option value="Dễ">Dễ</option>
+                                                            <option value="Trung bình">Trung bình</option>
+                                                            <option value="Khó">Khó</option>
+                                                        </select>
 
+                                                    </div>
+                                                    <div class="mb-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                                                        <div class="custom-file w-100 mt-2">
+                                                            <input type="file" name="file1" id="file1" title="Chọn file ảnh, audio, hoặc video" class="custom-file-input">
+                                                            <label class="custom-file-label" for="file1">Thêm hình ảnh,
+                                                                âm thanh hoặc video <i class="fas fa-upload ml-1"></i></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row mt-3">
+
+                                                    <div class="mb-12 col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+                                                        <label class="form-label h5 fw-bolder">Phương án đúng</label>
+                                                        <input type="text" name="padung" id="padung" class="form-control text-dark border-dark-subtle" value="">
+                                                        <div class="custom-file w-100 mt-2">
+                                                            <input type="file" name="file2" id="file2" title="Chọn file ảnh, audio, hoặc video">
+                                                            <label class="custom-file-label" for="file2">Thêm hình ảnh,
+                                                                âm thanh hoặc video <i class="fas fa-upload ml-1"></i></label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="mb-12 col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+                                                        <label class="form-label h5 fw-bolder">Phương án sai 1</label>
+                                                        <input type="text" name="pasai1" id="pasai1" class="form-control text-dark border-dark-subtle" value="">
+                                                        <div class="custom-file w-100 mt-2">
+                                                            <input type="file" name="file3" id="file3" title="Chọn file ảnh, audio, hoặc video">
+                                                            <label class="custom-file-label" for="file3">Thêm hình ảnh,
+                                                                âm thanh hoặc video <i class="fas fa-upload ml-1"></i></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row mt-3">
+
+                                                    <div class="mb-12 col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+                                                        <label class="form-label h5 fw-bolder">Phương án sai 2</label>
+                                                        <input type="text" name="pasai2" id="pasai2" class="form-control text-dark border-dark-subtle" value="">
+                                                        <div class="custom-file w-100 mt-2">
+                                                            <input type="file" name="file4" id="file4" title="Chọn file ảnh, audio, hoặc video">
+                                                            <label class="custom-file-label" for="file4">Thêm hình ảnh,
+                                                                âm thanh hoặc video <i class="fas fa-upload ml-1"></i></label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="mb-12 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        <label class="form-label h5 fw-bolder">Phương án sai 3</label>
+                                                        <input type="text" name="pasai3" id="pasai3" class="form-control text-dark border-dark-subtle" value="">
+                                                        <div class="custom-file w-100 mt-2">
+                                                            <input type="file" name="file5" id="file5" title="Chọn file ảnh, audio, hoặc video">
+                                                            <label class="custom-file-label" for="file5">Thêm hình ảnh,
+                                                                âm thanh hoặc video <i class="fas fa-upload ml-1"></i></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            <!-- <div class="add">
+                                                <img id="add" src="assets/image/add.png" width="30" height="30"
+                                                    title="Thêm câu hỏi mới"
+                                                    style="margin-left:4em;margin-top:1em; cursor:pointer;">
+                                                <img id="edit" src="assets/image/edit.ico" width="30" height="30"
+                                                    title="Sửa câu hỏi"
+                                                    style="margin-left:1em;margin-top:1em; cursor:pointer;">
+                                                <img id="delete" src="assets/image/delete.png" width="30" height="30"
+                                                    title="Xóa câu hỏi"
+                                                    style="margin-left:1em;margin-top:1em; cursor:pointer;">
+                                                <img id="refresh" src="assets/image/refresh-icon.png" width="30"
+                                                    height="30" title="Refresh"
+                                                    style="margin-left:1em;margin-top:1em; cursor:pointer;">
+                                            </div> -->
+                                        </div>
+                                        <div class="modal-footer" id='control_thisinh'>
+                                            <button type="button" onclick="reload()" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="button" id="add" class="btn btn-success" data-bs-dismiss="modal">Add</button>
+                                            <button type="button" id="edit" class="btn btn-primary" data-bs-dismiss="modal">Update</button>
+                                            <button type="button" id="delete" class="btn btn-danger" data-bs-dismiss="modal">Delete</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="table-responsive" id="loadndch">
+                                <form method="post" action="" name='f'>
+                                    <table class="table table-bordered" id="">
+                                        <thead>
+                                            <tr>
+                                                <th style='width:7%;'>Mã câu hỏi</th>
+                                                <th style='width:20%;'>Tên câu hỏi</th>
+                                                <th style='width:15%;'>Phương án đúng</th>
+                                                <th style='width:15%;'>Phương án sai 1</th>
+                                                <th style='width:15%;'>Phương án sai 2</th>
+                                                <th style='width:15%;'>Phương án sai 3</th>
+                                                <th style='width:5%;'>Mức độ</th>
+                                            </tr>
+                                        </thead>
+                                        <tfoot>
+                                            <tr>
+                                                <th style='width:7%;'>Mã câu hỏi</th>
+                                                <th style='width:20%;'>Tên câu hỏi</th>
+                                                <th style='width:15%;'>Phương án đúng</th>
+                                                <th style='width:15%;'>Phương án sai 1</th>
+                                                <th style='width:15%;'>Phương án sai 2</th>
+                                                <th style='width:15%;'>Phương án sai 3</th>
+                                                <th style='width:5%;'>Mức độ</th>
+                                            </tr>
+                                        </tfoot>
+                                        <tbody class="thb" id="cauhoilist">
+
+                                            <td valign="top" style="text-align: center;" colspan="8" class="dataTables_empty">
+                                                No data available in table</td>
+                                        </tbody>
                                     </table>
                                 </form>
                             </div>
+
+
                         </div>
-                        <div class="chititet">
-                            <div class="pp1" style="padding:0;">
-
-                                <p style="margin-left:3em;margin-top:0.5em;font-size:17px;color:blue;font-weight:bold;">
-                                    Xử lý câu hỏi</p>
-                            </div>
-                            <div class="sua" style="padding-bottom:2em;width:100%; float:left;">
-                                <form name="update" id="update" method="POST" enctype="multipart/form-data">
-                                    <div class="csbd">
-                                        <span>Mã câu hỏi</span>
-                                        <br>
-                                        <input type="text" name="macauhoi" id="macauhoi" value="" autofocus>
-                                    </div>
-                                    <div class="csbd">
-                                        <span>Tên câu hỏi</span>
-                                        <br>
-                                        <input type="text" name="tencauhoi" id="tencauhoi" value="">
-                                        <input type="file" name="file1" id="file1"
-                                            title="Chọn file ảnh, audio, hoặc video">
-                                        <p
-                                            style="background:rgba(100%,40%,20%,1);cursor:pointer;border-radius:1px;width:30%;height:1.8em;color:white;margin-top:-2.4em; z-index:1;">
-                                            Thêm hình ảnh, âm thanh hoặc video</p>
-                                    </div>
-                                    <div class="csbd">
-                                        <span>Phương án đúng</span>
-                                        <br>
-                                        <input type="text" name="padung" id="padung" value="">
-                                        <input type="file" name="file2" id="file2"
-                                            title="Chọn file ảnh, audio, hoặc video">
-                                        <p
-                                            style="background:rgba(100%,40%,20%,1);cursor:pointer;border-radius:1px;width:30%;height:1.8em;color:white;margin-top:-2.4em; z-index:1;">
-                                            Thêm hình ảnh, âm thanh hoặc video</p>
-                                    </div>
-                                    <div class="csbd">
-                                        <span>Phương án sai 1</span>
-                                        <br>
-                                        <input type="text" name="pasai1" id="pasai1" value="">
-                                        <input type="file" name="file3" id="file3"
-                                            title="Chọn file ảnh, audio, hoặc video">
-                                        <p
-                                            style="background:rgba(100%,40%,20%,1);cursor:pointer;border-radius:1px;width:30%;height:1.8em;color:white;margin-top:-2.4em; z-index:1;">
-                                            Thêm hình ảnh, âm thanh hoặc video</p>
-                                    </div>
-                                    <div class="csbd">
-                                        <span>Phương án sai 2</span>
-                                        <br>
-                                        <input type="text" name="pasai2" id="pasai2" value="">
-                                        <input type="file" name="file4" id="file4"
-                                            title="Chọn file ảnh, audio, hoặc video">
-                                        <p
-                                            style="background:rgba(100%,40%,20%,1);cursor:pointer;border-radius:1px;width:30%;height:1.8em;color:white;margin-top:-2.4em; z-index:1;">
-                                            Thêm hình ảnh, âm thanh hoặc video</p>
-                                    </div>
-                                    <div class="csbd">
-                                        <span>Phương án sai 3</span>
-                                        <br>
-                                        <input type="text" name="pasai3" id="pasai3" value="">
-                                        <input type="file" name="file5" id="file5"
-                                            title="Chọn file ảnh, audio, hoặc video">
-                                        <p
-                                            style="background:rgba(100%,40%,20%,1);cursor:pointer;border-radius:1px;width:30%;height:1.8em;color:white;margin-top:-2.4em; z-index:1;">
-                                            Thêm hình ảnh, âm thanh hoặc video</p>
-                                    </div>
-                                    <div class="csbd">
-                                        <span>Mức độ</span>
-                                        <br>
-                                        <input type="text" name="tl" id="tl" value="">
-                                    </div>
-                                </form>
-                                <div class="add">
-                                    <img id="add" src="assets/image/add.png" width="30" height="30"
-                                        title="Thêm câu hỏi mới"
-                                        style="margin-left:4em;margin-top:1em; cursor:pointer;">
-                                    <img id="edit" src="assets/image/edit.ico" width="30" height="30"
-                                        title="Sửa câu hỏi" style="margin-left:1em;margin-top:1em; cursor:pointer;">
-                                    <img id="delete" src="assets/image/delete.png" width="30" height="30"
-                                        title="Xóa câu hỏi" style="margin-left:1em;margin-top:1em; cursor:pointer;">
-                                    <img id="refresh" src="assets/image/refresh-icon.png" width="30" height="30"
-                                        title="Refresh" style="margin-left:1em;margin-top:1em; cursor:pointer;">
+                    </div>
+                    <div class="card shadow mt-3">
+                        <div class="card-body">
+                            <label for="uploads" class="form-label h5 fw-bolder">
+                                Thêm câu hỏi bằng file excel
+                            </label>
+                            <form id="upcauhoi" class="row d-flex justify-content-center" method="post" enctype="multipart/form-data" style="margin-top:-2.6em;">
+                                <div class="custom-file w-25">
+                                    <input type="file" id="uploacauhoi" name="upch" title="Click chọn file excel">
+                                    <label class="custom-file-label" for="uploacauhoi">
+                                        Tải file excel <i class="fas fa-upload ml-1"></i>
+                                    </label>
                                 </div>
-                            </div>
-                            <div class="load6" style="width: 100%;">
-                                <div class="addByExcel" style="width: 100%;">
-                                    <p
-                                        style="background:rgba(100%,40%,20%,1); cursor:pointer; border-radius:4px; width:100%; height:2.2em; color:white; display:block; margin:auto; margin-top:1em; padding-top:0.5em; z-index:1;">
-                                        Thêm câu hỏi bằng file excel</p>
-                                    <form id="upcauhoi" method="post" enctype="multipart/form-data"
-                                        style="margin-top:-2.6em;">
-                                        <input type="file" id="uploacauhoi" name="upch" title="Click chọn file excel"
-                                            style="cursor:pointer;opacity:0; background:red; width:100%; height:3.2em; margin-top:-6.2em; z-index:1000;">
-                                        <input type="submit" name="clickup" id="Submit" value="Tải lên"
-                                            title="Click tải lên"
-                                            style="margin-top:2em; border:none; background:blue;cursor:pointer; color:white; width:80%; height:1.5em;">
-                                    </form>
-                                    <script>
-                                    document.getElementById("upcauhoi").addEventListener("submit", function(e) {
-                                        e.preventDefault();
+                                <button type="submit" class="ml-3 btn btn-primary" id="Submit">Tải lên</button>
+                            </form>
+                            <script>
+                                document.getElementById("upcauhoi").addEventListener("submit", function(e) {
+                                    e.preventDefault();
 
-                                        var fileInput = document.getElementById("uploacauhoi");
-                                        var file = fileInput.files[0];
+                                    var fileInput = document.getElementById("uploacauhoi");
+                                    var file = fileInput.files[0];
 
-                                        var modun = document.getElementById("pthi").value;
+                                    var modun = document.getElementById("pthi").value;
 
-                                        if (file && modun !== "all") {
-                                            var formData = new FormData();
-                                            formData.append("upf", file);
-                                            formData.append("modun", modun);
+                                    if (file && modun !== "all") {
+                                        var formData = new FormData();
+                                        formData.append("upf", file);
+                                        formData.append("modun", modun);
 
-                                            var xhr = new XMLHttpRequest();
-                                            xhr.open("POST", "index.php?controller=createthisinhByexcel", true);
+                                        var xhr = new XMLHttpRequest();
+                                        xhr.open("POST", "index.php?controller=createthisinhByexcel",
+                                            true);
 
-                                            xhr.onload = function() {
-                                                if (xhr.status >= 200 && xhr.status < 300) {
-                                                    var responseData = xhr.responseText;
-                                                    var data = JSON.parse(responseData);
-                                                    // Kiểm tra xem có lỗi không
-                                                    if (data.error) {
-                                                        alert("Lỗi từ máy chủ: " + data.error);
-                                                    } else {
-                                                        // Thực hiện các hành động khác dựa trên dữ liệu nhận được
-                                                        renderExcel(data.success, data.phong);
-                                                    }
+                                        xhr.onload = function() {
+                                            if (xhr.status >= 200 && xhr.status < 300) {
+                                                var responseData = xhr.responseText;
+                                                var data = JSON.parse(responseData);
+                                                // Kiểm tra xem có lỗi không
+                                                if (data.error) {
+                                                    alert("Lỗi từ máy chủ: " + data.error);
                                                 } else {
-                                                    console.error("Có lỗi xảy ra khi gửi yêu cầu.");
+                                                    // Thực hiện các hành động khác dựa trên dữ liệu nhận được
+                                                    renderExcel(data.success, data.phong);
                                                 }
-                                            };
-
-                                            xhr.onerror = function() {
-                                                console.error("Đã xảy ra lỗi trong quá trình gửi yêu cầu.");
-                                            };
-
-                                            xhr.send(formData);
-                                        } else {
-                                            if (file) {
-                                                alert("Vui lòng nhập bộ đề.");
-                                            } else if (modun !== "all") {
-                                                alert("Vui lòng chọn file.");
                                             } else {
-                                                alert("Vui lòng chọn file và nhập bộ đề.");
+                                                console.error("Có lỗi xảy ra khi gửi yêu cầu.");
                                             }
+                                        };
+
+                                        xhr.onerror = function() {
+                                            console.error(
+                                                "Đã xảy ra lỗi trong quá trình gửi yêu cầu.");
+                                        };
+
+                                        xhr.send(formData);
+                                    } else {
+                                        if (file) {
+                                            alert("Vui lòng nhập bộ đề.");
+                                        } else if (modun !== "all") {
+                                            alert("Vui lòng chọn file.");
+                                        } else {
+                                            alert("Vui lòng chọn file và nhập bộ đề.");
                                         }
-                                    });
-                                    </script>
-                                </div>
-                            </div>
+                                    }
+                                });
+                            </script>
+
                         </div>
                     </div>
                 </div>
@@ -421,8 +453,7 @@
     </a>
 
     <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -454,6 +485,7 @@
     <!-- Custom scripts for all pages-->
     <script src="assets/js/sb-admin-2.min.js"></script>
     <script src="assets/js/taodethi.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
