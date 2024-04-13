@@ -208,15 +208,7 @@ function getcauhoi(id) {
 // }
 
 function rendercauhoi(data) {
-  var html = `<tr style="color:rgba(255,153,0,1); margin-bottom:2em;">
-  <th style='width:7%;'>Mã câu hỏi</th>
-  <th style='width:20%;'>Tên câu hỏi</th>
-  <th style='width:15%;'>Phương án đúng</th>
-  <th style='width:15%;'>Phương án sai 1</th>
-  <th style='width:15%;'>Phương án sai 2</th>
-  <th style='width:15%;'>Phương án sai 3</th>
-  <th style='width:5%;'>Mức độ</th>
-</tr>`;
+  var html = ``;
   if (data.length > 0) {
     data.forEach((element) => {
       let macauhoi = element.macauhoi.replace("<", "&lt;");
@@ -227,7 +219,8 @@ function rendercauhoi(data) {
       let pasai3 = element.pasai3.replace("<", "&lt;");
       let mucdo = element.mucdo.replace("<", "&lt;");
 
-      html += `<tr>
+      html += `<tr  data-bs-toggle="modal"
+      data-bs-target="#exampleModal">
       <td>${macauhoi}</td>
       <td>${tencauhoi}</td>
       <td>${padung}</td>
@@ -237,6 +230,10 @@ function rendercauhoi(data) {
       <td>${mucdo}</td>
   </tr>`;
     });
+  } else {
+    html += `<td valign="top" style="text-align: center;" colspan="8"
+    class="dataTables_empty">
+    No data available in table</td>`;
   }
   document.getElementById("cauhoilist").innerHTML = html;
   addevent();
@@ -251,10 +248,14 @@ function addevent() {
     $("input[id='pasai2']").val($(this).children("td:eq(4)").text());
     $("input[id='pasai3']").val($(this).children("td:eq(5)").text());
     $("input[id='tl']").val($(this).children("td:eq(6)").text());
-    var element = document.getElementById("update");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+    document.getElementById("control_thisinh").innerHTML = `
+    <button type="button" onclick="reload()" class="btn btn-secondary"
+    data-bs-dismiss="modal">Close</button>
+<button type="button" id="edit" class="btn btn-primary"
+    data-bs-dismiss="modal">Update</button>
+<button type="button" id="delete" class="btn btn-danger"
+    data-bs-dismiss="modal">Delete</button>`;
+    curd();
   });
 }
 function reload() {
@@ -278,40 +279,48 @@ function curd() {
     e = $("input[id='pasai2']").val();
     f = $("input[id='pasai3']").val();
     g = $("input[id='tl']").val();
-    if (a === "" || b === "" || c === "" || d === "" || e === "" || f === "")
-      alert("Bạn cần nhập đủ thông tin!");
-    else {
-      var data = {
-        macauhoi: a,
-        tencauhoi: b,
-        padung: c,
-        pasai1: d,
-        pasai2: e,
-        pasai3: f,
-        tl: g,
-        mabode: document.getElementById("pthi").value,
-      };
 
-      var xhr = new XMLHttpRequest();
-      xhr.open("POST", "index.php?controller=createcauhoi", true);
-      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    if (document.getElementById("pthi").value === "all") {
+      alert("Hãy chọn bộ đề");
+    } else {
+      if (a === "" || b === "" || c === "" || d === "" || e === "" || f === "")
+        alert("Bạn cần nhập đủ thông tin!");
+      else {
+        var data = {
+          macauhoi: a,
+          tencauhoi: b,
+          padung: c,
+          pasai1: d,
+          pasai2: e,
+          pasai3: f,
+          tl: g,
+          mabode: document.getElementById("pthi").value,
+        };
 
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-          if (xhr.status === 200) {
-            var response = xhr.responseText;
-            console.log(response);
-            var mes = "Thêm mới câu hỏi thành công";
-            showSuccessMessage(mes);
-            reload();
-            getcauhoi(id);
-          } else {
-            console.error("Lỗi:", xhr.status);
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "index.php?controller=createcauhoi", true);
+        xhr.setRequestHeader(
+          "Content-Type",
+          "application/x-www-form-urlencoded"
+        );
+
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+              var response = xhr.responseText;
+              console.log(response);
+              var mes = "Thêm mới câu hỏi thành công";
+              showSuccessMessage(mes);
+              reload();
+              getcauhoi(id);
+            } else {
+              console.error("Lỗi:", xhr.status);
+            }
           }
-        }
-      };
+        };
 
-      xhr.send(JSON.stringify(data));
+        xhr.send(JSON.stringify(data));
+      }
     }
   });
 
@@ -352,6 +361,13 @@ function curd() {
             showSuccessMessage(mes);
             reload();
             getcauhoi(id);
+            document.getElementById(
+              "control_thisinh"
+            ).innerHTML = `<button type="button" onclick="reload()" class="btn btn-secondary"
+            data-bs-dismiss="modal">Close</button>
+        <button type="button" id="add" class="btn btn-success"
+            data-bs-dismiss="modal">Add</button>`;
+            curd();
           } else {
             console.error("Lỗi:", xhr.status);
           }
@@ -382,6 +398,13 @@ function curd() {
             showSuccessMessage(mes);
             reload();
             getcauhoi(id);
+            document.getElementById(
+              "control_thisinh"
+            ).innerHTML = `<button type="button" onclick="reload()" class="btn btn-secondary"
+            data-bs-dismiss="modal">Close</button>
+        <button type="button" id="add" class="btn btn-success"
+            data-bs-dismiss="modal">Add</button>`;
+            curd();
           } else {
             console.error("Lỗi:", xhr.status);
           }

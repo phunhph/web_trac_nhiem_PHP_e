@@ -82,7 +82,8 @@ function renderSinhVien(data) {
   var html = "";
   if (data.length >= 1) {
     data.forEach((element) => {
-      html += `<tr>
+      html += `<tr data-bs-toggle="modal"
+      data-bs-target="#exampleModal">
             <td>${element.sbd}</td>
             <td>${element.hodem}</td>
             <td>${element.ten}</td>
@@ -110,10 +111,15 @@ function addEvent() {
     $("input[id='madonvi']").val($(this).children("td:eq(5)").text());
     $("input[id='tendonvi']").val($(this).children("td:eq(6)").text());
     $("input[id='phongthi']").val($(this).children("td:eq(7)").text());
-    var element = document.getElementById("update");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+    document.getElementById(
+      "control_thisinh"
+    ).innerHTML = `<button type="button" onclick="reload()" class="btn btn-secondary"
+    data-bs-dismiss="modal">Close</button>
+    <button type="button" id="edit" class="btn btn-primary"
+    data-bs-dismiss="modal">Update</button>
+    <button type="button" id="delete" class="btn btn-danger"
+    data-bs-dismiss="modal">Delete</button>`;
+    crud();
   });
   $("#refresh").click(function (e) {
     $("input[id='sbd']").val("");
@@ -184,57 +190,66 @@ function crud() {
     e = $("input[id='madonvi']").val();
     f = $("input[id='tendonvi']").val();
     g = $("input[id='phongthi']").val();
-    if (
-      a === "" ||
-      b === "" ||
-      c === "" ||
-      d === "" ||
-      e === "" ||
-      f === "" ||
-      g === ""
-    )
-      alert("Bạn cần nhập đủ thông tin!");
-    else {
-      var data = {
-        sbd: a,
-        hodem: b,
-        ten: c,
-        noisinh: document.getElementById("noisinh").value,
-        ngaysinh: d,
-        madonvi: e,
-        tendonvi: f,
-        phongthi: g,
-        kythi: document.getElementById("kythi").value,
-      };
-      var xhr = new XMLHttpRequest();
-      xhr.open("POST", "index.php?controller=createthisinh", true);
-      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    h = document.getElementById("noisinh").value;
+    i = document.getElementById("kythi").value;
+    if (i === "...") {
+      alert("Hãy chọn kỳ thi trước");
+    } else {
+      if (
+        a === "" ||
+        b === "" ||
+        c === "" ||
+        d === "" ||
+        e === "" ||
+        f === "" ||
+        g === "" ||
+        h === ""
+      )
+        alert("Bạn cần nhập đủ thông tin!");
+      else {
+        var data = {
+          sbd: a,
+          hodem: b,
+          ten: c,
+          noisinh: document.getElementById("noisinh").value,
+          ngaysinh: d,
+          madonvi: e,
+          tendonvi: f,
+          phongthi: g,
+          kythi: document.getElementById("kythi").value,
+        };
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "index.php?controller=createthisinh", true);
+        xhr.setRequestHeader(
+          "Content-Type",
+          "application/x-www-form-urlencoded"
+        );
 
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-          if (xhr.status === 200) {
-            // console.log(xhr.responseText);
-            if (xhr.responseText === "true") {
-              alert(
-                "Học viên đã tồn tại, lưu ý mã học viên không được trùng nhau"
-              );
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+              // console.log(xhr.responseText);
+              if (xhr.responseText === "true") {
+                alert(
+                  "Học viên đã tồn tại, lưu ý mã học viên không được trùng nhau"
+                );
+              } else {
+                var mes = "Thêm học viên thành công";
+                showSuccessMessage(mes);
+                getlop(data.kythi, data.phongthi);
+                getSinhVien(data.kythi, data.phongthi);
+                reload();
+              }
             } else {
-              var mes = "Thêm học viên thành công";
-              showSuccessMessage(mes);
-              getlop(data.kythi, data.phongthi);
-              getSinhVien(data.kythi, data.phongthi);
-              reload();
+              console.error("Lỗi:", xhr.status);
             }
-          } else {
-            console.error("Lỗi:", xhr.status);
           }
-        }
-      };
+        };
 
-      xhr.send(JSON.stringify(data));
+        xhr.send(JSON.stringify(data));
+      }
     }
   });
-
   $("#edit").click(function (e) {
     var a, b, c, d, e, f;
     a = $("input[id='sbd']").val();
@@ -278,6 +293,13 @@ function crud() {
               showSuccessMessage(mes);
               getlop(data.kythi, data.phongthi);
               getSinhVien(data.kythi, data.phongthi);
+              document.getElementById(
+                "control_thisinh"
+              ).innerHTML = `<button type="button" onclick="reload()" class="btn btn-secondary"
+              data-bs-dismiss="modal">Close</button>
+          <button type="button" id="add" class="btn btn-success"
+              data-bs-dismiss="modal">Add</button>`;
+              crud();
               reload();
             } else {
               alert("Không được thay đổi 'Số Báo Danh'");
@@ -291,7 +313,6 @@ function crud() {
       xhr.send(JSON.stringify(data));
     }
   });
-
   $("#delete").click(function (e) {
     if (confirm("Xác nhận xoá học viên")) {
       var data = {
@@ -311,6 +332,13 @@ function crud() {
             reload();
             getlop(data.kythi, data.phongthi);
             getSinhVien(data.kythi, data.phongthi);
+            document.getElementById(
+              "control_thisinh"
+            ).innerHTML = `<button type="button" onclick="reload()" class="btn btn-secondary"
+            data-bs-dismiss="modal">Close</button>
+        <button type="button" id="add" class="btn btn-success"
+            data-bs-dismiss="modal">Add</button>`;
+            crud();
           } else {
             console.error("Lỗi:", xhr.status);
           }
@@ -372,7 +400,6 @@ document.getElementById("dlpassword").onclick = function () {
       });
   }
 };
-
 document.getElementById("upload").addEventListener("submit", function (e) {
   e.preventDefault();
 
@@ -414,13 +441,12 @@ document.getElementById("upload").addEventListener("submit", function (e) {
     if (file) {
       alert("Vui lòng nhập mã kỳ thi.");
     } else if (makythi !== "...") {
-      alert("Vui lòng chọn file.");
+      alert("Vui lòng tải file.");
     } else {
-      alert("Vui lòng chọn file và nhập mã kỳ thi.");
+      alert("Vui lòng tải file và chọn kỳ thi.");
     }
   }
 });
-
 function renderExcel($data, $phong) {
   var datalist = [];
   if ($phong) {
@@ -466,7 +492,6 @@ function renderExcel($data, $phong) {
   });
   createByExcel(datalist);
 }
-
 function createByExcel(data) {
   var datacreate = {
     datacreate: data,

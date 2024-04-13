@@ -11,14 +11,17 @@
 
     <title for="">Thi trắc nhiêm trực tuyến</title>
 
-    <!-- Custom fonts for this template-->
     <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet" />
+
+    <!-- Custom styles for this page -->
     <link href="assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <script src="assets/js/jquery-3.1.1.js"></script><!-- Custom styles for this template-->
+
+    <!-- Custom styles for this template-->
     <link href="assets/style/sb-admin-2.min.css" rel="stylesheet" />
+    <script src="assets/js/jquery-3.1.1.js"></script>
 
 </head>
 <style>
@@ -72,7 +75,7 @@
     height: 100%;
 }
 
-.show {
+.show1 {
     width: 23%;
     height: 7em;
     position: fixed;
@@ -297,202 +300,223 @@ span {
                     </div>
                     <div class="card shadow mb-3">
                         <div class="card-body">
-                            <p class="h5 ml-0 mb-2 text-gray-500">DANH SÁCH THÍ SINH</p>
-                            <button class="btn btn-outline-success mb-3" id="dlpassword">
-                                Tải mật khẩu các thí sinh trong phòng
-                            </button>
-                            <div class="loaddshv">
-                                <div class="card shadow mb-0">
-                                    <div class="card-body">
-                                        <div class="table-responsive">
-                                            <table class="table table-bordered" id="" width="100%" cellspacing="0">
-                                                <thead>
-                                                    <tr>
-                                                        <th style='width:7%;'>SBD</th>
-                                                        <th style='width:13%;'>Họ đệm</th>
-                                                        <th style='width:7%;'>Tên</th>
-                                                        <th style='width:11%;'>Ngày sinh</th>
-                                                        <th style='width:15%;'>Nơi sinh</th>
-                                                        <th style='width:10%;'>Mã đơn vị</th>
-                                                        <th style='width:27%;'>Tên đơn vị</th>
-                                                        <th style='width:13%;'>Tên PT</th>
-                                                    </tr>
-                                                </thead>
-                                                <tfoot>
-                                                    <tr>
-                                                        <th style='width:7%;'>SBD</th>
-                                                        <th style='width:13%;'>Họ đệm</th>
-                                                        <th style='width:7%;'>Tên</th>
-                                                        <th style='width:11%;'>Ngày sinh</th>
-                                                        <th style='width:15%;'>Nơi sinh</th>
-                                                        <th style='width:10%;'>Mã đơn vị</th>
-                                                        <th style='width:27%;'>Tên đơn vị</th>
-                                                        <th style='width:13%;'>Tên PT</th>
-                                                    </tr>
-                                                </tfoot>
-                                                <tbody class="thb" id="thisinh">
+                            <p class="h5 text-gray-600">DANH MỤC MÔN THI</p>
+                            <div class="d-flex justify-content-between mb-2">
+                                <button class="btn btn-outline-warning" id="dlpassword">
+                                    Tải mật khẩu các thí sinh trong phòng
+                                </button>
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal">
+                                    THÊM MỚI
+                                </button>
+                            </div>
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Thí sinh</h5>
+                                            <button type="button" onclick="reload()" class="btn-close"
+                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form name="update" class="w-100 text-black g-3" id="update" method="post">
+                                                <div class="row ">
+                                                    <div class="mb-12 col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+                                                        <label class="form-label h5 fw-bolder">Số báo danh</label>
+                                                        <input type="text" name="sbd" id="sbd"
+                                                            class="form-control text-dark border-dark-subtle" value="">
+                                                    </div>
+                                                    <div class="mb-12 col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+                                                        <label class="form-label h5 fw-bolder">Tên phòng thi</label>
+                                                        <input type="text" name="phongthi" id="phongthi"
+                                                            class="form-control text-dark border-dark-subtle" value="">
+                                                    </div>
+                                                </div>
+                                                <div class="row mt-3">
+                                                    <div class="mb-12 col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+                                                        <label class="form-label h5 fw-bolder">Họ, tên đệm</label>
+                                                        <input type="text" name="hodem" id="hodem"
+                                                            class="form-control text-dark border-dark-subtle" value="">
+                                                    </div>
+                                                    <div class="mb-12 col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+                                                        <label class="form-label h5 fw-bolder">Tên học viên</label>
+                                                        <input type="text" name="ten" id="ten"
+                                                            class="form-control text-dark border-dark-subtle" value="">
+                                                    </div>
+                                                </div>
 
-                                                    <td valign="top" style="text-align: center;" colspan="8"
-                                                        class="dataTables_empty">
-                                                        No data available in table</td>
-                                                </tbody>
-                                            </table>
+                                                <div class="row mt-3">
+                                                    <div class="mb-12 col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+                                                        <label class="form-label h5 fw-bolder">Ngày sinh</label>
+                                                        <input type="text" name="ns" id="ns"
+                                                            class="form-control text-dark border-dark-subtle" value="">
+                                                    </div>
+                                                    <div class="mb-12 col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+                                                        <label class="form-label h5 fw-bolder">Nơi sinh</label>
+                                                        <input type="text" name="noisinh" id="noisinh"
+                                                            class="form-control text-dark border-dark-subtle" value="">
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mt-3">
+                                                    <div class="mb-12 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        <label class="form-label h5 fw-bolder">Mã đơn vị</label>
+                                                        <input type="text" name="madonvi" id="madonvi"
+                                                            class="form-control text-dark border-dark-subtle" value="">
+                                                    </div>
+                                                    <div class="mb-12 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        <label class="form-label h5 fw-bolder">Tên đơn vị</label>
+                                                        <input type="text" name="tendonvi" id="tendonvi"
+                                                            class="form-control text-dark border-dark-subtle" value="">
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                                <div class="row d-flex justify-content-center">
+
+                                                    <div class="custom-file w-25">
+                                                        <input type="file" class="custom-file-input" id="pictureprofile"
+                                                            name="pictureprofile" accept="image/jpeg, image/png">
+                                                        <label class="custom-file-label" for="pictureprofile">
+                                                            Ảnh đại diện <i class="fas fa-upload"></i>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            <!-- <div class="row">
+                                                <div class="mb-3 col-lg-3 col-md-3 col-sm-3">
+                                                    <img id="add" src="assets/image/add.png" width="40" height="40" title="Thêm học viên mới" style="margin-top:1em; cursor:pointer;">
+                                                    <img id="edit" src="assets/image/edit.ico" width="40" height="40" title="Sửa thông tin học viên" style="margin-left:1em;margin-top:1em; cursor:pointer;">
+                                                    <img id="delete" src="assets/image/delete.png" width="43" height="40" title="Xóa học viên" style="margin-left:1em;margin-top:1em; cursor:pointer;">
+                                                    <img id="refresh" src="assets/image/refresh-icon.png" width="43" height="40" title="Refresh" style="margin-left:1em;margin-top:1em; cursor:pointer;">
+                                                </div>
+                                            </div> -->
+
+                                        </div>
+                                        <div class="modal-footer" id='control_thisinh'>
+                                            <button type="button" onclick="reload()" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                            <button type="button" id="add" class="btn btn-success"
+                                                data-bs-dismiss="modal">Add</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th style='width:7%;'>SBD</th>
+                                            <th style='width:13%;'>Họ đệm</th>
+                                            <th style='width:7%;'>Tên</th>
+                                            <th style='width:11%;'>Ngày sinh</th>
+                                            <th style='width:15%;'>Nơi sinh</th>
+                                            <th style='width:10%;'>Mã đơn vị</th>
+                                            <th style='width:27%;'>Tên đơn vị</th>
+                                            <th style='width:13%;'>Tên PT</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th style='width:7%;'>SBD</th>
+                                            <th style='width:13%;'>Họ đệm</th>
+                                            <th style='width:7%;'>Tên</th>
+                                            <th style='width:11%;'>Ngày sinh</th>
+                                            <th style='width:15%;'>Nơi sinh</th>
+                                            <th style='width:10%;'>Mã đơn vị</th>
+                                            <th style='width:27%;'>Tên đơn vị</th>
+                                            <th style='width:13%;'>Tên PT</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody class="thb" id="thisinh">
+
+                                        <td valign="top" style="text-align: center;" colspan="8"
+                                            class="dataTables_empty">
+                                            No data available in table</td>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
+
                     <div class="card shadow mb-3">
                         <div class="card-body">
-                            <form name="update" class="w-100 text-black g-3" id="update" method="post">
-                                <div class="row">
-                                    <div class="mb-12 col-lg-12 col-md-12 col-sm-12 csbd">
-                                        <label class="form-label h5 fw-bolder">Số báo danh</label>
-                                        <input type="text" name="sbd" id="sbd"
-                                            class="form-control text-dark border-dark-subtle" value="">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="mb-12 col-lg-12 col-md-12 col-sm-12 csbd">
-                                        <label class="form-label h5 fw-bolder">Họ, tên đệm</label>
-                                        <input type="text" name="hodem" id="hodem"
-                                            class="form-control text-dark border-dark-subtle" value="">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="mb-12 col-lg-12 col-md-12 col-sm-12 csbd">
-                                        <label class="form-label h5 fw-bolder">Tên học viên</label>
-                                        <input type="text" name="ten" id="ten"
-                                            class="form-control text-dark border-dark-subtle" value="">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="mb-12 col-lg-12 col-md-12 col-sm-12 csbd">
-                                        <label class="form-label h5 fw-bolder">Ngày sinh</label>
-                                        <input type="text" name="ns" id="ns"
-                                            class="form-control text-dark border-dark-subtle" value="">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="mb-12 col-lg-12 col-md-12 col-sm-12 csbd">
-                                        <label class="form-label h5 fw-bolder">Nơi sinh</label>
-                                        <input type="text" name="noisinh" id="noisinh"
-                                            class="form-control text-dark border-dark-subtle" value="">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="mb-12 col-lg-12 col-md-12 col-sm-12 csbd">
-                                        <label class="form-label h5 fw-bolder">Mã đơn vị</label>
-                                        <input type="text" name="madonvi" id="madonvi"
-                                            class="form-control text-dark border-dark-subtle" value="">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="mb-12 col-lg-12 col-md-12 col-sm-12 csbd">
-                                        <label class="form-label h5 fw-bolder">Tên đơn vị</label>
-                                        <input type="text" name="tendonvi" id="tendonvi"
-                                            class="form-control text-dark border-dark-subtle" value="">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="mb-12 col-lg-12 col-md-12 col-sm-12 csbd">
-                                        <label class="form-label h5 fw-bolder">Tên phòng thi</label>
-                                        <input type="text" name="phongthi" id="phongthi"
-                                            class="form-control text-dark border-dark-subtle" value="">
-                                    </div>
-                                </div>
-                                <hr>
-                                <p style="color:blue;">Ảnh đại diện</p>
-                                <input type="file" name="pictureprofile" id="pictureprofile" value=""
-                                    title="Thêm ảnh đại diện của thí sinh"
+
+
+                            <!-- <form id="upload" method="post" enctype="multipart/form-data">
+                                <label class="form-label h5 fw-bolder">Thêm danh sách học viên bằng file excel</label>
+                                <input type="file" id="uploads" name="upf" title="Chọn file Excel"
                                     style="background:blue;cursor:pointer;border-radius:1px;width:30%;height:1.8em;color:white;z-index:1000;opacity:0;">
                                 <p
                                     style="background:rgba(100%,40%,20%,1);cursor:pointer;border-radius:1px;width:31.5%;height:1.8em;color:white;display:block;margin:auto;margin-top:-1.8em; text-align:center;">
-                                    Chọn ảnh đại diện từ máy tính (*.ipg,*.png)</p>
-                            </form>
-                            <div class="row">
-                                <div class="mb-3 col-lg-3 col-md-3 col-sm-3">
-                                    <img id="add" src="assets/image/add.png" width="40" height="40"
-                                        title="Thêm học viên mới" style="margin-top:1em; cursor:pointer;">
-                                    <img id="edit" src="assets/image/edit.ico" width="40" height="40"
-                                        title="Sửa thông tin học viên"
-                                        style="margin-left:1em;margin-top:1em; cursor:pointer;">
-                                    <img id="delete" src="assets/image/delete.png" width="43" height="40"
-                                        title="Xóa học viên" style="margin-left:1em;margin-top:1em; cursor:pointer;">
-                                    <img id="refresh" src="assets/image/refresh-icon.png" width="43" height="40"
-                                        title="Refresh" style="margin-left:1em;margin-top:1em; cursor:pointer;">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card shadow mb-3">
-                        <div class="card-body">
-                            <div class="emain">
-                                <div class="htdanhsach mt-2">
-                                    <div class="load5">
-                                        <hr>
-                                        <p style="color:blue;">Thêm danh sách học viên bằng file excel
-                                        </p>
-                                        <form id="upload" method="post" enctype="multipart/form-data">
-                                            <input type="file" id="uploads" name="upf" title="Chọn file Excel"
-                                                style="background:blue;cursor:pointer;border-radius:1px;width:30%;height:1.8em;color:white;z-index:1000;opacity:0;">
-                                            <p
-                                                style="background:rgba(100%,40%,20%,1);cursor:pointer;border-radius:1px;width:31.5%;height:1.8em;color:white;display:block;margin:auto;margin-top:-1.8em; text-align:center;">
-                                                Chọn tệp</p>
-                                            <input type="submit" name="clickup" id="Submit" value="Tải lên"
-                                                title="Nhấn để tải lên"
-                                                style="margin-top:2em; border:none; background:blue;cursor:pointer; color:white; width:80%; height:1.5em;">
-                                        </form>
+                                    Chọn tệp</p>
+                                <input type="submit" name="clickup" id="Submit" value="Tải lên" title="Nhấn để tải lên"
+                                    style="margin-top:2em; border:none; background:blue;cursor:pointer; color:white; width:80%; height:1.5em;">
+                            </form> -->
+                            <form id="upload" method="post" enctype="multipart/form-data">
 
-                                        <script>
-                                        document.getElementById('upload').addEventListener('submit', function(e) {
-                                            e.preventDefault();
-                                            var fileInput = document.getElementById('uploads');
-                                            var file = fileInput.files[0];
-
-                                            if (file) {
-                                                var formData = new FormData();
-                                                formData.append('upf', file);
-
-                                                var xhr = new XMLHttpRequest();
-                                                xhr.open('POST', 'index.php?controller=createthisinhByexcel',
-                                                    true);
-
-                                                xhr.onload = function() {
-                                                    if (xhr.status >= 200 && xhr.status < 300) {
-                                                        var responseData = xhr.responseText;
-                                                        var data = JSON.parse(responseData);
-                                                        // Kiểm tra xem có lỗi không
-                                                        if (data.error) {
-                                                            alert('Lỗi từ máy chủ: ' + data.error);
-                                                        } else {
-                                                            // Xử lý dữ liệu thành công
-                                                            console.log('Thành công:', data.success);
-                                                            // Thực hiện các hành động khác dựa trên dữ liệu nhận được
-                                                        }
-                                                    } else {
-                                                        console.error('Có lỗi xảy ra khi gửi yêu cầu.');
-                                                    }
-                                                };
-
-                                                xhr.onerror = function() {
-                                                    console.error(
-                                                        'Đã xảy ra lỗi trong quá trình gửi yêu cầu.');
-                                                };
-
-                                                xhr.send(formData);
-                                            } else {
-                                                alert('Không có file được chọn');
-                                            }
-                                        });
-                                        </script>
-
-
-
+                                <label for="uploads" class="form-label h5 fw-bolder">
+                                    Thêm danh sách học viên bằng file excel
+                                </label>
+                                <div class="row d-flex justify-content-center">
+                                    <div class="custom-file w-25">
+                                        <input type="file" class="custom-file-input" id="uploads" name="upf"
+                                            accept=".xlsx, .xls, .csv">
+                                        <label class="custom-file-label" for="pictureprofile">
+                                            Tải file excel <i class="fas fa-upload ml-1"></i>
+                                        </label>
                                     </div>
+                                    <button type="submit" class="ml-3 btn btn-primary" id="Submit">Tải lên</button>
                                 </div>
-                            </div>
+
+                            </form>
+
+                            <!-- <script>
+                                document.getElementById('upload').addEventListener('submit', function(e) {
+                                    e.preventDefault();
+                                    var fileInput = document.getElementById('uploads');
+                                    var file = fileInput.files[0];
+
+                                    if (file) {
+                                        var formData = new FormData();
+                                        formData.append('upf', file);
+
+                                        var xhr = new XMLHttpRequest();
+                                        xhr.open('POST', 'index.php?controller=createthisinhByexcel',
+                                            true);
+
+                                        xhr.onload = function() {
+                                            if (xhr.status >= 200 && xhr.status < 300) {
+                                                var responseData = xhr.responseText;
+                                                var data = JSON.parse(responseData);
+                                                // Kiểm tra xem có lỗi không
+                                                if (data.error) {
+                                                    alert('Lỗi từ máy chủ: ' + data.error);
+                                                } else {
+                                                    // Xử lý dữ liệu thành công
+                                                    console.log('Thành công:', data.success);
+                                                    // Thực hiện các hành động khác dựa trên dữ liệu nhận được
+                                                }
+                                            } else {
+                                                console.error('Có lỗi xảy ra khi gửi yêu cầu.');
+                                            }
+                                        };
+
+                                        xhr.onerror = function() {
+                                            console.error(
+                                                'Đã xảy ra lỗi trong quá trình gửi yêu cầu.');
+                                        };
+
+                                        xhr.send(formData);
+                                    } else {
+                                        alert('Không có file được chọn');
+                                    }
+                                });
+                            </script> -->
+
+
+
                         </div>
                     </div>
                 </div>
@@ -543,7 +567,6 @@ span {
             </div>
         </div>
     </div>
-
     <!-- Bootstrap core JavaScript-->
     <script src="assets/vendor/jquery/jquery.min.js"></script>
     <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -553,10 +576,18 @@ span {
 
     <!-- Custom scripts for all pages-->
     <script src="assets/js/sb-admin-2.min.js"></script>
-    <script src="assets/js/quanlythisinh.js"></script>
+    <script src="assets/vendor/jquery/jquery.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Page level plugins -->
     <script src="assets/vendor/datatables/jquery.dataTables.min.js"></script>
     <script src="assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <!-- Page level custom scripts -->
     <script src="assets/js/demo/datatables-demo.js"></script>
+    <script src="assets/js/quanlythisinh.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
 </body>
 
 </html>
