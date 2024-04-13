@@ -97,80 +97,125 @@ function renderphanchimucdo(data) {
   if (data.length > 0) {
     data.forEach((element) => {
       html += `
-          <div class='cls1'>
-            <div class='cls2'>${element.mabode} - ${element.tenbode}</div>
-            <div class='cls7'>
-              <label style='margin-left:3em;'>Mức độ</label>
-              <label style='margin-left:6em;'>Số lượng</label>
-              <label style='margin-left:13em;'>Số câu chọn</label>
-            </div>
-            <div class='cls3' style='margin-left:2em;'>
-            `;
+      <div class="border border-gray-600 p-1 mb-2">
+      <p class="h5 mb-2 mt-2 text-gray-600">${element.mabode} - ${element.tenbode}</p>
+      <div class="row">
+          <div class="mb-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 col-4">
+              <label class="form-label h7 fw-bolder">Mức độ</label>
+          </div>
+          <div class="mb-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 col-4">
+              <label class="form-label h7 fw-bolder">Số lượng</label>
+          </div>
+          <div class="mb-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 col-4">
+              <label class="form-label h7 fw-bolder">Số câu chọn</label>
+          </div>
+      </div>`;
       element.tongcau.forEach((ele) => {
         if (ele.mucdo == "Dễ") {
           if (element.profile.length > 0) {
             element.profile.forEach((e) => {
               if (e.pmucdo == 0) {
-                html += `<div class='cls4'  id='${element.mabode}~0all'>
-              <label style='margin-left:2em;'>Dễ</label>
-              <label style='margin-left:7.5em;'id='${element.mabode}~0'>${ele.sde}</label>
-              <label style='margin-left:16.8em;'>
-              <input type='number' name='${element.mabode}~0' value='${e.soluong}' size='3' max='${ele.sde}' min='0'>
-              </label>
+                html += `
+                <div class="row" id='${element.mabode}~0all'>
+                <div class="mb-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 col-4">
+                    <label class="form-label h7 fw-bolder">Dễ</label>
+                </div>
+                <div class="mb-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 col-4">
+                    <label class="form-label h7 fw-bolder" id='${element.mabode}~0'>${ele.sde}</label>
+                </div>
+                <div class="mb-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 col-4">
+                    <input type="number" class="form-control" name='${element.mabode}~0' value='${e.soluong}' size='3' max='${ele.sde}' min='0'>
+                </div>
             </div>`;
               }
             });
           } else {
-            html += `<div class='cls4' id='${element.mabode}~0all'>
-              <label style='margin-left:2em;'>Dễ</label>
-              <label style='margin-left:7.5em;'id='${element.mabode}~0'>${ele.sde}</label>
-              <label style='margin-left:16.8em;'>
-              <input type='number' name='${element.mabode}~0' value='0' size='3' max='${ele.sde}' min='0'>
-              </label>
-            </div>`;
+            html += `<div class="row" id='${element.mabode}~0all'>
+            <div class="mb-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 col-4">
+                <label class="form-label h7 fw-bolder">Dễ</label>
+            </div>
+            <div class="mb-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 col-4">
+                <label class="form-label h7 fw-bolder" id='${element.mabode}~0'>${ele.sde}</label>
+            </div>
+            <div class="mb-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 col-4">
+                <input type="number" class="form-control" name='${element.mabode}~0' value='0' size='3' max='${ele.sde}' min='0'>
+            </div>
+        </div>`;
           }
         }
         if (ele.mucdo == "Trung bình") {
           if (element.profile.length > 0) {
             element.profile.forEach((e) => {
               if (e.pmucdo == 1) {
-                html += `<div class='cls5' id='${element.mabode}~1all'>
-              <label style='margin-left:2em;'>Trung bình</label>
-              <label style='margin-left:4em;'id='${element.mabode}~1'>${ele.sde}</label>
-              <label style='margin-left:16.8em;'><input type='number' name='${element.mabode}~1' value='${e.soluong}' size='3' max='${ele.sde}' min='0'></label>
+                html += `
+                <div class="row" id='${element.mabode}~1all'>
+                <div class="mb-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 col-4">
+                    <label class="form-label h7 fw-bolder">Trung bình</label>
+                </div>
+                <div class="mb-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 col-4">
+                    <label class="form-label h7 fw-bolder" id='${element.mabode}~1'>${ele.sde}</label>
+                </div>
+                <div class="mb-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 col-4">
+                    <input type="number" class="form-control" name='${element.mabode}~1' value='${e.soluong}' size='3' max='${ele.sde}' min='0'>
+                </div>
             </div>`;
               }
             });
           } else {
-            html += `<div class='cls5'id='${element.mabode}~1all'>
-          <label style='margin-left:2em;'>Trung bình</label>
-          <label style='margin-left:4em;'id='${element.mabode}~1'>${ele.sde}</label>
-          <label style='margin-left:16.8em;'><input type='number' name='${element.mabode}~1' value='0' size='3' max='${ele.sde}' min='0'></label>
-        </div>`;
+            html += `
+            <div class="row" id='${element.mabode}~1all'>
+            <div class="mb-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 col-4">
+                <label class="form-label h7 fw-bolder">Trung bình</label>
+            </div>
+            <div class="mb-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 col-4">
+                <label class="form-label h7 fw-bolder" id='${element.mabode}~1'>${ele.sde}</label>
+            </div>
+            <div class="mb-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 col-4">
+                <input type="number" class="form-control" name='${element.mabode}~1' value='0' size='3' max='${ele.sde}' min='0'>
+            </div>
+        </div>
+            `;
           }
         }
         if (ele.mucdo == "Khó") {
           if (element.profile.length > 0) {
             element.profile.forEach((e) => {
               if (e.pmucdo == 2) {
-                html += `<div class='cls6' id='${element.mabode}~2all'>
-          <label style='margin-left:2em;'>Khó</label>
-          <label style='margin-left:7em;'id='${element.mabode}~2'>${ele.sde}</label>
-          <label style='margin-left:16.8em;'><input type='number' name='${element.mabode}~2' value='${e.soluong}' size='3' max='${ele.sde}' min='0'></label>
-        </div>`;
+                html += `<div class="row" id='${element.mabode}~2all'>
+                <div class="mb-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 col-4 ">
+                    <label class="form-label h7 fw-bolder">Khó</label>
+                </div>
+                <div class="mb-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 col-4 ">
+                    <label class="form-label h7 fw-bolder" id='${element.mabode}~2'>${ele.sde}</label>
+                </div>
+                <div class="mb-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 col-4 ">
+                    <input type="number" class="form-control" name='${element.mabode}~2' value='${e.soluong}' size='3' max='${ele.sde}' min='0'>
+                </div>
+            </div>
+                
+               `;
               }
             });
           } else {
-            html += `<div class='cls6' id='${element.mabode}~2all'>
-          <label style='margin-left:2em;'>Khó</label>
-          <label style='margin-left:7em;' id='${element.mabode}~2'>${ele.sde}</label>
-          <label style='margin-left:16.8em;'><input type='number' name='${element.mabode}~2' value='0' size='3' max='${ele.sde}' min='0'></label>
-        </div>`;
+            html += `<div class="row" id='${element.mabode}~2all'>
+            <div class="mb-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 col-4 ">
+                <label class="form-label h7 fw-bolder">Khó</label>
+            </div>
+            <div class="mb-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 col-4 ">
+                <label class="form-label h7 fw-bolder" id='${element.mabode}~2'>${ele.sde}</label>
+            </div>
+            <div class="mb-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 col-4 ">
+                <input type="number" class="form-control" name='${element.mabode}~2' value='0' size='3' max='${ele.sde}' min='0'>
+            </div>
+        </div>
+            
+            
+            `;
           }
         }
       });
 
-      html += `</div>
+      html += `
       </div>`;
     });
   }
@@ -239,7 +284,8 @@ $("#sb").click(function (e) {
             if (xhr.readyState === XMLHttpRequest.DONE) {
               if (xhr.status === 200) {
                 var response = xhr.responseText;
-                console.log(response);
+                var mes = "Cập nhật cấu trúc đề thành công";
+                showSuccessMessage(mes);
                 // var data = JSON.parse(response);
                 // rendermonthi(data);
               } else {
@@ -262,3 +308,13 @@ $("#sb").click(function (e) {
     }
   }
 });
+function showSuccessMessage(mes) {
+  var successMessage = document.createElement("div");
+  successMessage.textContent = mes;
+  successMessage.classList.add("success-message");
+  document.body.appendChild(successMessage);
+  // Ẩn thông báo sau 3 giây
+  setTimeout(function () {
+    document.body.removeChild(successMessage);
+  }, 3000);
+}
