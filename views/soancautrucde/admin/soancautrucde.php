@@ -13,14 +13,12 @@
 
     <!-- Custom fonts for this template-->
     <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
 
     <!-- Custom styles for this template-->
     <link href="assets/style/sb-admin-2.min.css" rel="stylesheet" />
 </head>
-<style>
+<!-- <style>
 .cls1 {
     display: block;
     margin: auto;
@@ -41,7 +39,7 @@
 .cls6 {
     padding: 0.6em 0;
 }
-</style>
+</style> -->
 
 <body id="page-top">
     <!-- Page Wrapper -->
@@ -49,8 +47,7 @@
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center"
-                href="index.php?controller=homeAdmin">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php?controller=homeAdmin">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-user-cog"></i>
                 </div>
@@ -173,14 +170,12 @@
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
                                 <img class="img-profile rounded-circle" src="img/undraw_profile.svg" />
                             </a>
                             <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
@@ -206,55 +201,77 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Soạn cấu trúc đề</h1>
                     </div>
-                    <div class="M02">
-                        <div class="phanquyen">
-                            <span style="margin-left:2em;">Chọn kỳ thi</span>
-                            <select name="kythi" id="kythi"
-                                style="margin-top:0em; width:30%;height:2em; margin-left:2em;">
-                                <option value="all">--Chọn kỳ thi--</option>
-                                <?php foreach ($kythi as $key => $value) : ?>
-                                <option value="<?= $value->getMaKyThi() ?>">
-                                    <?= $value->getTenKyThi() ?>
-                                </option>
-                                <?php endforeach; ?>
-                            </select>
+                    <div class="row">
+                        <div class="col-xl-12 col-md-6 mb-4">
+                            <div class="card shadow mb-0">
+                                <div class="card-body">
+                                    <p class="h5 mb-2 mt-2 text-gray-600">Chọn kỳ thi</p>
+                                    <select name="kythi" id="kythi" class="form-control">
+                                        <option value="all">--Chọn kỳ thi--</option>
+                                        <?php foreach ($kythi as $key => $value) : ?>
+                                            <option value="<?= $value->getMaKyThi() ?>">
+                                                <?= $value->getTenKyThi() ?>
+                                            </option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                    <p class="h5 mb-2 mt-2 text-gray-600">Chọn
+                                        môn thi</p>
+                                    <select id="monthi" name="monthi" class="form-control">
+                                        <option value="all">--Chọn môn thi--</option>
+                                    </select>
+                                    <div class="mt-2 row d-flex justify-content-between">
+                                        <div class="mb-12 col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+                                            <div class="row w-100">
+                                                <div class="mb-12 col-lg-4 col-md-4 col-sm-4 col-xs-12 ">
+                                                    <p class="h5 mb-2 mt-2 text-gray-600">Tổng số câu hỏi: &nbsp;</p>
+                                                </div>
+                                                <div class="mb-12 col-lg-8 col-md-8 col-sm-8 col-xs-12 ">
+                                                    <input type='text' class="form-control" value='0' name='stong' id='stong' size='5' />
+                                                </div>
+                                            </div>
 
-                            <div class="loada">
-                                <span style="margin-left:2em;">Chọn
-                                    môn thi</span>
-                                <select id="monthi" name="monthi"
-                                    style="margin-top:1em;margin-left:1em;width:30%;height:2em;">
-                                    <option value="all">--Chọn môn thi--</option>
-                                </select>
+                                        </div>
+                                        <div class="mb-12 col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+                                            <div class="row w-100">
+                                                <div class="mb-12 col-lg-4 col-md-4 col-sm-4 col-xs-12 ">
+                                                    <p class="h5 mb-2 mt-2 text-gray-600">Thời gian làm bài: &nbsp;</p>
+                                                </div>
+                                                <div class="mb-10 col-lg-6 col-md-6 col-sm-6 col-xs-10 ">
+                                                    <input type='text' value='0' class="form-control" name='time' id='time' size='8' />
+
+                                                </div>
+                                                <div class="mb-2 col-lg-2 col-md-2 col-sm-2 col-xs-2 ">
+                                                    <p class="h5 mb-2 mt-2 text-gray-600">&nbsp;&nbsp;(phút)</p>
+
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+
+                                    </div>
+
+                                </div>
                             </div>
-                            <hr>
                         </div>
+                    </div>
+                    <!-- Page Heading -->
+                    <hr>
 
-                        <div class="load">
-                            <label style='margin-left:1em;font-size:18px;'>Tổng số câu hỏi: &nbsp;</label>
-                            <!-- <input type='text' value=' $tongt[tongcauhoi] ' name='stong' id='stong' size='5' /> -->
-                            <input type='text' value='0' name='stong' id='stong' size='5' />
-                            <label style='margin-left:1em;font-size:18px;'>Thời gian làm bài: &nbsp;</label>
-                            <!-- <input type='text' value=' $tongt[tgthi]' name='time' id='time' size='8' /> -->
-                            <input type='text' value='0' name='time' id='time' size='8' />
-                            <span>&nbsp;&nbsp;(phút)</span>
-                            <hr>
-                            <h4 style='margin-top:1.4em;margin-left:1em;'>Danh sách Module</h4>
-                            <form method='post' id='capnhatdt'>
+                    <div class="card shadow mb-0">
+                        <div class="card-body">
+                            <h4 class="h4 mb-2 mt-2 text-gray-600">Danh sách Module</h4>
+                            <form method="post" id="capnhatdt">
 
                             </form>
-                            <input
-                                style='display:block; margin:auto; margin-top:1em; margin-bottom:1em; color:white; cursor:pointer; padding:0.8em 3em; background:blue; border:none;'
-                                type='submit' name='sb' id='sb' value='Cập nhật'>
-                        </div>
+                            <div class="d-flex justify-content-center ">
+                                <input class="btn btn-primary" type='submit' name='sb' id='sb' value='Cập nhật'>
+                            </div>
 
-                        <hr style=" margin-top:1em;">
-
-                        <div class="load13">
                         </div>
                     </div>
 
@@ -284,8 +301,7 @@
     </a>
 
     <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
