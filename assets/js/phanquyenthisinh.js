@@ -80,16 +80,7 @@ function selectAll() {
   }
 }
 function renderthisinh(data) {
-  html = `<tr style="color:rgba(255,153,51,1); margin-bottom:2em;">
-  <th style='width:7%;'>Số báo danh</th>
-  <th style='width:15%;'>Họ, đệm</th>
-  <th style='width:8%;'>Tên</th>
-  <th style='width:11%;'>Ngày sinh</th>
-  <th style='width:30%;'>Tên đơn vị</th>
-  <th style='width:8%;'>Được thi<br><input type="checkbox" onChange="selectAll();"
-          name="slAll" checked>
-  </th>
-</tr>`;
+  html = ``;
   if (document.getElementById("monthi").value == "all") {
     document.getElementById("onno").style.display = "none";
   } else {
@@ -105,16 +96,17 @@ function renderthisinh(data) {
           <td style='text-align:left;'>${element.donvi}</td>
           `;
       if (element.chothi == "C") {
-        html += `<td><input type='checkbox' checked name='ct[]' value="${element.sbd}"></td>
+        html += `<td class="text-center"><input type='checkbox' checked name='ct[]' value="${element.sbd}"></td>
             </tr>`;
       } else {
-        html += `<td><input type='checkbox' name='ct[]' value="${element.sbd}"></td>
+        html += `<td class="text-center"><input type='checkbox' name='ct[]' value="${element.sbd}"></td>
               </tr>`;
       }
     });
   }
   // Thêm html vào một phần tử trên trang
-  document.getElementById("sll").innerHTML = data.length;
+  document.getElementById("sll").innerHTML =
+    "Số lượng sinh viên: " + data.length;
   document.getElementById("listtsshow").innerHTML = html;
 }
 $("#sb").click(function (e) {

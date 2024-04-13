@@ -13,9 +13,7 @@
 
     <!-- Custom fonts for this template-->
     <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
 
     <!-- Custom styles for this page -->
     <link href="assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
@@ -36,8 +34,7 @@
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center"
-                href="index.php?controller=homeAdmin">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php?controller=homeAdmin">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-user-cog"></i>
                 </div>
@@ -160,14 +157,12 @@
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
                                 <img class="img-profile rounded-circle" src="img/undraw_profile.svg" />
                             </a>
                             <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
@@ -199,80 +194,68 @@
                     </div>
                     <div class="row">
                         <div class="col-xl-12 col-md-6 mb-4">
-                            <div class="chitiet">
-                                <div class="card shadow mb-0">
-                                    <div class="card-body">
-                                        <p class="h5 mb-4 text-gray-600">CHỌN KỲ THI</p>
-                                        <select class="form-control" name="kythi" id="kythi">
-                                            <option value="...">...</option>
-                                            <?php foreach ($kythi as $key => $value) : ?>
+                            <div class="card shadow mb-0">
+                                <div class="card-body">
+                                    <p class="h5 mb-4 text-gray-600">CHỌN KỲ THI</p>
+                                    <select class="form-control" name="kythi" id="kythi">
+                                        <option value="...">...</option>
+                                        <?php foreach ($kythi as $key => $value) : ?>
                                             <option value="<?= $value->getMaKyThi() ?>">
                                                 <?= $value->getTenKyThi() ?>
                                             </option>
-                                            <?php endforeach; ?>
-                                        </select>
-                                    </div>
+                                        <?php endforeach; ?>
+                                    </select>
                                 </div>
-                                <hr>
-                                <div class="card shadow mb-0">
-                                    <div class="card-body">
-                                        <div class="d-flex justify-content-between mb-2">
-                                            <p class="h5 text-gray-600">DANH MỤC MÔN THI</p>
-                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                                data-bs-target="#exampleModal">
-                                                THÊM MỚI
-                                            </button>
-                                        </div>
-                                        <!-- Modal -->
-                                        <div class="modal fade" id="exampleModal" tabindex="-1"
-                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Môn thi</h5>
-                                                        <button type="button" onclick="reloadmonthi()" class="btn-close"
-                                                            data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <form method="post" id="suamodun">
-                                                            <div class="row">
-                                                                <div class="mb-12 col-lg-12 col-md-12 col-sm-12 csbd">
-                                                                    <label class="form-label h5 fw-bolder">Mã môn
-                                                                        thi</label>
-                                                                    <input type='text' name='mmt' id='mmt'
-                                                                        class="form-control text-dark border-dark-subtle"
-                                                                        value="">
-                                                                </div>
+                            </div>
+                            <hr>
+                            <div class="card shadow mb-0">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <p class="h5 text-gray-600">DANH MỤC MÔN THI</p>
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            THÊM MỚI
+                                        </button>
+                                    </div>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Môn thi</h5>
+                                                    <button type="button" onclick="reloadmonthi()" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form method="post" id="suamodun">
+                                                        <div class="row">
+                                                            <div class="mb-12 col-lg-12 col-md-12 col-sm-12 csbd">
+                                                                <label class="form-label h5 fw-bolder">Mã môn
+                                                                    thi</label>
+                                                                <input type='text' name='mmt' id='mmt' class="form-control text-dark border-dark-subtle" value="">
                                                             </div>
-                                                            <div class="row">
-                                                                <div class="mb-12 col-lg-12 col-md-12 col-sm-12 csbd">
-                                                                    <label class="form-label h5 fw-bolder">Tên môn
-                                                                        thi</label>
-                                                                    <input type='text' name='tenmt' id='tenmt'
-                                                                        class="form-control text-dark border-dark-subtle"
-                                                                        value="">
-                                                                </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="mb-12 col-lg-12 col-md-12 col-sm-12 csbd">
+                                                                <label class="form-label h5 fw-bolder">Tên môn
+                                                                    thi</label>
+                                                                <input type='text' name='tenmt' id='tenmt' class="form-control text-dark border-dark-subtle" value="">
                                                             </div>
-                                                            <div class="row">
-                                                                <div class="mb-12 col-lg-12 col-md-12 col-sm-12 csbd">
-                                                                    <label class="form-label h5 fw-bolder">Bắt
-                                                                        đầu</label>
-                                                                    <input type='datetime-local' name='tkt' id='tkt'
-                                                                        class="form-control text-dark border-dark-subtle"
-                                                                        value="">
-                                                                </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="mb-12 col-lg-12 col-md-12 col-sm-12 csbd">
+                                                                <label class="form-label h5 fw-bolder">Bắt
+                                                                    đầu</label>
+                                                                <input type='datetime-local' name='tkt' id='tkt' class="form-control text-dark border-dark-subtle" value="">
                                                             </div>
-                                                            <div class="row">
-                                                                <div class="mb-12 col-lg-12 col-md-12 col-sm-12 csbd">
-                                                                    <label class="form-label h5 fw-bolder">Kết
-                                                                        thúc</label>
-                                                                    <input type='datetime-local' name='tkt2' id='tkt2'
-                                                                        class="form-control text-dark border-dark-subtle"
-                                                                        value="">
-                                                                </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="mb-12 col-lg-12 col-md-12 col-sm-12 csbd">
+                                                                <label class="form-label h5 fw-bolder">Kết
+                                                                    thúc</label>
+                                                                <input type='datetime-local' name='tkt2' id='tkt2' class="form-control text-dark border-dark-subtle" value="">
                                                             </div>
-                                                        </form>
-                                                        <!-- <div class="row">
+                                                        </div>
+                                                    </form>
+                                                    <!-- <div class="row">
                                                             <div class="mb-3 col-lg-3 col-md-3 col-sm-3">
                                                                 <img id="add1" src="assets/image/add.png" width="33"
                                                                     height="33" title="Thêm mới"
@@ -285,109 +268,95 @@
                                                                     style="margin-left:1em;margin-top:1em; cursor:pointer;">
                                                             </div>
                                                         </div> -->
-                                                    </div>
-                                                    <div class="modal-footer" id='control_monthi'>
-                                                        <button type="button" onclick="reloadmonthi()"
-                                                            class="btn btn-secondary"
-                                                            data-bs-dismiss="modal">Close</button>
-                                                        <button type="button" id="add1" class="btn btn-success"
-                                                            data-bs-dismiss="modal">Add</button>
-                                                    </div>
+                                                </div>
+                                                <div class="modal-footer" id='control_monthi'>
+                                                    <button type="button" onclick="reloadmonthi()" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                    <button type="button" id="add1" class="btn btn-success" data-bs-dismiss="modal">Add</button>
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
 
-                                        <div class="table-responsive">
-                                            <table class="table table-bordered" id="list_monthi" width="100%"
-                                                cellspacing="0">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Mã môn thi</th>
-                                                        <th>Tên môn thi</th>
-                                                        <th>Bắt đầu</th>
-                                                        <th>Kết thúc</th>
-                                                    </tr>
-                                                </thead>
-                                                <tfoot>
-                                                    <tr>
-                                                        <th>Mã môn thi</th>
-                                                        <th>Tên môn thi</th>
-                                                        <th>Bắt đầu</th>
-                                                        <th>Kết thúc</th>
-                                                    </tr>
-                                                </tfoot>
-                                                <tbody class="ttb2" id="monthi">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered" id="list_monthi" width="100%" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th>Mã môn thi</th>
+                                                    <th>Tên môn thi</th>
+                                                    <th>Bắt đầu</th>
+                                                    <th>Kết thúc</th>
+                                                </tr>
+                                            </thead>
+                                            <tfoot>
+                                                <tr>
+                                                    <th>Mã môn thi</th>
+                                                    <th>Tên môn thi</th>
+                                                    <th>Bắt đầu</th>
+                                                    <th>Kết thúc</th>
+                                                </tr>
+                                            </tfoot>
+                                            <tbody class="ttb2" id="monthi">
 
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
-                                <hr>
-                                <div class="card shadow mb-0" id='monthi_showw'>
-                                    <div class="card-body">
-                                        <p class="h5 mb-4  text-gray-600">CHỌN MÔN THI</p>
-                                        <select class="form-control" name="monthi_ops" id="monthi_ops">
-                                            <option value="...">...</option>
-                                        </select>
-                                    </div>
+                            </div>
+                            <hr>
+                            <div class="card shadow mb-0" id='monthi_showw'>
+                                <div class="card-body">
+                                    <p class="h5 mb-4  text-gray-600">CHỌN MÔN THI</p>
+                                    <select class="form-control" name="monthi_ops" id="monthi_ops">
+                                        <option value="...">...</option>
+                                    </select>
                                 </div>
-                                <hr>
+                            </div>
+                            <hr>
 
-                                <div class="card shadow mb-4">
-                                    <div class="card-body">
-                                        <div class="d-flex justify-content-between mb-2">
-                                            <p class="h5 mb-2 text-gray-600">DANH MỤC NỘI DUNG THI</p>
-                                            <!-- Button trigger modal -->
-                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                                data-bs-target="#exampleModal01">
-                                                THÊM MỚI
-                                            </button>
-                                        </div>
+                            <div class="card shadow mb-4">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <p class="h5 mb-2 text-gray-600">DANH MỤC NỘI DUNG THI</p>
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal01">
+                                            THÊM MỚI
+                                        </button>
+                                    </div>
 
-                                        <!-- Modal -->
-                                        <div class="modal fade" id="exampleModal01" tabindex="-1"
-                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Nội dung thi</h5>
-                                                        <button onclick="reloadnoidungthi()" type="button"
-                                                            class="btn-close" data-bs-dismiss="modal"
-                                                            aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <form method="post" id="suamodun">
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal01" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Nội dung thi</h5>
+                                                    <button onclick="reloadnoidungthi()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form method="post" id="suamodun">
 
-                                                            <div class="row">
-                                                                <div class="mb-12 col-lg-12 col-md-12 col-sm-12 csbd">
-                                                                    <label class="form-label h5 fw-bolder">Mã nội dung
-                                                                        thi</label>
-                                                                    <input type='text' name='mmt1' id='mmt1'
-                                                                        class="form-control text-dark border-dark-subtle"
-                                                                        value="">
-                                                                </div>
+                                                        <div class="row">
+                                                            <div class="mb-12 col-lg-12 col-md-12 col-sm-12 csbd">
+                                                                <label class="form-label h5 fw-bolder">Mã nội dung
+                                                                    thi</label>
+                                                                <input type='text' name='mmt1' id='mmt1' class="form-control text-dark border-dark-subtle" value="">
                                                             </div>
-                                                            <div class="row">
-                                                                <div class="mb-12 col-lg-12 col-md-12 col-sm-12 csbd">
-                                                                    <label class="form-label h5 fw-bolder">Tên nội dung
-                                                                        thi</label>
-                                                                    <input type='text' name='tenmt1' id='tenmt1'
-                                                                        class="form-control text-dark border-dark-subtle"
-                                                                        value="">
-                                                                </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="mb-12 col-lg-12 col-md-12 col-sm-12 csbd">
+                                                                <label class="form-label h5 fw-bolder">Tên nội dung
+                                                                    thi</label>
+                                                                <input type='text' name='tenmt1' id='tenmt1' class="form-control text-dark border-dark-subtle" value="">
                                                             </div>
-                                                            <div class="row">
-                                                                <div class="mb-12 col-lg-12 col-md-12 col-sm-12 csbd">
-                                                                    <label class="form-label h5 fw-bolder">Tên môn
-                                                                        thi</label>
-                                                                    <input type='text' name='tkt1' id='tkt1'
-                                                                        class="form-control text-dark border-dark-subtle"
-                                                                        value="">
-                                                                </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="mb-12 col-lg-12 col-md-12 col-sm-12 csbd">
+                                                                <label class="form-label h5 fw-bolder">Tên môn
+                                                                    thi</label>
+                                                                <input type='text' name='tkt1' id='tkt1' class="form-control text-dark border-dark-subtle" value="">
                                                             </div>
-                                                        </form>
-                                                        <!-- <div class="row">
+                                                        </div>
+                                                    </form>
+                                                    <!-- <div class="row">
                                                             <div class="mb-3 col-lg-3 col-md-3 col-sm-3">
                                                                 <img src="assets/image/add.png" width="33" height="33"
                                                                     title="Thêm mới"
@@ -400,42 +369,37 @@
                                                                     style="margin-left:1em;margin-top:1em; cursor:pointer;">
                                                             </div>
                                                         </div> -->
-                                                    </div>
-                                                    <div class="modal-footer" id="control_noidungthi">
-                                                        <button type="button" class="btn btn-secondary"
-                                                            data-bs-dismiss="modal"
-                                                            onclick="reloadnoidungthi()">Close</button>
-                                                        <button type="button" id="add2" class="btn btn-success"
-                                                            data-bs-dismiss="modal">Add</button>
+                                                </div>
+                                                <div class="modal-footer" id="control_noidungthi">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="reloadnoidungthi()">Close</button>
+                                                    <button type="button" id="add2" class="btn btn-success" data-bs-dismiss="modal">Add</button>
 
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="table-responsive">
-                                            <table class="table table-bordered" id="list_noidungthi" width="100%"
-                                                cellspacing="0">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Mã nội dung</th>
-                                                        <th>Tên nội dung</th>
-                                                        <th>Môn thi</th>
-                                                        <th>Kỳ thi</th>
-                                                    </tr>
-                                                </thead>
-                                                <tfoot>
-                                                    <tr>
-                                                        <th>Mã nội dung</th>
-                                                        <th>Tên nội dung</th>
-                                                        <th>Môn thi</th>
-                                                        <th>Kỳ thi</th>
-                                                    </tr>
-                                                </tfoot>
-                                                <tbody class="table12" id='noidungthi'>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered" id="list_noidungthi" width="100%" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th>Mã nội dung</th>
+                                                    <th>Tên nội dung</th>
+                                                    <th>Môn thi</th>
+                                                    <th>Kỳ thi</th>
+                                                </tr>
+                                            </thead>
+                                            <tfoot>
+                                                <tr>
+                                                    <th>Mã nội dung</th>
+                                                    <th>Tên nội dung</th>
+                                                    <th>Môn thi</th>
+                                                    <th>Kỳ thi</th>
+                                                </tr>
+                                            </tfoot>
+                                            <tbody class="table12" id='noidungthi'>
 
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
@@ -468,8 +432,7 @@
     </a>
 
     <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">

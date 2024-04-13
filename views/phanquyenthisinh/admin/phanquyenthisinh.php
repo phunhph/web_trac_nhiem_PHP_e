@@ -13,11 +13,13 @@
 
     <!-- Custom fonts for this template-->
     <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet" />
 
     <!-- Custom styles for this template-->
     <link href="assets/style/sb-admin-2.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="assets/style/phanquyenthisinh.css">
+    <!-- <link rel="stylesheet" href="assets/style/phanquyenthisinh.css"> -->
 </head>
 
 <body id="page-top">
@@ -26,7 +28,8 @@
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php?controller=homeAdmin">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center"
+                href="index.php?controller=homeAdmin">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-user-cog"></i>
                 </div>
@@ -149,12 +152,14 @@
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
                                 <img class="img-profile rounded-circle" src="img/undraw_profile.svg" />
                             </a>
                             <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
@@ -185,59 +190,76 @@
                         <h1 class="h3 mb-0 text-gray-800">Phân quyền thí sinh</h1>
                     </div>
 
-                    <div>
-                        <div class="main">
-                            <div class="phanquyen">
-                                <span style="margin-left:2em;">Chọn kỳ thi</span>
-                                <select name="kythi" id="kythi" style="margin-top:0em; width:30%;height:2em; margin-left:2em;">
-                                    <option value="all">--Chọn kỳ thi--</option>
-                                    <?php foreach ($kythi as $key => $value) : ?>
+                    <div class="row">
+                        <div class="col-xl-12 col-md-6 mb-4">
+                            <div class="card shadow mb-0">
+                                <div class="card-body">
+                                    <p class="h5 mb-2 mt-2 text-gray-600">Chọn kỳ thi</p>
+                                    <select name="kythi" id="kythi" class="form-control">
+                                        <option value="all">--Chọn kỳ thi--</option>
+                                        <?php foreach ($kythi as $key => $value) : ?>
                                         <option value="<?= $value->getMaKyThi() ?>">
                                             <?= $value->getTenKyThi() ?>
                                         </option>
-                                    <?php endforeach; ?>
-                                </select>
+                                        <?php endforeach; ?>
+                                    </select>
 
-                                <div class="loada">
-                                    <span style="margin-left:2em;">Chọn
-                                        môn thi</span>
-                                    <select id="monthi" name="monthi" style="margin-top:1em;margin-left:1em;width:30%;height:2em;">
+                                    <p class="h5 mb-2 mt-2 text-gray-600">Chọn
+                                        môn thi</p>
+                                    <select id="monthi" name="monthi" class="form-control">
                                         <option value="all">--Chọn môn thi--</option>
                                     </select>
-                                </div>
-                                <div class="loada">
-                                    <span style="margin-left:2em;">Hiển thị</span>
-                                    <select id="hienthi" name="hienthids" style="margin-top:1em;margin-left:3.5em;width:30%;height:2em;">
+
+                                    <p class="h5 mb-2 mt-2 text-gray-600">Hiển thị</p>
+                                    <select id="hienthi" name="hienthids" class="form-control">
                                         <option value="all">- - - Tất cả - - -</option>
                                         <option value="T">Được quyền thi</option>
                                         <option value="F">Không có quyền thi</option>
                                     </select>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="table-responsive">
 
-                            <div class="dshv">
-                                <p style="margin:0;font-weight:bold;">DANH SÁCH HỌC VIÊN</p>
-                                <form method="post" name='f' id="onno" style="display: none;">
-                                    <table class="cltble" id="listtsshow">
-                                        <tr style="color:rgba(255,153,51,1); margin-bottom:2em;">
-                                            <th style='width:7%;'>Số báo danh</th>
-                                            <th style='width:15%;'>Họ, đệm</th>
-                                            <th style='width:8%;'>Tên</th>
-                                            <th style='width:11%;'>Ngày sinh</th>
-                                            <th style='width:30%;'>Tên đơn vị</th>
-                                            <th style='width:8%;'>Được thi<br><input type="checkbox" onChange="selectAll();" name="slAll" checked>
+                            <p class="h5 mb-2 mt-2 text-gray-900">DANH SÁCH HỌC VIÊN</p>
+
+                            <form method="post" name='f' id="onno" style="display: none;">
+                                <table class="table table-bordered">
+
+                                    <thead>
+                                        <tr>
+                                            <th>Số báo danh</th>
+                                            <th>Họ, đệm</th>
+                                            <th>Tên</th>
+                                            <th>Ngày sinh</th>
+                                            <th>Tên đơn vị</th>
+                                            <th class="text-center">Được thi <br><input type="checkbox"
+                                                    onChange="selectAll();" name="slAll" checked>
                                             </th>
                                         </tr>
-                                    </table>
-                                    <table>
+                                    </thead>
+                                    <tbody id="listtsshow">
+                                        <td valign="top" style="text-align: center;" colspan="8"
+                                            class="dataTables_empty">
+                                            No data available in table</td>
+                                    </tbody>
+                                    <tfoot>
                                         <tr>
-                                            <td style='color:red; width:80%; padding:1em; font-size:18px;' id="sll">0
+                                            <td id="sll" colspan="3">Số lượng sinh viên: 0</td>
+
+                                            <td colspan="3" class="text-center">
+                                                <button type="button" id="sb" name="sb"
+                                                    class="btn btn-outline-success">Cập
+                                                    nhật</button>
                                             </td>
+
                                         </tr>
-                                    </table>
-                                    <button type="button" id='sb' name="sb">Cập nhật</button>
-                                </form>
-                            </div>
+                                    </tfoot>
+                                </table>
+                            </form>
+
 
                         </div>
 
@@ -269,7 +291,8 @@
     </a>
 
     <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
