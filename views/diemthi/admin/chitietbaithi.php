@@ -16,17 +16,17 @@
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="./assets/style/report.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="./assets/style/report.css" /> -->
     <!-- Custom styles for this template-->
     <link href="assets/style/sb-admin-2.min.css" rel="stylesheet" />
 </head>
-<style>
+<!-- <style>
 th,
 td {
     padding: 0.4em;
     text-align: center;
 }
-</style>
+</style> -->
 
 <body id="page-top">
     <!-- Page Wrapper -->
@@ -160,25 +160,13 @@ td {
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                                <img class="img-profile rounded-circle" src="img/undraw_profile.svg" />
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 lead">
+                                    <?php print_r($_SESSION['admin']['maadmin']) ?>
+                                </span>
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Activity Log
-                                </a>
-                                <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
@@ -196,56 +184,64 @@ td {
                         <h1 class="h3 mb-0 text-gray-800">Chi tiết bài thi</h1>
                     </div>
 
-                    <div>
-                        <div class="phanquyen">
-                            <span style="margin-left:2em;">Chọn kỳ thi</span>
-                            <select name="kythi" id="kythi"
-                                style="margin-top:0em; width:30%;height:2em; margin-left:2em;">
-                                <option value="all">--Chọn kỳ thi--</option>
+                    <div class="card shadow mb-3">
+                        <div class="card-body">
+                            <p class="h5 ml-0 text-gray-500">Chọn kỳ thi</p>
+                            <select class="form-control" name="kythi" id="kythi">
+                                <option value="...">...</option>
                                 <?php foreach ($kythi as $key => $value) : ?>
                                 <option value="<?= $value->getMaKyThi() ?>">
                                     <?= $value->getTenKyThi() ?>
                                 </option>
                                 <?php endforeach; ?>
                             </select>
-
-                            <div class="loada">
-                                <span style="margin-left:2em;">Chọn
-                                    môn thi</span>
-                                <select id="monthi" name="monthi"
-                                    style="margin-top:1em;margin-left:1em;width:30%;height:2em;">
-                                    <option value="all">--Chọn môn thi--</option>
-                                </select>
-                            </div>
-                            <div class="loada">
-                                <span style="margin-left:2em;">Mã thí sinh</span>
-                                <select id="masbd" name="masbd"
-                                    style="margin-top:1em;margin-left:2em;width:30%;height:2em;">
-                                    <option value="all">- - - Mã thí sinh - - -</option>
-                                </select>
-                            </div>
                         </div>
-                        <div class="chitiet" id="load">
-                            <div class="tongdiem">
-                                <p style="font-size:22px;text-align:center;">KẾT QUẢ BÀI THI</p>
-                                <table class="tablekq" border="1" width="100%">
-                                    <tr>
-                                        <th>Số báo danh</th>
-                                        <th>Họ và tên</th>
-                                        <th>Bắt đầu</th>
-                                        <th>Kết thúc</th>
-                                        <th>Thời gian làm bài</th>
-                                        <th>Tổng điểm</th>
-                                    </tr>
-                                    <tr id="thong_tin">
-
-                                    </tr>
-                                </table>
-                            </div>
-                            <div class="areaexam" id="chitietbailam"></div>
+                        <div class="card-body">
+                            <p class="h5 ml-0 text-gray-500">Chọn
+                                môn thi</p>
+                            <select class="form-control" id="monthi" name="monthi">
+                                <option value="all">--Chọn môn thi--</option>
+                            </select>
+                        </div>
+                        <div class="card-body">
+                            <p class="h5 ml-0 text-gray-500">Mã thí sinh</p>
+                            <select class="form-control" id="masbd" name="masbd">
+                                <option value="all">- - - Mã thí sinh - - -</option>
+                            </select>
+                        </div>
+                        <div class="card-body ">
+                            <button onClick="printContent();" class="btn btn-outline-success w-100" id="print">In bài
+                                thi</button>
                         </div>
                     </div>
-                    <button onClick="printContent();" id="print">In bài thi</button>
+
+                    <div class="card shadow mb-3" id="load">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="danhsachdiem" width="100%" cellspacing="0">
+                                    <p class="h5 ml-0 text-gray-500 text-center ">KẾT QUẢ BÀI THI</p>
+                                    <thead>
+                                        <tr>
+                                            <th>Số báo danh</th>
+                                            <th>Họ và tên</th>
+                                            <th>Bắt đầu</th>
+                                            <th>Kết thúc</th>
+                                            <th class="text-center">Số câu đúng</th>
+                                            <th class="text-center">Tổng điểm</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="thong_tin">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div id="chitietbailam">
+
+                        </div>
+
+                    </div>
+
                 </div>
 
                 <!-- /.container-fluid -->
@@ -289,7 +285,7 @@ td {
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">
                         Cancel
                     </button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="index.php?controller=logout">Logout</a>
                 </div>
             </div>
         </div>

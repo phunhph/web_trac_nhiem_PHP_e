@@ -12,9 +12,7 @@
     <title for="">Thi trắc nhiêm trực tuyến</title>
 
     <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
 
     <!-- Custom styles for this page -->
     <link href="assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
@@ -25,89 +23,89 @@
 
 </head>
 <style>
-.thb {
-    border: 1px solid rgba(136, 136, 136, 0.8);
-    border-collapse: collapse;
-    width: 99%;
-    margin: auto;
-    margin-top: 1em;
-}
+    .thb {
+        border: 1px solid rgba(136, 136, 136, 0.8);
+        border-collapse: collapse;
+        width: 99%;
+        margin: auto;
+        margin-top: 1em;
+    }
 
-.thb td {
-    padding: 0.5em 0.5em;
-    text-align: left;
-}
+    .thb td {
+        padding: 0.5em 0.5em;
+        text-align: left;
+    }
 
-.thb tr:nth-child(even) {
-    background-color: white;
-}
+    .thb tr:nth-child(even) {
+        background-color: white;
+    }
 
-.thb tr:nth-child(odd) {
-    background-color: #f1f1f1;
-}
+    .thb tr:nth-child(odd) {
+        background-color: #f1f1f1;
+    }
 
-.thb tr:hover {
-    cursor: default;
-    background: rgba(0, 102, 153, 0.1);
-}
+    .thb tr:hover {
+        cursor: default;
+        background: rgba(0, 102, 153, 0.1);
+    }
 
-.thb th {
-    height: 22px;
-    padding: 0.1em;
-    background: #4267b2;
-    color: white;
-    font-size: 14px;
-}
+    .thb th {
+        height: 22px;
+        padding: 0.1em;
+        background: #4267b2;
+        color: white;
+        font-size: 14px;
+    }
 
-#update {
-    width: 90%;
-    margin: auto;
-    display: block;
-    margin-top: 2em;
-    padding-bottom: 1em;
-}
+    #update {
+        width: 90%;
+        margin: auto;
+        display: block;
+        margin-top: 2em;
+        padding-bottom: 1em;
+    }
 
-.over {
-    position: fixed;
-    display: none;
-    background: rgba(0, 0, 0, 0.8);
-    width: 100%;
-    height: 100%;
-}
+    .over {
+        position: fixed;
+        display: none;
+        background: rgba(0, 0, 0, 0.8);
+        width: 100%;
+        height: 100%;
+    }
 
-.show1 {
-    width: 23%;
-    height: 7em;
-    position: fixed;
-    display: block;
-    margin: auto;
-    margin-top: 8em;
-    margin-left: 3em;
-    background: rgba(255, 255, 255, 0.7);
-}
+    .show1 {
+        width: 23%;
+        height: 7em;
+        position: fixed;
+        display: block;
+        margin: auto;
+        margin-top: 8em;
+        margin-left: 3em;
+        background: rgba(255, 255, 255, 0.7);
+    }
 
-.csbd {
-    margin-top: 0.5em;
-}
+    .csbd {
+        margin-top: 0.5em;
+    }
 
-input {
-    height: 1.5em;
-    width: 80%;
-    display: block;
-    margin: auto;
-    margin-bottom: 0;
-    margin-top: 0.5em;
-    padding: 0 0.5em;
-}
+    input {
+        height: 1.5em;
+        width: 80%;
+        display: block;
+        margin: auto;
+        margin-bottom: 0;
+        margin-top: 0.5em;
+        padding: 0 0.5em;
+    }
 
-#li1 {
-    color: rgba(255, 204, 0, 1);
-    font-weight: bolder;
-}
+    #li1 {
+        color: rgba(255, 204, 0, 1);
+        font-weight: bolder;
+    }
 
-span {
-    margin: 0;
-}
+    span {
+        margin: 0;
+    }
 </style>
 
 <body id="page-top">
@@ -116,8 +114,7 @@ span {
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center"
-                href="index.php?controller=homeAdmin">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php?controller=homeAdmin">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-user-cog"></i>
                 </div>
@@ -240,27 +237,13 @@ span {
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                                <img class="img-profile rounded-circle" src="img/undraw_profile.svg" />
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 lead">
+                                    <?php print_r($_SESSION['admin']['maadmin']) ?>
+                                </span>
                             </a>
                             <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Activity Log
-                                </a>
-                                <div class="dropdown-divider"></div>
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
@@ -283,9 +266,9 @@ span {
                             <select class="form-control" name="kythi" id="kythi">
                                 <option value="...">...</option>
                                 <?php foreach ($kythi as $key => $value) : ?>
-                                <option value="<?= $value->getMaKyThi() ?>">
-                                    <?= $value->getTenKyThi() ?>
-                                </option>
+                                    <option value="<?= $value->getMaKyThi() ?>">
+                                        <?= $value->getTenKyThi() ?>
+                                    </option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
@@ -305,79 +288,67 @@ span {
                                 <button class="btn btn-outline-warning" id="dlpassword">
                                     Tải mật khẩu các thí sinh trong phòng
                                 </button>
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal">
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                     THÊM MỚI
                                 </button>
                             </div>
                             <!-- Modal -->
-                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                                aria-hidden="true">
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="exampleModalLabel">Thí sinh</h5>
-                                            <button type="button" onclick="reload()" class="btn-close"
-                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                            <button type="button" onclick="reload()" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
                                             <form name="update" class="w-100 text-black g-3" id="update" method="post">
                                                 <div class="row ">
                                                     <div class="mb-12 col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
                                                         <label class="form-label h5 fw-bolder">Số báo danh</label>
-                                                        <input type="text" name="sbd" id="sbd"
-                                                            class="form-control text-dark border-dark-subtle" value="">
+                                                        <input type="text" name="sbd" id="sbd" class="form-control text-dark border-dark-subtle" value="">
                                                     </div>
                                                     <div class="mb-12 col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
                                                         <label class="form-label h5 fw-bolder">Tên phòng thi</label>
-                                                        <input type="text" name="phongthi" id="phongthi"
-                                                            class="form-control text-dark border-dark-subtle" value="">
+                                                        <input type="text" name="phongthi" id="phongthi" class="form-control text-dark border-dark-subtle" value="">
                                                     </div>
                                                 </div>
                                                 <div class="row mt-3">
                                                     <div class="mb-12 col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
                                                         <label class="form-label h5 fw-bolder">Họ, tên đệm</label>
-                                                        <input type="text" name="hodem" id="hodem"
-                                                            class="form-control text-dark border-dark-subtle" value="">
+                                                        <input type="text" name="hodem" id="hodem" class="form-control text-dark border-dark-subtle" value="">
                                                     </div>
                                                     <div class="mb-12 col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
                                                         <label class="form-label h5 fw-bolder">Tên học viên</label>
-                                                        <input type="text" name="ten" id="ten"
-                                                            class="form-control text-dark border-dark-subtle" value="">
+                                                        <input type="text" name="ten" id="ten" class="form-control text-dark border-dark-subtle" value="">
                                                     </div>
                                                 </div>
 
                                                 <div class="row mt-3">
                                                     <div class="mb-12 col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
                                                         <label class="form-label h5 fw-bolder">Ngày sinh</label>
-                                                        <input type="text" name="ns" id="ns"
-                                                            class="form-control text-dark border-dark-subtle" value="">
+                                                        <input type="text" name="ns" id="ns" class="form-control text-dark border-dark-subtle" value="">
                                                     </div>
                                                     <div class="mb-12 col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
                                                         <label class="form-label h5 fw-bolder">Nơi sinh</label>
-                                                        <input type="text" name="noisinh" id="noisinh"
-                                                            class="form-control text-dark border-dark-subtle" value="">
+                                                        <input type="text" name="noisinh" id="noisinh" class="form-control text-dark border-dark-subtle" value="">
                                                     </div>
                                                 </div>
 
                                                 <div class="row mt-3">
                                                     <div class="mb-12 col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                         <label class="form-label h5 fw-bolder">Mã đơn vị</label>
-                                                        <input type="text" name="madonvi" id="madonvi"
-                                                            class="form-control text-dark border-dark-subtle" value="">
+                                                        <input type="text" name="madonvi" id="madonvi" class="form-control text-dark border-dark-subtle" value="">
                                                     </div>
                                                     <div class="mb-12 col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                         <label class="form-label h5 fw-bolder">Tên đơn vị</label>
-                                                        <input type="text" name="tendonvi" id="tendonvi"
-                                                            class="form-control text-dark border-dark-subtle" value="">
+                                                        <input type="text" name="tendonvi" id="tendonvi" class="form-control text-dark border-dark-subtle" value="">
                                                     </div>
                                                 </div>
                                                 <hr>
                                                 <div class="row d-flex justify-content-center">
 
                                                     <div class="custom-file w-25">
-                                                        <input type="file" class="custom-file-input" id="pictureprofile"
-                                                            name="pictureprofile" accept="image/jpeg, image/png">
+                                                        <input type="file" class="custom-file-input" id="pictureprofile" name="pictureprofile" accept="image/jpeg, image/png">
                                                         <label class="custom-file-label" for="pictureprofile">
                                                             Ảnh đại diện <i class="fas fa-upload"></i>
                                                         </label>
@@ -395,10 +366,8 @@ span {
 
                                         </div>
                                         <div class="modal-footer" id='control_thisinh'>
-                                            <button type="button" onclick="reload()" class="btn btn-secondary"
-                                                data-bs-dismiss="modal">Close</button>
-                                            <button type="button" id="add" class="btn btn-success"
-                                                data-bs-dismiss="modal">Add</button>
+                                            <button type="button" onclick="reload()" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="button" id="add" class="btn btn-success" data-bs-dismiss="modal">Add</button>
                                         </div>
                                     </div>
                                 </div>
@@ -431,8 +400,7 @@ span {
                                     </tfoot>
                                     <tbody class="thb" id="thisinh">
 
-                                        <td valign="top" style="text-align: center;" colspan="8"
-                                            class="dataTables_empty">
+                                        <td valign="top" style="text-align: center;" colspan="8" class="dataTables_empty">
                                             No data available in table</td>
                                     </tbody>
                                 </table>
@@ -461,8 +429,7 @@ span {
                                 </label>
                                 <div class="row d-flex justify-content-center">
                                     <div class="custom-file w-25">
-                                        <input type="file" class="custom-file-input" id="uploads" name="upf"
-                                            accept=".xlsx, .xls, .csv">
+                                        <input type="file" class="custom-file-input" id="uploads" name="upf" accept=".xlsx, .xls, .csv">
                                         <label class="custom-file-label" for="pictureprofile">
                                             Tải file excel <i class="fas fa-upload ml-1"></i>
                                         </label>
@@ -545,8 +512,7 @@ span {
     </a>
 
     <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -562,7 +528,7 @@ span {
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">
                         Cancel
                     </button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="index.php?controller=logout">Logout</a>
                 </div>
             </div>
         </div>
@@ -576,8 +542,6 @@ span {
 
     <!-- Custom scripts for all pages-->
     <script src="assets/js/sb-admin-2.min.js"></script>
-    <script src="assets/vendor/jquery/jquery.min.js"></script>
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Page level plugins -->
     <script src="assets/vendor/datatables/jquery.dataTables.min.js"></script>

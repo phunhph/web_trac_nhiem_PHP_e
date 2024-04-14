@@ -184,16 +184,15 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid">
+                <div class="container-fluid min-vh-100">
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Tình trạng thi</h1>
                     </div>
-                    <div>
-                        <div class="phanquyen mb-2">
-                            <span style="margin-left:2em;">Chọn kỳ thi</span>
-                            <select name="kythi" id="kythi"
-                                style="margin-top:0em; width:30%;height:2em; margin-left:2em;">
+                    <div class="card shadow mb-3">
+                        <div class="card-body">
+                            <p class="h5 mb-2 text-gray-800">Chọn kỳ thi</p>
+                            <select name="kythi" id="kythi" class="form-control">
                                 <option value="all">--Chọn kỳ thi--</option>
                                 <?php foreach ($kythi as $key => $value) : ?>
                                 <option value="<?= $value->getMaKyThi() ?>">
@@ -202,83 +201,85 @@
                                 <?php endforeach; ?>
                             </select>
                         </div>
-                        <div class="p33">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="danhsachdiem" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr class="bg-gradient-primary text-white">
+                                            <td>STT</td>
+                                            <td>SBD</td>
+                                            <td>Địa chỉ máy</td>
+                                            <td>Họ và tên</td>
+                                            <td>Môn thi</td>
+                                            <td>Bắt đầu thi</td>
+                                            <td>Kết thúc</td>
+                                            <td>Tình trạng</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="renderfull"></tbody>
+                                </table>
+                            </div>
+                        </div>
 
-                            <table class='tb1' border=0>
-                                <tr style='font-size:14px; background:#4267b2;color:white;'>
-                                    <td>STT</td>
-                                    <td>SBD</td>
-                                    <td>Địa chỉ máy</td>
-                                    <td>Họ và tên</td>
-                                    <td>Môn thi</td>
-                                    <td>Bắt đầu thi</td>
-                                    <td>Kết thúc</td>
-                                    <td>Tình trạng</td>
-                                </tr>
-                                <tbody id="renderfull"></tbody>
-                            </table>
+                    </div>
+
+                    <!-- /.container-fluid -->
+                </div>
+                <!-- End of Main Content -->
+
+                <!-- Footer -->
+                <footer class="sticky-footer bg-white">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">
+                            <span> Hệ thống trắc nhiệm &copy; trực tuyến </span>
                         </div>
                     </div>
-
-                </div>
-
-                <!-- /.container-fluid -->
+                </footer>
+                <!-- End of Footer -->
             </div>
-            <!-- End of Main Content -->
+            <!-- End of Content Wrapper -->
+        </div>
+        <!-- End of Page Wrapper -->
 
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span> Hệ thống trắc nhiệm &copy; trực tuyến </span>
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
+
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Select "Logout" below if you are ready to end your current session.
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">
+                            Cancel
+                        </button>
+                        <a class="btn btn-primary" href="login.html">Logout</a>
                     </div>
                 </div>
-            </footer>
-            <!-- End of Footer -->
-        </div>
-        <!-- End of Content Wrapper -->
-    </div>
-    <!-- End of Page Wrapper -->
-
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Select "Logout" below if you are ready to end your current session.
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">
-                        Cancel
-                    </button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
-                </div>
             </div>
         </div>
-    </div>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="assets/vendor/jquery/jquery.min.js"></script>
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- Bootstrap core JavaScript-->
+        <script src="assets/vendor/jquery/jquery.min.js"></script>
+        <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+        <!-- Core plugin JavaScript-->
+        <script src="assets/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="assets/js/sb-admin-2.min.js"></script>
-    <script src="assets/js/tinhtrangthi.js"></script>
+        <!-- Custom scripts for all pages-->
+        <script src="assets/js/sb-admin-2.min.js"></script>
+        <script src="assets/js/tinhtrangthi.js"></script>
 </body>
 
 </html>

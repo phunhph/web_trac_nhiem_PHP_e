@@ -100,14 +100,14 @@ $("#masbd").change(function (e) {
 function renderthongthiketqua(data) {
   var html = ``;
   if (data.length > 0) {
-    html = `
+    html = ` <tr>
     <td>${document.getElementById("masbd").value}</td>
     <td>${data[0].hodem} ${data[0].ten}</td>
     <td>${data[0].thoigianthi}</td>
     <td>${data[0].thoigianketthuc}</td>
-    <td>${data[0].socaudung}</td>
-    <td style="font-size:25px; font-weight:bold; color:red; margin-top:0.1em; margin-bottom:0.5em;">
-    ${data[0].diem}/10</td>`;
+    <td class="text-center">${data[0].socaudung}</td>
+    <td class="h5 text-danger fw-bold text-center">
+    ${data[0].diem}/10</td> </tr>`;
   }
   document.getElementById("thong_tin").innerHTML = html;
 }
@@ -143,118 +143,136 @@ function renderbaithifull(data) {
   var dem = 1;
   if (data.length > 0) {
     data.forEach((element) => {
-      console.log(element);
-      html += `<div class='cauhoi'>
-      ${element.stt}:
-      </div>
-      <div class='tencauhoi'>
-      ${element.cauhoi}
-      </div>`;
-      html += `<div class='dapan'>
-      <table border='1' class='tabledapan'>
-          <tr>
-              <th style='color:blue'>Câu trả lời của bạn</th>
-              <th style='color:blue'>Câu trả lời đúng</th>
-          </tr>
-          <tr>
-              <td style='color:blue;background:white;'>`;
+      html += `<div class="card-body ">
+      <p class="h5 ml-0 text-gray">
+      ${element.stt}: <span class="text-dark">${element.cauhoi}</span>
+      </p>
+
+      <div class="table-responsive">
+          <table class="table table-bordered" id="" width="100%" cellspacing="0">
+              <thead>
+                  <tr>
+                      <th class="text-primary ">Câu trả lời của bạn</th>
+                      <th class="text-success">Câu trả lời đúng</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                       <td class="w-50">`;
+
       if (element.temp == element.padung) {
         switch (element.temp) {
           case "A":
             html += `<label>
-            <input type='radio' checked>
+            <input type="radio">
             ${element.temp}. ${element.paA}
-            <img src='assets/image/approve.png' style='padding-left:25px;'>
-            </label>`;
+            <img src='assets/image/approve.png'>
+        </label> </td>`;
             break;
           case "B":
-            html += `<label>
-            <input type='radio' checked>
+            html += `
+            <label>
+            <input type="radio">
             ${element.temp}. ${element.paB}
-            <img src='assets/image/approve.png' style='padding-left:25px;'>
-            </label>`;
+            <img src='assets/image/approve.png'>
+        </label> </td>`;
             break;
           case "C":
-            html += `<label>
-            <input type='radio' checked>
+            html += `
+            <label>
+            <input type="radio">
             ${element.temp}. ${element.paC}
-            <img src='assets/image/approve.png' style='padding-left:25px;'>
-            </label>`;
+            <img src='assets/image/approve.png'>
+        </label> </td>`;
             break;
           case "D":
-            html += `<label>
-            <input type='radio' checked>
+            html += `
+            <label>
+            <input type="radio">
             ${element.temp}. ${element.paD}
-            <img src='assets/image/approve.png' style='padding-left:25px;'>
-            </label>`;
+            <img src='assets/image/approve.png'>
+        </label> </td>`;
             break;
         }
       } else if (element.temp == null) {
-        html += `<label>
+        html += `
+        <label>
         Bạn không trả lời câu hỏi này
-        </label>`;
+        </label></td>`;
       } else {
         switch (element.temp) {
           case "A":
             html += `<label>
-            <input type='radio'>
+            <input type="radio">
             ${element.temp}. ${element.paA}
-            <img src='assets/image/false.png' style='padding-left:25px;'>
-            </label>`;
+            <img src='assets/image/false.png'>
+        </label> </td>`;
             break;
           case "B":
-            html += `<label>
-            <input type='radio'>
+            html += `
+            <label>
+            <input type="radio">
             ${element.temp}. ${element.paB}
-            <img src='assets/image/false.png' style='padding-left:25px;'>
-            </label>`;
+            <img src='assets/image/false.png'>
+        </label> </td>`;
             break;
           case "C":
-            html += `<label>
-            <input type='radio'>
+            html += `
+            <label>
+            <input type="radio">
             ${element.temp}. ${element.paC}
-            <img src='assets/image/false.png' style='padding-left:25px;'>
-            </label>`;
+            <img src='assets/image/false.png'>
+        </label> </td>`;
             break;
           case "D":
-            html += `<label>
-            <input type='radio'>
+            html += `
+            <label>
+            <input type="radio">
             ${element.temp}. ${element.paD}
-            <img src='assets/image/false.png' style='padding-left:25px;'>
-            </label>`;
+            <img src='assets/image/false.png'>
+        </label> </td>`;
             break;
         }
       }
-      html += ` </td>
-      <td style='background:white;'>`;
       if (element.padung == "A") {
-        html += `<label>
-        <input type='radio' checked>
-        ${element.padung}. ${element.paA}
-        </label>`;
+        html += `
+         <td class="w-50">
+            <label>
+             <input type="radio" checked="">
+                ${element.padung}. ${element.paA}
+            </label>
+        </td>
+        `;
       }
       if (element.padung == "B") {
-        html += `<label>
-        <input type='radio' checked>
-        ${element.padung}. ${element.paB}
-        </label>`;
+        html += ` <td class="w-50">
+        <label>
+         <input type="radio" checked="">
+         ${element.padung}. ${element.paB}
+        </label>
+    </td>`;
       }
       if (element.padung == "C") {
-        html += `<label>
-        <input type='radio' checked>
-        ${element.padung}. ${element.paC}
-        </label>`;
+        html += ` <td class="w-50">
+        <label>
+         <input type="radio" checked="">
+         ${element.padung}. ${element.paC}
+        </label>
+    </td>`;
       }
       if (element.padung == "D") {
-        html += `<label>
-        <input type='radio' checked>
-        ${element.padung}. ${element.paD}
-        </label>`;
+        html += ` <td class="w-50">
+        <label>
+         <input type="radio" checked="">
+         ${element.padung}. ${element.paD}
+        </label>
+    </td>`;
       }
-      html += `</td>
-      </tr>
+      html += `</tr>
+      </tbody>
   </table>
-  </div></div>`; // Closing div added here
+</div>
+</div>`;
     });
   }
   document.getElementById("chitietbailam").innerHTML = html;

@@ -75,6 +75,10 @@ class LoginController
     }
     public function logout()
     {
-        echo "login view";
+
+        session_destroy();
+
+        header('location: index.php');
+        exit;
     }
 }
