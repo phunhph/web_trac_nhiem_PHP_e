@@ -24,7 +24,7 @@
     <!-- Page Wrapper -->
     <div id="wrapper" class="shadow">
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav bg-gradient-warning sidebar sidebar-dark accordion" id="accordionSidebar">
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php?controller=homeAdmin">
                 <div class="sidebar-brand-icon rotate-n-15">
@@ -231,7 +231,7 @@
                                             <td id="sll" colspan="3">Số lượng sinh viên: 0</td>
 
                                             <td colspan="3" class="text-center">
-                                                <button type="button" id="sb" name="sb" class="btn btn-outline-success">Cập
+                                                <button type="button" id="sb" name="sb" class="btn  btn-outline-warning">Cập
                                                     nhật</button>
                                             </td>
 
@@ -287,7 +287,7 @@
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">
                         Cancel
                     </button>
-                    <a class="btn btn-primary" href="index.php?controller=logout">Logout</a>
+                    <a class="btn btn-warning" href="index.php?controller=logout">Logout</a>
                 </div>
             </div>
         </div>

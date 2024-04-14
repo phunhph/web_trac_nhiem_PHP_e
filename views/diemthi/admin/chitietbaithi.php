@@ -32,7 +32,7 @@ td {
     <!-- Page Wrapper -->
     <div id="wrapper">
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav bg-gradient-warning sidebar sidebar-dark accordion" id="accordionSidebar">
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center"
                 href="index.php?controller=homeAdmin">
@@ -210,7 +210,7 @@ td {
                             </select>
                         </div>
                         <div class="card-body ">
-                            <button onClick="printContent();" class="btn btn-outline-success w-100" id="print">In bài
+                            <button onClick="printContent();" class="btn btn-outline-warning w-100" id="print">In bài
                                 thi</button>
                         </div>
                     </div>
@@ -285,7 +285,7 @@ td {
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">
                         Cancel
                     </button>
-                    <a class="btn btn-primary" href="index.php?controller=logout">Logout</a>
+                    <a class="btn btn-warning" href="index.php?controller=logout">Logout</a>
                 </div>
             </div>
         </div>

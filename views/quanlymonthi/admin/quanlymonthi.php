@@ -34,7 +34,7 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav bg-gradient-warning sidebar sidebar-dark accordion" id="accordionSidebar">
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center"
                 href="index.php?controller=homeAdmin">
@@ -205,7 +205,7 @@
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between mb-2">
                                         <p class="h5 text-gray-600">DANH MỤC MÔN THI</p>
-                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal"
                                             data-bs-target="#exampleModal">
                                             THÊM MỚI
                                         </button>
@@ -325,7 +325,7 @@
                                     <div class="d-flex justify-content-between mb-2">
                                         <p class="h5 mb-2 text-gray-600">DANH MỤC NỘI DUNG THI</p>
                                         <!-- Button trigger modal -->
-                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                        <button type="button" class="btn btn-warning " data-bs-toggle="modal"
                                             data-bs-target="#exampleModal01">
                                             THÊM MỚI
                                         </button>
@@ -469,7 +469,7 @@
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">
                         Cancel
                     </button>
-                    <a class="btn btn-primary" href="index.php?controller=logout">Logout</a>
+                    <a class="btn btn-warning" href="index.php?controller=logout">Logout</a>
                 </div>
             </div>
         </div>

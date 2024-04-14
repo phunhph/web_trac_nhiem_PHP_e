@@ -112,7 +112,7 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav bg-gradient-warning sidebar sidebar-dark accordion" id="accordionSidebar">
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php?controller=homeAdmin">
                 <div class="sidebar-brand-icon rotate-n-15">
@@ -288,7 +288,7 @@
                                 <button class="btn btn-outline-warning" id="dlpassword">
                                     Tải mật khẩu các thí sinh trong phòng
                                 </button>
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                     THÊM MỚI
                                 </button>
                             </div>
@@ -434,7 +434,7 @@
                                             Tải file excel <i class="fas fa-upload ml-1"></i>
                                         </label>
                                     </div>
-                                    <button type="submit" class="ml-3 btn btn-primary" id="Submit">Tải lên</button>
+                                    <button type="submit" class="ml-3 btn btn-warning" id="Submit">Tải lên</button>
                                 </div>
 
                             </form>
@@ -528,7 +528,7 @@
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">
                         Cancel
                     </button>
-                    <a class="btn btn-primary" href="index.php?controller=logout">Logout</a>
+                    <a class="btn btn-warning" href="index.php?controller=logout">Logout</a>
                 </div>
             </div>
         </div>
