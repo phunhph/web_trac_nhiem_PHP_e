@@ -12,7 +12,6 @@ class HomeController
     }
     public function index()
     {
-
         if (!isset($_SESSION['user_info'])) {
             if (!isset($_SESSION['admin'])) {
                 header('Location: index.php');
@@ -29,30 +28,66 @@ class HomeController
     }
     public function getDataAPI()
     {
-        $kythi = $this->adminDAO->getKythi();
-        echo json_encode($kythi, JSON_UNESCAPED_UNICODE);
-        exit();
+        if (!isset($_SESSION['user_info'])) {
+            if (!isset($_SESSION['admin'])) {
+                header('Location: index.php');
+                exit();
+            } else {
+                $kythi = $this->adminDAO->getKythi();
+                echo json_encode($kythi, JSON_UNESCAPED_UNICODE);
+                exit();
+            }
+        } else {
+            header('location: index.php?controller=login&action=' . $_SESSION['action_login']);
+        }
     }
     public function updateKyThi()
     {
-        // Nhận dữ liệu từ phía front-end
-        $data = json_decode(file_get_contents("php://input"));
-        $this->adminDAO->updateKythi($data->makythi, $data->tgbatdua, $data->tgketthuc);
-        exit();
+        if (!isset($_SESSION['user_info'])) {
+            if (!isset($_SESSION['admin'])) {
+                header('Location: index.php');
+                exit();
+            } else {
+                // Nhận dữ liệu từ phía front-end
+                $data = json_decode(file_get_contents("php://input"));
+                $this->adminDAO->updateKythi($data->makythi, $data->tgbatdua, $data->tgketthuc);
+                exit();
+            }
+        } else {
+            header('location: index.php?controller=login&action=' . $_SESSION['action_login']);
+        }
     }
     public function createKyThi()
     {
-        // Nhận dữ liệu từ phía front-end
-        $data = json_decode(file_get_contents("php://input"));
-        $this->adminDAO->createKyThi($data->makythi, $data->tenkythi, $data->tgbatdua, $data->tgketthuc);
-        exit();
+        if (!isset($_SESSION['user_info'])) {
+            if (!isset($_SESSION['admin'])) {
+                header('Location: index.php');
+                exit();
+            } else {
+                // Nhận dữ liệu từ phía front-end
+                $data = json_decode(file_get_contents("php://input"));
+                $this->adminDAO->createKyThi($data->makythi, $data->tenkythi, $data->tgbatdua, $data->tgketthuc);
+                exit();
+            }
+        } else {
+            header('location: index.php?controller=login&action=' . $_SESSION['action_login']);
+        }
     }
 
     public function deleteKyThi()
     {
-        $data = json_decode(file_get_contents("php://input"));
-        $this->adminDAO->deleteKyThi($data->id);
-        echo json_encode($data, JSON_UNESCAPED_UNICODE);
-        exit();
+        if (!isset($_SESSION['user_info'])) {
+            if (!isset($_SESSION['admin'])) {
+                header('Location: index.php');
+                exit();
+            } else {
+                $data = json_decode(file_get_contents("php://input"));
+                $this->adminDAO->deleteKyThi($data->id);
+                echo json_encode($data, JSON_UNESCAPED_UNICODE);
+                exit();
+            }
+        } else {
+            header('location: index.php?controller=login&action=' . $_SESSION['action_login']);
+        }
     }
 }

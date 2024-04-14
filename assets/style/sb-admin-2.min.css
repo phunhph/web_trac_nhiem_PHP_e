@@ -15,7 +15,7 @@
   --pink: #e83e8c;
   --red: #e74a3b;
   --orange: #fd7e14;
-  --yellow: #f6c23e;
+  --yellow: #ff8b13;
   --green: #1cc88a;
   --teal: #20c9a6;
   --cyan: #36b9cc;
@@ -26,7 +26,7 @@
   --secondary: #858796;
   --success: #1cc88a;
   --info: #36b9cc;
-  --warning: #f6c23e;
+  --warning: #ff8b13;
   --danger: #e74a3b;
   --light: #f8f9fc;
   --dark: #5a5c69;
@@ -2376,33 +2376,33 @@ fieldset:disabled a.btn {
 }
 .btn-warning {
   color: #fff;
-  background-color: #f6c23e;
-  border-color: #f6c23e;
+  background-color: #ff8b13;
+  border-color: #ff8b13;
 }
 .btn-warning:hover {
   color: #fff;
-  background-color: #f4b619;
-  border-color: #f4b30d;
+  background-color: #ff8b13;
+  border-color: #ff8b13;
 }
 .btn-warning.focus,
 .btn-warning:focus {
   color: #fff;
-  background-color: #f4b619;
-  border-color: #f4b30d;
+  background-color: #ff8b13;
+  border-color: #ff8b13;
   box-shadow: 0 0 0 0.2rem rgba(247, 203, 91, 0.5);
 }
 .btn-warning.disabled,
 .btn-warning:disabled {
   color: #fff;
-  background-color: #f6c23e;
-  border-color: #f6c23e;
+  background-color: #ff8b13;
+  border-color: #ff8b13;
 }
 .btn-warning:not(:disabled):not(.disabled).active,
 .btn-warning:not(:disabled):not(.disabled):active,
 .show > .btn-warning.dropdown-toggle {
   color: #fff;
-  background-color: #f4b30d;
-  border-color: #e9aa0b;
+  background-color: #ff8b13;
+  border-color: #ff8b13;
 }
 .btn-warning:not(:disabled):not(.disabled).active:focus,
 .btn-warning:not(:disabled):not(.disabled):active:focus,
@@ -2635,13 +2635,13 @@ fieldset:disabled a.btn {
   box-shadow: 0 0 0 0.2rem rgba(54, 185, 204, 0.5);
 }
 .btn-outline-warning {
-  color: #f6c23e;
-  border-color: #f6c23e;
+  color: #ff8b13;
+  border-color: #ff8b13;
 }
 .btn-outline-warning:hover {
   color: #fff;
-  background-color: #f6c23e;
-  border-color: #f6c23e;
+  background-color: #ff8b13;
+  border-color: #ff8b13;
 }
 .btn-outline-warning.focus,
 .btn-outline-warning:focus {
@@ -2649,15 +2649,15 @@ fieldset:disabled a.btn {
 }
 .btn-outline-warning.disabled,
 .btn-outline-warning:disabled {
-  color: #f6c23e;
+  color: #ff8b13;
   background-color: transparent;
 }
 .btn-outline-warning:not(:disabled):not(.disabled).active,
 .btn-outline-warning:not(:disabled):not(.disabled):active,
 .show > .btn-outline-warning.dropdown-toggle {
   color: #fff;
-  background-color: #f6c23e;
-  border-color: #f6c23e;
+  background-color: #ff8b13;
+  border-color: #ff8b13;
 }
 .btn-outline-warning:not(:disabled):not(.disabled).active:focus,
 .btn-outline-warning:not(:disabled):not(.disabled):active:focus,
@@ -4652,7 +4652,7 @@ a.badge-info:focus {
 }
 .badge-warning {
   color: #fff;
-  background-color: #f6c23e;
+  background-color: #ff8b13;
 }
 a.badge-warning:focus,
 a.badge-warning:hover {
@@ -5997,7 +5997,7 @@ button.bg-info:hover {
   background-color: #2a96a5 !important;
 }
 .bg-warning {
-  background-color: #f6c23e !important;
+  background-color: #ff8b13 !important;
 }
 a.bg-warning:focus,
 a.bg-warning:hover,
@@ -6081,7 +6081,7 @@ button.bg-dark:hover {
   border-color: #36b9cc !important;
 }
 .border-warning {
-  border-color: #f6c23e !important;
+  border-color: #ff8b13 !important;
 }
 .border-danger {
   border-color: #e74a3b !important;
@@ -8916,7 +8916,7 @@ a.text-info:hover {
   color: #258391 !important;
 }
 .text-warning {
-  color: #f6c23e !important;
+  color: #ff8b13 !important;
 }
 a.text-warning:focus,
 a.text-warning:hover {
@@ -9184,8 +9184,8 @@ a:focus {
   background-size: cover;
 }
 .bg-gradient-warning {
-  background-color: #f6c23e;
-  background-image: linear-gradient(180deg, #f6c23e 10%, #dda20a 100%);
+  background-color: #ff8b13;
+  background-image: linear-gradient(180deg, #ff8b13 10%, #ff8b13 100%);
   background-size: cover;
 }
 .bg-gradient-danger {
@@ -9299,10 +9299,10 @@ a:focus {
   border-bottom: 0.25rem solid #36b9cc !important;
 }
 .border-left-warning {
-  border-left: 0.25rem solid #f6c23e !important;
+  border-left: 0.25rem solid #ff8b13 !important;
 }
 .border-bottom-warning {
-  border-bottom: 0.25rem solid #f6c23e !important;
+  border-bottom: 0.25rem solid #ff8b13 !important;
 }
 .border-left-danger {
   border-left: 0.25rem solid #e74a3b !important;

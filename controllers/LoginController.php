@@ -43,11 +43,25 @@ class LoginController
             header('location: index.php?controller=login&action=' . $acstion);
             exit();
         } else {
-            if (isset($_GET['action'])) {
+            if (!isset($_SESSION['user_info'])) {
+                if (!isset($_SESSION['admin'])) {
+
+                    require_once 'views/login/login.php';
+                } else {
+                    header('location: index.php?controller=homeAdmin');
+                }
             } else {
-                session_unset();
+                if (isset($_GET['action'])) {
+                    $_SESSION['action_login'] = $_GET['action'];
+                } else {
+                    if (!isset($_SESSION['action_login'])) {
+                        session_unset();
+                    } else {
+                        header('location: index.php?controller=login&action=' . $_SESSION['action_login']);
+                    }
+                }
+                require_once 'views/login/login.php';
             }
-            require_once 'views/login/login.php';
         }
     }
     public function login()
@@ -75,6 +89,10 @@ class LoginController
     }
     public function logout()
     {
-        echo "login view";
+
+        session_destroy();
+
+        header('location: index.php');
+        exit;
     }
 }

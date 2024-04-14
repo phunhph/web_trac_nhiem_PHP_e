@@ -32,7 +32,7 @@
             <div style="font-size:11px;margin-left:0.6em;">Màu đỏ: Câu trả lời sai</div>
             <div style="font-size:11px;margin-left:0.6em;">Màu vàng: Câu hỏi không trả lời</div>
         </div>
-        <button type="submit" name="logout" id="redu">Đăng xuất</button>
+        <button type="submit" name="logout" id="redu"><a href="index.php?controller=logout">Đăng xuất</a></button>
     </div>
     <!--End phần danh sách câu hỏi-->
 
