@@ -27,7 +27,6 @@ class SoanCauTrucDeController
     }
     public function gettimeandnumber()
     {
-
         if (!isset($_SESSION['user_info'])) {
             if (!isset($_SESSION['admin'])) {
                 header('Location: index.php');
