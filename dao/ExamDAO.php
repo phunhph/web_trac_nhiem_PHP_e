@@ -6,6 +6,7 @@ require_once 'models/DeThiProfileModel.php';
 require_once 'models/CauhoiModel.php';
 require_once 'models/DeThiModel.php';
 require_once 'models/DiemModel.php';
+require_once 'models/KyThiModels.php';
 class ExamDAO
 {
     private $db;
@@ -15,6 +16,20 @@ class ExamDAO
         $this->db = $dbConnection->getConnection();
     }
     // lay mon thi 
+    public function getKythi($sbd)
+    {
+        $query = "SELECT DISTINCT kythi.* FROM `kythi` JOIN hocvien ON hocvien.makythi = kythi.makythi WHERE hocvien.sbd = :sbd";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':sbd', $sbd);
+        $stmt->execute();
+        $kythis = array();
+        while ($row = $stmt->fetch(\PDO::FETCH_OBJ)) {
+            $kythi = new KyThi($row->makythi, $row->tenkythi, $row->tgbatdau, $row->tgketthuc);
+            $kythis[] = $kythi;
+        }
+        return $kythis;
+    }
+
     public function getModun($sbd)
     {
         $query = "SELECT modun.mamodun as 'mamodun', tenmodun, batdau, ketthuc FROM modun JOIN allowexam ON modun.mamodun = allowexam.mamodun WHERE allowexam.sbd = :sbd AND allowexam.allow = 'C'";

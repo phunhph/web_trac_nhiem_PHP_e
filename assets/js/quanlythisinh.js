@@ -207,46 +207,32 @@ function crud() {
       )
         alert("Bạn cần nhập đủ thông tin!");
       else {
-        var data = {
-          sbd: a,
-          hodem: b,
-          ten: c,
-          noisinh: document.getElementById("noisinh").value,
-          ngaysinh: d,
-          madonvi: e,
-          tendonvi: f,
+        var dataIn = {
           phongthi: g,
           kythi: document.getElementById("kythi").value,
         };
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "index.php?controller=createthisinh", true);
-        xhr.setRequestHeader(
-          "Content-Type",
-          "application/x-www-form-urlencoded"
-        );
-
-        xhr.onreadystatechange = function () {
-          if (xhr.readyState === XMLHttpRequest.DONE) {
-            if (xhr.status === 200) {
-              // console.log(xhr.responseText);
-              if (xhr.responseText === "true") {
-                alert(
-                  "Học viên đã tồn tại, lưu ý mã học viên không được trùng nhau"
-                );
-              } else {
-                var mes = "Thêm học viên thành công";
-                showSuccessMessage(mes);
-                getlop(data.kythi, data.phongthi);
-                getSinhVien(data.kythi, data.phongthi);
-                reload();
-              }
+        var form = document.getElementById("update");
+        var formData = new FormData(form);
+        formData.append("kythi", document.getElementById("kythi").value);
+        fetch("index.php?controller=createthisinh", {
+          method: "POST",
+          body: formData,
+        })
+          .then((response) => response.text())
+          .then((data) => {
+            if (data === "true") {
+              alert(
+                "Học viên đã tồn tại, lưu ý mã học viên không được trùng nhau"
+              );
             } else {
-              console.error("Lỗi:", xhr.status);
+              var mes = "Thêm học viên thành công";
+              showSuccessMessage(mes);
+              getlop(dataIn.kythi, dataIn.phongthi);
+              getSinhVien(dataIn.kythi, dataIn.phongthi);
+              reload();
             }
-          }
-        };
-
-        xhr.send(JSON.stringify(data));
+          })
+          .catch((error) => console.error("Lỗi:", error));
       }
     }
   });

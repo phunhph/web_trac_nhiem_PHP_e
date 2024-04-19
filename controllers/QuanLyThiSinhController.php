@@ -79,14 +79,33 @@ class QuanLyThiSinhController
                 }
                 $tempmk = $matkhau;
                 $matkhau = md5($matkhau);
-                $data = json_decode(file_get_contents("php://input"));
+                $data =  new stdClass();
+                $data->sbd = $_POST['sbd'];
+                $data->hodem = $_POST['hodem'];
+                $data->ten = $_POST['ten'];
+                $data->ngaysinh = $_POST['ns'];
+                $data->noisinh = $_POST['noisinh'];
+                $data->kythi = $_POST['kythi'];
+                $data->madonvi = $_POST['madonvi'];
+                $data->tendonvi = $_POST['tendonvi'];
+                $data->phongthi = $_POST['phongthi'];
+                $data->img = null;
 
+                if (isset($_FILES['pictureprofile'])) {
+                    $uploadedFile = $_FILES['pictureprofile'];
+                    $tempName = $uploadedFile['tmp_name'];
+                    $originalName = $uploadedFile['name'];
+                    $extension = pathinfo($originalName, PATHINFO_EXTENSION);
+                    $newFileName = "assets/image/user/" . $data->sbd . "." . $extension;
+                    move_uploaded_file($tempName, $newFileName);
+                    $data->img =  $newFileName;
+                }
                 $result = $this->quanlythisinhDAO->getThiSinhById($data->sbd);
                 $donvi  = $this->quanlythisinhDAO->getMaDonVi($data->madonvi);
                 if ($donvi) {
                     if ($result) {
                     } else {
-                        $this->quanlythisinhDAO->createThiSinh($data->sbd, $data->hodem, $data->ten, $data->ngaysinh, $data->noisinh, $data->kythi, $data->madonvi, $data->phongthi, $matkhau, null);
+                        $this->quanlythisinhDAO->createThiSinh($data->sbd, $data->hodem, $data->ten, $data->ngaysinh, $data->noisinh, $data->kythi, $data->madonvi, $data->phongthi, $matkhau, $data->img);
                         $this->quanlythisinhDAO->createMatKhau($data->sbd, $tempmk);
                         $mamodun = $this->quanlythisinhDAO->getMaMoDun($data->kythi);
 
@@ -99,7 +118,7 @@ class QuanLyThiSinhController
                     $this->quanlythisinhDAO->createMaDonVi($data->madonvi, $data->tendonvi);
                     if ($result) {
                     } else {
-                        $this->quanlythisinhDAO->createThiSinh($data->sbd, $data->hodem, $data->ten, $data->ngaysinh, $data->noisinh, $data->kythi, $data->madonvi, $data->phongthi, $matkhau, null);
+                        $this->quanlythisinhDAO->createThiSinh($data->sbd, $data->hodem, $data->ten, $data->ngaysinh, $data->noisinh, $data->kythi, $data->madonvi, $data->phongthi, $matkhau, $data->img);
                         $this->quanlythisinhDAO->createMatKhau($data->sbd, $tempmk);
                         $mamodun = $this->quanlythisinhDAO->getMaMoDun($data->kythi);
 
@@ -465,5 +484,10 @@ class QuanLyThiSinhController
         } else {
             header('location: index.php?controller=login&action=' . $_SESSION['action_login']);
         }
+    }
+
+    public function getInfor()
+    {
+        require_once 'views/quanlythisinh/client/thongtin.php';
     }
 }

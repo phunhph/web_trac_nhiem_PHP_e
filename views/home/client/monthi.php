@@ -32,7 +32,8 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="index.php" href="#">Home</a>
+                                <a class="nav-link active" aria-current="index.php"
+                                    href="index.php?controller=home">Home</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="index.php?controller=bangDiem">Bảng điểm</a>
@@ -91,82 +92,48 @@
                 </button>
             </div>
         </header>
-        <div class="card shadow mt-3">
-            <div class="row pl-4 pe-4">
-                <div class="mb-6 col-lg-4 col-md-6 col-sm-6 mt-4">
+
+        <div class="card shadow mt-3 min-vh-20">
+            <div class="row pl-4 pe-4 pb-4">
+                <div class="d-sm-flex align-items-center justify-content-between mt-4">
+                    <h1 class="h3 mb-0 text-gray-500 fw-bolder">Danh sách kỳ thi</h1>
+                </div>
+                <?php foreach ($kythis as $key => $value) : ?>
+                <div class="mb-6 col-lg-4 col-md-6 col-sm-6 mt-3">
                     <div class="card shadow mb-0">
                         <div class="card-body">
-                            <h5 class="card-title">SP24_Hà Nội</h5>
+                            <h5 class="card-title"><?= $value->getTenkythi() ?></h5>
                             <h6 class="card-subtitle mb-2 text-body-secondary">1 Bài thi</h6>
-                            <p class="card-text">Thời gian kết thúc: 20-04-2024</p>
-                            <p class="card-text">Thời gian kết thúc: 20-04-2024</p>
+                            <p class="card-text">Thời gian bắt đầu: <?= $value->getTgbatdua() ?></p>
+                            <p class="card-text">Thời gian kết thúc: <?= $value->getTgketthuc() ?></p>
+
+                            <?php if (strtotime($value->getTgketthuc()) - time() >= 0) : ?>
                             <div class="progress" role="progressbar" aria-label="Info striped example"
                                 aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-                                <div class="progress-bar progress-bar-striped bg-info" style="width: 90%"></div>
+                                <div class="progress-bar progress-bar-striped bg-info"
+                                    style="width:  <?= ((time() - strtotime($value->getTgbatdua())) / (strtotime($value->getTgketthuc()) - strtotime($value->getTgbatdua()))) * 100 ?>%">
+                                </div>
                             </div>
                             <p class="d-inline-flex gap-1 mt-3">
-                                <button class="btn btn-outline-warning">Vào
-                                    kì thi</button>
+                                <button class="btn btn-outline-warning">Vào kỳ thi</button>
                             </p>
+                            <?php else : ?>
+                            <div class="progress" role="progressbar" aria-label="Info striped example"
+                                aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar progress-bar-striped bg-info" style="width: 100%">
+                                </div>
+                            </div>
+                            <p class="d-inline-flex gap-1 mt-3">
+                                <button class="btn btn-outline-dark" disabled
+                                    style="background-color: #f8f9fa; color: #6c757d;">Vào kỳ thi</button>
+                            </p>
+                            <?php endif ?>
                         </div>
                     </div>
                 </div>
-                <div class="mb-6 col-lg-4 col-md-6 col-sm-6 mt-4">
-                    <div class="card shadow mb-0">
-                        <div class="card-body">
-                            <h5 class="card-title">SP24_Hà Nội</h5>
-                            <h6 class="card-subtitle mb-2 text-body-secondary">1 Bài thi</h6>
-                            <p class="card-text">Thời gian kết thúc: 20-04-2024</p>
-                            <p class="card-text">Thời gian kết thúc: 20-04-2024</p>
-                            <div class="progress" role="progressbar" aria-label="Info striped example"
-                                aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-                                <div class="progress-bar progress-bar-striped bg-info" style="width: 90%"></div>
-                            </div>
-                            <p class="d-inline-flex gap-1 mt-3">
-                                <button class="btn btn-outline-warning">Vào
-                                    kì thi</button>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="mb-6 col-lg-4 col-md-6 col-sm-6 mt-4">
-                    <div class="card shadow mb-0">
-                        <div class="card-body">
-                            <h5 class="card-title">SP24_Hà Nội</h5>
-                            <h6 class="card-subtitle mb-2 text-body-secondary">1 Bài thi</h6>
-                            <p class="card-text">Thời gian kết thúc: 20-04-2024</p>
-                            <p class="card-text">Thời gian kết thúc: 20-04-2024</p>
-                            <div class="progress" role="progressbar" aria-label="Info striped example"
-                                aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-                                <div class="progress-bar progress-bar-striped bg-info" style="width: 90%"></div>
-                            </div>
-                            <p class="d-inline-flex gap-1 mt-3">
-                                <button class="btn btn-outline-warning">Vào
-                                    kì thi</button>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="mb-6 col-lg-4 col-md-6 col-sm-6 mt-4">
-                    <div class="card shadow mb-0">
-                        <div class="card-body">
-                            <h5 class="card-title">SP24_Hà Nội</h5>
-                            <h6 class="card-subtitle mb-2 text-body-secondary">1 Bài thi</h6>
-                            <p class="card-text">Thời gian kết thúc: 20-04-2024</p>
-                            <p class="card-text">Thời gian kết thúc: 20-04-2024</p>
-                            <div class="progress" role="progressbar" aria-label="Info striped example"
-                                aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-                                <div class="progress-bar progress-bar-striped bg-info" style="width: 90%"></div>
-                            </div>
-                            <p class="d-inline-flex gap-1 mt-3">
-                                <button class="btn btn-outline-warning">Vào
-                                    kì thi</button>
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                <?php endforeach ?>
             </div>
-            <nav aria-label="Page navigation example">
+            <!-- <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-center mt-3">
                     <li class="page-item">
                         <a class="page-link" href="#" aria-label="Previous">
@@ -182,7 +149,7 @@
                         </a>
                     </li>
                 </ul>
-            </nav>
+            </nav> -->
         </div>
         <footer class="sticky-footer bg-white">
             <div class="container my-auto">

@@ -624,4 +624,14 @@ class DiemThiController
             header('location: index.php?controller=login&action=' . $_SESSION['action_login']);
         }
     }
+
+    public function getBangDiem()
+    {
+        require_once 'views/diemthi/client/bangdiem.php';
+    }
+
+    public function getLichSu()
+    {
+        require_once 'views/diemthi/client/lichsu.php';
+    }
 }
