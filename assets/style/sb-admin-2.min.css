@@ -7019,6 +7019,14 @@ button.bg-dark:hover {
 .w-100 {
   width: 100% !important;
 }
+.w-i-100 {
+  width: 100% !important;
+}
+@media only screen and (min-width: 1200px) {
+  .w-100 {
+    width: 75% !important;
+  }
+}
 .w-auto {
   width: auto !important;
 }

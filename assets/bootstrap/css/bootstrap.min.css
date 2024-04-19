@@ -6205,6 +6205,11 @@ fieldset:disabled .btn {
 .w-100 {
   width: 100% !important;
 }
+@media only screen and (min-width: 768px) {
+  .w-100 {
+    width: 75% !important;
+  }
+}
 .w-auto {
   width: auto !important;
 }
