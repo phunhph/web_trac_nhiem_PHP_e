@@ -347,7 +347,7 @@ class ExamDAO
     public function CreatePaDung($sbd, $macauhoi, $ii, $mamonthi, $dapan)
     {
         $query = "INSERT INTO dethisinh (sbd, macauhoi, socau, padung, mamodun) VALUES (:sbd, :macauhoi, :socau, :dapan, :mamonthi)";
-        $cau = "cau " . $ii;
+        $cau = "Câu " . $ii;
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':sbd', $sbd);
         $stmt->bindParam(':macauhoi', $macauhoi);

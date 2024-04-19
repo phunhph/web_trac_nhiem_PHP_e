@@ -13,7 +13,9 @@
 
     <!-- Custom fonts for this template-->
     <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet" />
 
     <!-- Custom styles for this page -->
     <link href="assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
@@ -32,9 +34,10 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav bg-gradient-warning sidebar sidebar-dark accordion" id="accordionSidebar">
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php?controller=homeAdmin">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center"
+                href="index.php?controller=homeAdmin">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-user-cog"></i>
                 </div>
@@ -157,25 +160,15 @@
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                                <img class="img-profile rounded-circle" src="img/undraw_profile.svg" />
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 lead">
+                                    <?php print_r($_SESSION['admin']['maadmin']) ?>
+                                </span>
                             </a>
                             <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Activity Log
-                                </a>
-                                <div class="dropdown-divider"></div>
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
@@ -200,9 +193,9 @@
                                     <select class="form-control" name="kythi" id="kythi">
                                         <option value="...">...</option>
                                         <?php foreach ($kythi as $key => $value) : ?>
-                                            <option value="<?= $value->getMaKyThi() ?>">
-                                                <?= $value->getTenKyThi() ?>
-                                            </option>
+                                        <option value="<?= $value->getMaKyThi() ?>">
+                                            <?= $value->getTenKyThi() ?>
+                                        </option>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
@@ -212,17 +205,20 @@
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between mb-2">
                                         <p class="h5 text-gray-600">DANH MỤC MÔN THI</p>
-                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                            data-bs-target="#exampleModal">
                                             THÊM MỚI
                                         </button>
                                     </div>
                                     <!-- Modal -->
-                                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal fade" id="exampleModal" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="exampleModalLabel">Môn thi</h5>
-                                                    <button type="button" onclick="reloadmonthi()" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    <button type="button" onclick="reloadmonthi()" class="btn-close"
+                                                        data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
                                                     <form method="post" id="suamodun">
@@ -230,28 +226,36 @@
                                                             <div class="mb-12 col-lg-12 col-md-12 col-sm-12 csbd">
                                                                 <label class="form-label h5 fw-bolder">Mã môn
                                                                     thi</label>
-                                                                <input type='text' name='mmt' id='mmt' class="form-control text-dark border-dark-subtle" value="">
+                                                                <input type='text' name='mmt' id='mmt'
+                                                                    class="form-control text-dark border-dark-subtle"
+                                                                    value="">
                                                             </div>
                                                         </div>
                                                         <div class="row">
                                                             <div class="mb-12 col-lg-12 col-md-12 col-sm-12 csbd">
                                                                 <label class="form-label h5 fw-bolder">Tên môn
                                                                     thi</label>
-                                                                <input type='text' name='tenmt' id='tenmt' class="form-control text-dark border-dark-subtle" value="">
+                                                                <input type='text' name='tenmt' id='tenmt'
+                                                                    class="form-control text-dark border-dark-subtle"
+                                                                    value="">
                                                             </div>
                                                         </div>
                                                         <div class="row">
                                                             <div class="mb-12 col-lg-12 col-md-12 col-sm-12 csbd">
                                                                 <label class="form-label h5 fw-bolder">Bắt
                                                                     đầu</label>
-                                                                <input type='datetime-local' name='tkt' id='tkt' class="form-control text-dark border-dark-subtle" value="">
+                                                                <input type='datetime-local' name='tkt' id='tkt'
+                                                                    class="form-control text-dark border-dark-subtle"
+                                                                    value="">
                                                             </div>
                                                         </div>
                                                         <div class="row">
                                                             <div class="mb-12 col-lg-12 col-md-12 col-sm-12 csbd">
                                                                 <label class="form-label h5 fw-bolder">Kết
                                                                     thúc</label>
-                                                                <input type='datetime-local' name='tkt2' id='tkt2' class="form-control text-dark border-dark-subtle" value="">
+                                                                <input type='datetime-local' name='tkt2' id='tkt2'
+                                                                    class="form-control text-dark border-dark-subtle"
+                                                                    value="">
                                                             </div>
                                                         </div>
                                                     </form>
@@ -270,15 +274,18 @@
                                                         </div> -->
                                                 </div>
                                                 <div class="modal-footer" id='control_monthi'>
-                                                    <button type="button" onclick="reloadmonthi()" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                    <button type="button" id="add1" class="btn btn-success" data-bs-dismiss="modal">Add</button>
+                                                    <button type="button" onclick="reloadmonthi()"
+                                                        class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                    <button type="button" id="add1" class="btn btn-success"
+                                                        data-bs-dismiss="modal">Add</button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="table-responsive">
-                                        <table class="table table-bordered" id="list_monthi" width="100%" cellspacing="0">
+                                        <table class="table table-bordered" id="list_monthi" width="100%"
+                                            cellspacing="0">
                                             <thead>
                                                 <tr>
                                                     <th>Mã môn thi</th>
@@ -318,18 +325,21 @@
                                     <div class="d-flex justify-content-between mb-2">
                                         <p class="h5 mb-2 text-gray-600">DANH MỤC NỘI DUNG THI</p>
                                         <!-- Button trigger modal -->
-                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal01">
+                                        <button type="button" class="btn btn-warning " data-bs-toggle="modal"
+                                            data-bs-target="#exampleModal01">
                                             THÊM MỚI
                                         </button>
                                     </div>
 
                                     <!-- Modal -->
-                                    <div class="modal fade" id="exampleModal01" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal fade" id="exampleModal01" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="exampleModalLabel">Nội dung thi</h5>
-                                                    <button onclick="reloadnoidungthi()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    <button onclick="reloadnoidungthi()" type="button" class="btn-close"
+                                                        data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
                                                     <form method="post" id="suamodun">
@@ -338,21 +348,27 @@
                                                             <div class="mb-12 col-lg-12 col-md-12 col-sm-12 csbd">
                                                                 <label class="form-label h5 fw-bolder">Mã nội dung
                                                                     thi</label>
-                                                                <input type='text' name='mmt1' id='mmt1' class="form-control text-dark border-dark-subtle" value="">
+                                                                <input type='text' name='mmt1' id='mmt1'
+                                                                    class="form-control text-dark border-dark-subtle"
+                                                                    value="">
                                                             </div>
                                                         </div>
                                                         <div class="row">
                                                             <div class="mb-12 col-lg-12 col-md-12 col-sm-12 csbd">
                                                                 <label class="form-label h5 fw-bolder">Tên nội dung
                                                                     thi</label>
-                                                                <input type='text' name='tenmt1' id='tenmt1' class="form-control text-dark border-dark-subtle" value="">
+                                                                <input type='text' name='tenmt1' id='tenmt1'
+                                                                    class="form-control text-dark border-dark-subtle"
+                                                                    value="">
                                                             </div>
                                                         </div>
                                                         <div class="row">
                                                             <div class="mb-12 col-lg-12 col-md-12 col-sm-12 csbd">
                                                                 <label class="form-label h5 fw-bolder">Tên môn
                                                                     thi</label>
-                                                                <input type='text' name='tkt1' id='tkt1' class="form-control text-dark border-dark-subtle" value="">
+                                                                <input type='text' name='tkt1' id='tkt1'
+                                                                    class="form-control text-dark border-dark-subtle"
+                                                                    value="">
                                                             </div>
                                                         </div>
                                                     </form>
@@ -371,15 +387,19 @@
                                                         </div> -->
                                                 </div>
                                                 <div class="modal-footer" id="control_noidungthi">
-                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="reloadnoidungthi()">Close</button>
-                                                    <button type="button" id="add2" class="btn btn-success" data-bs-dismiss="modal">Add</button>
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal"
+                                                        onclick="reloadnoidungthi()">Close</button>
+                                                    <button type="button" id="add2" class="btn btn-success"
+                                                        data-bs-dismiss="modal">Add</button>
 
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="table-responsive">
-                                        <table class="table table-bordered" id="list_noidungthi" width="100%" cellspacing="0">
+                                        <table class="table table-bordered" id="list_noidungthi" width="100%"
+                                            cellspacing="0">
                                             <thead>
                                                 <tr>
                                                     <th>Mã nội dung</th>
@@ -432,7 +452,8 @@
     </a>
 
     <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -448,7 +469,7 @@
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">
                         Cancel
                     </button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-warning" href="index.php?controller=logout">Logout</a>
                 </div>
             </div>
         </div>
@@ -463,15 +484,13 @@
 
     <!-- Custom scripts for all pages-->
     <script src="assets/js/sb-admin-2.min.js"></script>
-    <script src="assets/vendor/jquery/jquery.min.js"></script>
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 
     <!-- Page level plugins -->
     <script src="assets/vendor/datatables/jquery.dataTables.min.js"></script>
     <script src="assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
     <script src="assets/js/dtdanhmuc.js"></script>
     <!-- Page level custom scripts -->
-    <script src="assets/js/demo/datatables-demo.js"></script>
     <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 
