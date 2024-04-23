@@ -39,6 +39,9 @@ class router
             case 'home':
                 $this->homeController->index();
                 break;
+            case 'listmonthiBykythi':
+                $this->homeController->getMonThiByKyThi();
+                break;
             case 'setupExam':
                 $this->examController->index();
                 break;

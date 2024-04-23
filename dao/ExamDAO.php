@@ -30,12 +30,13 @@ class ExamDAO
         return $kythis;
     }
 
-    public function getModun($sbd)
+    public function getModun($sbd, $kythi)
     {
-        $query = "SELECT modun.mamodun as 'mamodun', tenmodun, batdau, ketthuc FROM modun JOIN allowexam ON modun.mamodun = allowexam.mamodun WHERE allowexam.sbd = :sbd AND allowexam.allow = 'C'";
+        $query = "SELECT modun.mamodun as 'mamodun', tenmodun, batdau, ketthuc FROM modun JOIN allowexam ON modun.mamodun = allowexam.mamodun WHERE modun.makythi= :kythi AND allowexam.sbd = :sbd AND allowexam.allow = 'C'";
 
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':sbd', $sbd);
+        $stmt->bindParam(':kythi', $kythi);
         $stmt->execute();
 
         $moduns = array(); // Assuming you want to return an array of Modun objects
@@ -67,19 +68,19 @@ class ExamDAO
         return $profile;
     }
     //môn thi theo tên
-    public function getModunByname($name)
+    public function getNameByMa($name)
     {
-        $query = "select mamodun from modun where tenmodun= :tenmodun";
+        $query = "select kythi.tenkythi,modun.tenmodun from modun JOIN kythi ON modun.makythi = kythi.makythi where  mamodun= :mamodun";
 
         $stmt = $this->db->prepare($query);
-        $stmt->bindParam(':tenmodun', $name);
+        $stmt->bindParam(':mamodun', $name);
         $stmt->execute();
 
         // Assuming you want to return an array of Modun objects
 
         $row = $stmt->fetch(\PDO::FETCH_OBJ);
 
-        return $row->mamodun;
+        return $row;
     }
     // lấy thời gian thi
     public function getThoiGianThi($mamodun)

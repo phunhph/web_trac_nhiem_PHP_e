@@ -22,8 +22,27 @@ class HomeController
             }
         } else {
             $kythis = $this->examDAO->getKythi($_SESSION['user_info']['sbd']);
-            $target = "assets/upload/imgthisinh/" . $this->examDAO->getProfile($_SESSION['user_info']['sbd']);
-            require_once 'views/home/client/monthi.php';
+
+            require_once 'views/home/client/kythi.php';
+        }
+    }
+    public function getMonThiByKyThi()
+    {
+        if (!isset($_SESSION['user_info'])) {
+            if (!isset($_SESSION['admin'])) {
+                header('Location: index.php');
+                exit();
+            } else {
+                $kythi = $this->adminDAO->getKythi();
+                require_once 'views/home/admin/home.php';
+            }
+        } else {
+            if (isset($_GET['id'])) {
+                $monthis = $this->examDAO->getModun($_SESSION['user_info']['sbd'], $_GET['id']);
+                require_once 'views/home/client/monthi.php';
+            } else {
+                header('location: index.php?controller=home');
+            }
         }
     }
     public function getDataAPI()

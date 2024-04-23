@@ -266,6 +266,7 @@ function reload() {
   $("input[id='pasai2']").val("");
   $("input[id='pasai3']").val("");
   $("input[id='tl']").val("");
+  $("select[id='tl']").val("");
 }
 curd();
 function curd() {
@@ -278,12 +279,19 @@ function curd() {
     d = $("input[id='pasai1']").val();
     e = $("input[id='pasai2']").val();
     f = $("input[id='pasai3']").val();
-    g = $("input[id='tl']").val();
-
+    g = document.getElementById("tl").value;
     if (document.getElementById("pthi").value === "all") {
       alert("Hãy chọn bộ đề");
     } else {
-      if (a === "" || b === "" || c === "" || d === "" || e === "" || f === "")
+      if (
+        a === "" ||
+        b === "" ||
+        c === "" ||
+        d === "" ||
+        e === "" ||
+        f === "" ||
+        g === ""
+      )
         alert("Bạn cần nhập đủ thông tin!");
       else {
         var data = {
@@ -326,15 +334,23 @@ function curd() {
 
   $("#edit").click(function (e) {
     var id = document.getElementById("pthi").value;
-    var a, b, c, d, e, f;
+    var a, b, c, d, e, f, g;
     a = $("input[id='macauhoi']").val();
     b = $("input[id='tencauhoi']").val();
     c = $("input[id='padung']").val();
     d = $("input[id='pasai1']").val();
     e = $("input[id='pasai2']").val();
     f = $("input[id='pasai3']").val();
-    g = $("input[id='tl']").val(); //mức độ khó dễ trung bình
-    if (a === "" || b === "" || c === "" || d === "" || e === "" || f === "")
+    g = document.getElementById("tl").value();
+    if (
+      a === "" ||
+      b === "" ||
+      c === "" ||
+      d === "" ||
+      e === "" ||
+      f === "" ||
+      g === ""
+    )
       alert("Bạn cần nhập đủ thông tin!");
     else {
       var data = {
@@ -422,6 +438,7 @@ function curd() {
     $("input[id='pasai2']").val("");
     $("input[id='pasai3']").val("");
     $("input[id='tl']").val("");
+    $("select[id='tl']").val("");
   });
 }
 function showSuccessMessage(mes) {
