@@ -96,28 +96,28 @@
         <div class="card shadow mt-3 min-vh-20">
             <div class="row pl-4 pe-4 pb-4">
                 <div class="d-sm-flex align-items-center justify-content-between mt-4">
-                    <h1 class="h3 mb-0 text-gray-500 fw-bolder">Danh sách môn thi</h1>
+                    <h1 class="h3 mb-0 text-gray-500 fw-bolder">Danh sách kỳ thi</h1>
                 </div>
-                <?php foreach ($monthis as $key => $value) : ?>
+                <?php foreach ($kythis as $key => $value) : ?>
                 <div class="mb-6 col-lg-4 col-md-6 col-sm-6 mt-3">
                     <div class="card shadow mb-0">
                         <div class="card-body">
-                            <h5 class="card-title"><?= $value->getTenmodun() ?></h5>
+                            <h5 class="card-title"><?= $value->getTenkythi() ?></h5>
                             <h6 class="card-subtitle mb-2 text-body-secondary">1 Bài thi</h6>
-                            <p class="card-text">Thời gian bắt đầu: <?= $value->getBatdau() ?></p>
-                            <p class="card-text">Thời gian kết thúc: <?= $value->getKetthuc() ?></p>
-                            <?php if (strtotime($value->getKetthuc()) - time() >= 0) : ?>
+                            <p class="card-text">Thời gian bắt đầu: <?= $value->getTgbatdua() ?></p>
+                            <p class="card-text">Thời gian kết thúc: <?= $value->getTgketthuc() ?></p>
+                            <?php if (strtotime($value->getTgketthuc()) - time() >= 0) : ?>
                             <div class="progress" role="progressbar" aria-label="Info striped example"
                                 aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
                                 <div class="progress-bar progress-bar-striped bg-info"
-                                    style="width:  <?= ((time() - strtotime($value->getBatdau())) / (strtotime($value->getKetthuc()) - strtotime($value->getBatdau()))) * 100 ?>%">
+                                    style="width:  <?= ((time() - strtotime($value->getTgbatdua())) / (strtotime($value->getTgketthuc()) - strtotime($value->getTgbatdua()))) * 100 ?>%">
                                 </div>
                             </div>
                             <p class="d-inline-flex gap-1 mt-3">
 
-                                <a href="index.php?controller=setupExam&ID=<?= $value->getMamodun() ?>"
+                                <a href="index.php?controller=listmonthiBykythi&id=<?= $value->getMakythi() ?>"
                                     class="text-decoration-none">
-                                    <button class="btn btn-outline-warning">Vào thi </button></a>
+                                    <button class="btn btn-outline-warning">Vào kỳ thi </button></a>
 
                             </p>
                             <?php else : ?>
@@ -127,12 +127,11 @@
                                 </div>
                             </div>
                             <p class="d-inline-flex gap-1 mt-3">
-                                <a href="index.php?controller=setupExam&ID=<?= $value->getMamodun() ?>"
+                                <a href="index.php?controller=listmonthiBykythi&id=<?= $value->getMakythi() ?>"
                                     class="text-decoration-none">
-                                    <button class="btn btn-outline-warning">Vào thi </button></a>
-
+                                    <button class="btn btn-outline-warning">Vào kỳ thi </button></a>
                                 <!-- <button class="btn btn-outline-dark" disabled
-                                    style="background-color: #f8f9fa; color: #6c757d;">Vào thi</button> -->
+                                    style="background-color: #f8f9fa; color: #6c757d;">Vào kỳ thi</button> -->
                             </p>
                             <?php endif ?>
                         </div>

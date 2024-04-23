@@ -39,6 +39,9 @@ class router
             case 'home':
                 $this->homeController->index();
                 break;
+            case 'listmonthiBykythi':
+                $this->homeController->getMonThiByKyThi();
+                break;
             case 'setupExam':
                 $this->examController->index();
                 break;
@@ -109,8 +112,10 @@ class router
             case 'getthisinh':
                 $this->quanlythisinhController->getthisinh();
                 break;
+            case 'thongTin':
+                $this->quanlythisinhController->getInfor();
+                break;
             case 'createthisinh':
-
                 $this->quanlythisinhController->createthisinh();
                 break;
             case 'createthisinhByexcel':
@@ -158,6 +163,12 @@ class router
             case 'diemthi':
                 $this->diemthiController->index();
                 break;
+            case 'lichSu':
+                $this->diemthiController->getLichSu();
+                break;
+            case 'bangDiem':
+                $this->diemthiController->getBangDiem();
+                break;
             case 'getdiem':
                 $this->diemthiController->getdiem();
                 break;
@@ -193,7 +204,7 @@ class router
                 break;
             default:
 
-                echo '404 not found';
+                require_once 'views/error/404.php';
                 break;
         }
     }

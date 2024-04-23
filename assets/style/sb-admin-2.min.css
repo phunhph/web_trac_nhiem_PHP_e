@@ -6953,20 +6953,37 @@ button.bg-dark:hover {
   position: -webkit-sticky !important;
   position: sticky !important;
 }
-.fixed-top {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: 1030;
+@media (min-width: 700px) {
+  .fixed-top {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+  }
+
+  .fixed-left {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1030;
+  }
+
+  .fixed-right {
+    position: fixed;
+    top: 0;
+    right: 0;
+  }
+
+  .fixed-bottom {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1030;
+  }
 }
-.fixed-bottom {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 1030;
-}
+
 @supports ((position: -webkit-sticky) or (position: sticky)) {
   .sticky-top {
     position: -webkit-sticky;
@@ -7022,11 +7039,6 @@ button.bg-dark:hover {
 .w-i-100 {
   width: 100% !important;
 }
-@media only screen and (min-width: 1200px) {
-  .w-100 {
-    width: 75% !important;
-  }
-}
 .w-auto {
   width: auto !important;
 }
@@ -7056,6 +7068,12 @@ button.bg-dark:hover {
 }
 .min-vh-100 {
   min-height: 100vh !important;
+}
+.min-vh-80 {
+  min-height: 80vh !important;
+}
+.min-vh-20 {
+  min-height: 20vh !important;
 }
 .vw-100 {
   width: 100vw !important;

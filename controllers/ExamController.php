@@ -21,7 +21,9 @@ class ExamController
             #------------------------------------------------------------------------------------------------------------------------#
             if (isset($_GET['ID'])) {
                 // lấy mã modun
-                $mamodun_exam = $this->examDAO->getModunByname($_GET['ID']);
+                $mamodun_exam = $_GET['ID'];
+                // lấy tên kythi
+                $names = $this->examDAO->getNameByMa($_GET['ID']);
                 // lấy thông tin bài thi về số câu và thời gian làm bài tính theo phuts
                 $s = $this->examDAO->getThoiGianThi($mamodun_exam);
                 $tongch = $s->tongcauhoi;
