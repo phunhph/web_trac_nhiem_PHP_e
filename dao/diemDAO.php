@@ -135,4 +135,17 @@ class DiemDAO
 
         return $moduns;
     }
+    public function getBangDiem($sbd){
+        $sql = "SELECT modun.mamodun, modun.tenmodun, kythi.tenkythi, diem.thoigianthi,diem.diem FROM `diem` JOIN modun on modun.mamodun = diem.mamodun JOIN kythi on modun.makythi = kythi.makythi WHERE diem.sbd = :sbd";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(':sbd',$sbd);
+        $stmt->execute();
+        $diems = array();
+
+        while ($row = $stmt->fetch(\PDO::FETCH_OBJ)) {
+            $diems[] = $row;
+        }
+
+        return $diems;
+    }
 }

@@ -627,6 +627,7 @@ class DiemThiController
 
     public function getBangDiem()
     {
+        $diems= $this->dienthiDAO->getBangDiem($_SESSION['user_info']['sbd']);
         require_once 'views/diemthi/client/bangdiem.php';
     }
 
