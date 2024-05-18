@@ -7,17 +7,27 @@ class Modun
     public $tenmodun;
     public $batdau;
     public $ketthuc;
-
+    public $loai;
 
     // Hàm khởi tạo
-    public function __construct($mamodun, $tenmodun, $batdau, $ketthuc)
+    public function __construct($mamodun, $tenmodun, $batdau, $ketthuc, $loai)
     {
         $this->mamodun = $mamodun;
         $this->tenmodun = $tenmodun;
         $this->batdau = $batdau;
         $this->ketthuc = $ketthuc;
+        $this->loai = $loai;
+    }
+    public function getLoai()
+    {
+        return $this->loai;
     }
 
+    // Phương thức Setter cho mamodun
+    public function setLoai($loai)
+    {
+        $this->loai = $loai;
+    }
     // Phương thức Getter cho mamodun
     public function getMamodun()
     {

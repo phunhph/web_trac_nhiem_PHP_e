@@ -476,7 +476,7 @@ class ExamController
             $i = 1;
             $j = 1;
             // setup đáp án và kiểm tra kết quả
-            while ($i <= $_SESSION['tongcauhoi']) {
+            while ($i  <= $_SESSION['tongcauhoi']) {
                 if ($dapans[$i] == 1) $dapandung = "A";
                 else if ($dapans[$i] == 2) $dapandung = "B";
                 else if ($dapans[$i] == 3) $dapandung = "C";
