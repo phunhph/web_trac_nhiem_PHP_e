@@ -40,6 +40,41 @@ class SoanDeThiDAO
         }
         return $cauhois;
     }
+    public function getcauhoitaga($mabode)
+    {
+
+        $sql = "SELECT * FROM `cauhoi`
+        JOIN bode ON bode.mabode = cauhoi.mabode
+        JOIN modunbienthe ON modunbienthe.mamodunbienthe = bode.mamodun
+        WHERE modunbienthe.mamodunbienthe = :mabode AND bode.mabode LIKE '%GA%';
+        ";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(':mabode', $mabode);
+        $stmt->execute();
+
+        $cauhois = array();
+
+        while ($row = $stmt->fetch(\PDO::FETCH_OBJ)) {
+            $cauhoi = new CauHoi(
+                $row->macauhoi,
+                $row->tencauhoi,
+                $row->padung,
+                $row->pasai1,
+                $row->pasai2,
+                $row->pasai3,
+                $row->imgviauTencauhoi,
+                $row->imgviauPadung,
+                $row->imgviauPasai1,
+                $row->imgviauPasai2,
+                $row->imgviauPasai3,
+                $row->mucdo,
+                $row->mabode
+            );
+            $cauhois[] = $cauhoi;
+        }
+        return $cauhois;
+    }
+
     public function createcauhoi($macauhoi, $tencauhoi, $padung, $pasai1, $pasai2, $pasai3, $mucdo, $mabode)
     {
         $sql = "INSERT INTO cauhoi (macauhoi, tencauhoi, padung, pasai1, pasai2, pasai3, mucdo, mabode)

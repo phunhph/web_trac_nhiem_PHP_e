@@ -48,7 +48,22 @@ class QuanLyMonThiController
                 exit();
             } else {
                 $data = json_decode(file_get_contents("php://input"));
-                $this->quanlymonDao->createMonThi($data->id, $data->name, $data->tgbd, $data->tgkt, $data->id_kt);
+                $this->quanlymonDao->createMonThi($data->id, $data->name, $data->tgbd, $data->tgkt, $data->id_kt, $data->loai);
+                exit();
+            }
+        } else {
+            header('location: index.php?controller=login&action=' . $_SESSION['action_login']);
+        }
+    }
+    public function addmonthita()
+    {
+        if (!isset($_SESSION['user_info'])) {
+            if (!isset($_SESSION['admin'])) {
+                header('Location: index.php');
+                exit();
+            } else {
+                $data = json_decode(file_get_contents("php://input"));
+                $this->quanlymonDao->createMonThita($data->id, $data->name, $data->tgbd, $data->tgkt, $data->id_kt, $data->loai);
                 exit();
             }
         } else {
@@ -64,6 +79,21 @@ class QuanLyMonThiController
             } else {
                 $data = json_decode(file_get_contents("php://input"));
                 $this->quanlymonDao->fixmonthi($data->id, $data->name, $data->tgbd, $data->tgkt); //;
+                exit();
+            }
+        } else {
+            header('location: index.php?controller=login&action=' . $_SESSION['action_login']);
+        }
+    }
+    public function fixmonthita()
+    {
+        if (!isset($_SESSION['user_info'])) {
+            if (!isset($_SESSION['admin'])) {
+                header('Location: index.php');
+                exit();
+            } else {
+                $data = json_decode(file_get_contents("php://input"));
+                $this->quanlymonDao->fixmonthita($data->id, $data->name, $data->tgbd, $data->tgkt); //;
                 exit();
             }
         } else {
@@ -88,6 +118,30 @@ class QuanLyMonThiController
                 $this->quanlymonDao->deletedethiprofilebymodun($data->id);
                 $this->quanlymonDao->deletethoigianthi($data->id);
                 $this->quanlymonDao->deleteMonThi($data->id); //;
+                exit();
+            }
+        } else {
+            header('location: index.php?controller=login&action=' . $_SESSION['action_login']);
+        }
+    }
+    public function deletemonthita()
+    {
+        if (!isset($_SESSION['user_info'])) {
+            if (!isset($_SESSION['admin'])) {
+                header('Location: index.php');
+                exit();
+            } else {
+                $data = json_decode(file_get_contents("php://input"));
+
+                $this->quanlymonDao->deletediem($data->id);
+                $this->quanlymonDao->deleteallowexam($data->id);
+                $this->quanlymonDao->deleteremote($data->id);
+                $this->quanlymonDao->deletedethisinh($data->id);
+                $this->quanlymonDao->deletecauhoi($data->id);
+                $this->quanlymonDao->deletebode($data->id);
+                $this->quanlymonDao->deletedethiprofilebymodun($data->id);
+                $this->quanlymonDao->deletethoigianthi($data->id);
+                $this->quanlymonDao->deleteMonThiTa($data->id); //;
                 exit();
             }
         } else {

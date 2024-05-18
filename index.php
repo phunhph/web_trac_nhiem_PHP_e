@@ -85,11 +85,20 @@ class router
             case 'addmonthi':
                 $this->quanlymonthiController->addmonthi();
                 break;
+            case 'addmonthita':
+                $this->quanlymonthiController->addmonthita();
+                break;
             case 'fixmonthi':
                 $this->quanlymonthiController->fixmonthi();
                 break;
+            case 'fixmonthita':
+                $this->quanlymonthiController->fixmonthita();
+                break;
             case 'deletemonthi':
                 $this->quanlymonthiController->deletemonthi();
+                break;
+            case 'deletemonthita':
+                $this->quanlymonthiController->deletemonthita();
                 break;
             case 'getnoidungthi':
                 $this->quanlymonthiController->getnoidungthi();
@@ -136,8 +145,14 @@ class router
             case 'soandethi':
                 $this->soandethiController->index();
                 break;
+            case 'soandethil':
+                $this->soandethiController->index_2();
+                break;
             case 'getcauhoibybode':
                 $this->soandethiController->getcauhoibybode();
+                break;
+            case 'getcauhoitagabybode':
+                $this->soandethiController->getcauhoitagabybode();
                 break;
             case 'createcauhoi':
                 $this->soandethiController->createcauhoi();

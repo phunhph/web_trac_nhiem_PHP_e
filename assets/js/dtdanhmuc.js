@@ -32,8 +32,7 @@ function rendermonthi(date) {
   var ops = ` <option value="...">...</option>`;
   if (date.length >= 1) {
     date.forEach((element) => {
-      html += `<tr data-bs-toggle="modal"
-      data-bs-target="#exampleModal">`;
+      html += `<tr loai="${element.loai}" data-bs-toggle="modal" data-bs-target="#exampleModal">`;
       html +=
         '<td style="text-align:left; padding:0.5em 1em;">' +
         element.mamodun +
@@ -100,7 +99,6 @@ function rendermonthi(date) {
   } else {
     var html = ``;
     ops = ` <option value="...">...</option>`;
-    document.getElementById("crud_monthi").innerHTML = "";
   }
 
   document.getElementById("monthi").innerHTML = html;
@@ -109,6 +107,7 @@ function rendermonthi(date) {
 // getDate nội dung thi
 document.getElementById("monthi_ops").onchange = function () {
   var id = document.getElementById("monthi_ops").value;
+  console.log(id);
   getnoidungthi(id);
 };
 function getnoidungthi(id) {
@@ -190,21 +189,42 @@ function envenmon() {
     c = $("input[id='tkt']").val();
     d = $("input[id='tkt2']").val();
     e = $("#kythi").val();
+    f = $("input[name='loai']:checked").val();
+    var radioButtons = document.getElementsByName("loai");
+
+    // Kiểm tra xem có radio button nào được chọn hay không
+    var isChecked = false;
+    for (var i = 0; i < radioButtons.length; i++) {
+      if (radioButtons[i].checked) {
+        isChecked = true;
+        break;
+      }
+    }
     if (e === "...") {
       alert("Vui lòng chọn kỳ thi trước");
     } else {
-      if (a === "" || b === "" || c === "" || d === "")
+      if (a === "" || b === "" || c === "" || d === "" || isChecked == false)
         alert("Không được để trống dữ liệu!");
       else if (confirm("Bạn chắc chắn thêm môn thi này?")) {
+        if (f === "bt") {
+          loai = 0;
+        } else if (f === "ta") {
+          loai = 1;
+        }
         var data = {
           id: $("#mmt").val(),
           name: $("#tenmt").val(),
           tgbd: $("#tkt").val(),
           tgkt: $("#tkt2").val(),
           id_kt: $("#kythi").val(),
+          loai: loai,
         };
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "index.php?controller=addmonthi", true);
+        if (f === "bt") {
+          xhr.open("POST", "index.php?controller=addmonthi", true);
+        } else if (f === "ta") {
+          xhr.open("POST", "index.php?controller=addmonthita", true);
+        }
         xhr.setRequestHeader(
           "Content-Type",
           "application/x-www-form-urlencoded"
@@ -233,18 +253,40 @@ function envenmon() {
     b = $("input[id='tenmt']").val();
     c = $("input[id='tkt']").val();
     d = $("input[id='tkt2']").val();
-    if (a === "" || b === "" || c === "" || d === "")
+    f = $("input[name='loai']:checked").val();
+    var radioButtons = document.getElementsByName("loai");
+
+    // Kiểm tra xem có radio button nào được chọn hay không
+    var isChecked = false;
+    for (var i = 0; i < radioButtons.length; i++) {
+      if (radioButtons[i].checked) {
+        isChecked = true;
+        break;
+      }
+    }
+    if (a === "" || b === "" || c === "" || d === "" || isChecked == false)
       alert("Không được để trống dữ liệu!");
     else if (confirm("Bạn có chắc chắn sửa đổi?")) {
+      if (f === "bt") {
+        loai = 0;
+      } else if (f === "ta") {
+        loai = 1;
+      }
       var data = {
         id: $("#mmt").val(),
         name: $("#tenmt").val(),
         tgbd: $("#tkt").val(),
         tgkt: $("#tkt2").val(),
         id_kt: $("#kythi").val(),
+        loai: loai,
       };
       var xhr = new XMLHttpRequest();
-      xhr.open("POST", "index.php?controller=fixmonthi", true);
+      if (f === "bt") {
+        xhr.open("POST", "index.php?controller=fixmonthi", true);
+      } else if (f === "ta") {
+        xhr.open("POST", "index.php?controller=fixmonthita", true);
+      }
+
       xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
       xhr.onreadystatechange = function () {
@@ -274,14 +316,32 @@ function envenmon() {
   $("#delete1").click(function (e) {
     var a;
     a = $("input[id='mmt']").val();
+    f = $("input[name='loai']:checked").val();
+    var radioButtons = document.getElementsByName("loai");
+
+    // Kiểm tra xem có radio button nào được chọn hay không
+    var isChecked = false;
+    for (var i = 0; i < radioButtons.length; i++) {
+      if (radioButtons[i].checked) {
+        isChecked = true;
+        break;
+      }
+    }
     if (a === "") alert("Không được để trống mã môn thi!");
-    else if (confirm("Bạn có chắc chắn xóa môn thi này?")) {
+    if (isChecked == false) {
+      alert("Chọn lại loại môn thi như ban đầu");
+    } else if (confirm("Bạn có chắc chắn xóa môn thi này?")) {
       var data = {
         id: $("#mmt").val(),
         id_kt: $("#kythi").val(),
       };
       var xhr = new XMLHttpRequest();
-      xhr.open("POST", "index.php?controller=deletemonthi", true);
+      if (f === "bt") {
+        xhr.open("POST", "index.php?controller=deletemonthi", true);
+      } else if (f === "ta") {
+        xhr.open("POST", "index.php?controller=deletemonthita", true);
+      }
+
       xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
       xhr.onreadystatechange = function () {
@@ -321,20 +381,18 @@ function evennodung() {
     var a, b, c, d;
     a = $("input[id='mmt1']").val();
     b = $("input[id='tenmt1']").val();
-    c = $("input[id='tkt1']").val();
     d = $("#monthi_ops").val();
     if (d === "...") {
       alert("Hãy chọn môn thi trước");
     } else {
-      if (a === "" || b === "" || c === "")
-        alert("Không được để trống dữ liệu!");
+      if (a === "" || b === "") alert("Không được để trống dữ liệu!");
       else if (confirm("Thêm nội dung này?")) {
         var data = {
           id: $("#mmt1").val(),
           name: $("#tenmt1").val(),
-          monthi: $("#tkt1").val(),
           mamon: $("#monthi_ops").val(),
         };
+        console.log(data);
         var xhr = new XMLHttpRequest();
         xhr.open("POST", "index.php?controller=addnoidungthi", true);
         xhr.setRequestHeader(
@@ -343,6 +401,7 @@ function evennodung() {
         );
         xhr.onreadystatechange = function () {
           if (xhr.readyState === XMLHttpRequest.DONE) {
+            console.log(xhr.responseText);
             if (xhr.status === 200) {
               getnoidungthi(data.mamon);
               reloadnoidungthi();
@@ -361,13 +420,12 @@ function evennodung() {
     var a, b, c;
     a = $("input[id='mmt1']").val();
     b = $("input[id='tenmt1']").val();
-    c = $("input[id='tkt1']").val();
-    if (a === "" || b === "" || c === "") alert("Không được để trống dữ liệu!");
+
+    if (a === "" || b === "") alert("Không được để trống dữ liệu!");
     else if (confirm("Cập nhật nội dung này?")) {
       var data = {
         id: $("#mmt1").val(),
         name: $("#tenmt1").val(),
-        monthi: $("#tkt1").val(),
         mamon: $("#monthi_ops").val(),
       };
       var xhr = new XMLHttpRequest();
@@ -446,7 +504,12 @@ function addAllEvents() {
       $("input[id='tenmt']").val($(this).children("td:eq(1)").text());
       $("input[id='tkt']").val($(this).children("td:eq(2)").text());
       $("input[id='tkt2']").val($(this).children("td:eq(3)").text());
-
+      var loai = $(this).attr("loai");
+      if (loai == "0") {
+        $("input[name='loai'][value='bt']").prop("checked", true);
+      } else if (loai == "1") {
+        $("input[name='loai'][value='ta']").prop("checked", true);
+      }
       document.getElementById(
         "control_monthi"
       ).innerHTML = `<button type="button" class="btn btn-secondary" onclick="reloadmonthi()" data-bs-dismiss="modal">Close</button>
@@ -457,8 +520,7 @@ function addAllEvents() {
     $(".table12 tr").click(function (e) {
       $("input[id='mmt1']").val($(this).children("td:eq(0)").text());
       $("input[id='tenmt1']").val($(this).children("td:eq(1)").text());
-      $("input[id='tkt1']").val($(this).children("td:eq(2)").text());
-      $("input[id='tkt11']").val($(this).children("td:eq(3)").text());
+
       document.getElementById(
         "control_noidungthi"
       ).innerHTML = ` <button type="button" class="btn btn-secondary"

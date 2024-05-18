@@ -121,9 +121,17 @@
             <hr class="sidebar-divider" />
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="index.php?controller=soandethi">
-                    <i class="fas fa-edit"></i>
-                    <span>Soạn đề thi</span></a>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Soạn đề thi</span>
+                </a>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Soạn đề thi:</h6>
+                        <a class="collapse-item" href="index.php?controller=soandethi">Soạn đề thi</a>
+                        <a class="collapse-item" href="index.php?controller=soandethil">Soạn đề thi tiếng anh</a>
+                    </div>
+                </div>
             </li>
             <!-- Phân quyền thí sinh -->
             <!-- Divider -->
